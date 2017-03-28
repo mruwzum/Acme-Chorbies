@@ -1,5 +1,7 @@
 package domain;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
@@ -16,6 +18,7 @@ public class Coordinate extends DomainEntity {
     private String province;
     private String city;
 
+    @NotBlank
     public String getCountry() {
         return country;
     }
