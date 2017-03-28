@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	<definition name="coordinate/list" extends="master.page">
+		<put-attribute name="title" value="coordinate: List" />
+		<put-attribute name="body" value="/views/coordinate/list.jsp" />
+	</definition>
+
+	<definition name="coordinate/edit" extends="master.page">
+		<put-attribute name="title" value="coordinate: Edit"/>
+		<put-attribute name="body" value="/views/coordinate/edit.jsp"/>
+	</definition>
+
+</tiles-definitions>

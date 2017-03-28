@@ -22,10 +22,22 @@
 		<value>/views/misc/messages</value>
 		<value>/views/security/messages</value>		
 		<value>/views/welcome/messages</value>
-		
+
+		<!--Administrator-->
 		<value>/views/administrator/messages</value>
-		<value>/views/customer/messages</value>
-		<value>/views/profile/messages</value>
+		<!--Chirp-->
+		<value>/views/chirp/messages</value>
+		<!--Chorbi-->
+		<value>/views/chorbi/messages</value>
+		<!--Coordinate-->
+		<value>/views/coordinate/messages</value>
+		<!--Credit Card-->
+		<value>/views/credit-card/messages</value>
+		<!--Like-->
+		<value>/views/like/messages</value>
+		<!--Search-->
+		<value>/views/search/messages</value>
+
 	</util:list>
 
 </beans>
