@@ -9,7 +9,7 @@
  * http://www.tdg-seville.info/License.html
  -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>Sample Project</display-name>
+  <display-name>Acme-Chorbies</display-name>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -44,4 +44,13 @@
     <error-code>403</error-code>
     <location>/views/misc/403.jsp</location>
   </error-page>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Viewpoint Secure URLs</web-resource-name>
+      <url-pattern>/*</url-pattern>
+    </web-resource-collection>
+    <user-data-constraint>
+      <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
 </web-app>
