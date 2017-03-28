@@ -10,4 +10,7 @@ import javax.persistence.Entity;
 @Entity
 @Access(AccessType.PROPERTY)
 public class Chorbi extends Actor {
+
+    private String picture;
+    private String description;
 }
