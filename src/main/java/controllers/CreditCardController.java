@@ -93,7 +93,7 @@ public class CreditCardController extends AbstractController {
 					creditCardService.save(creditCard);
 					result= new ModelAndView("/profile.do");
 				}catch(Throwable oops){
-					result= createEditModelAndView(creditCard, "creditCard.commit.error");
+					result= createEditModelAndView(creditCard, "general.commit.error");
 				}
 			}
 			return result;
@@ -106,7 +106,7 @@ public class CreditCardController extends AbstractController {
 				creditCardService.delete(creditCard);
 				result=new ModelAndView("redirect:list.do");
 			}catch(Throwable oops){
-				result= createEditModelAndView(creditCard, "creditCard.commit.error");
+				result= createEditModelAndView(creditCard, "general.commit.error");
 			}
 
 			return result;

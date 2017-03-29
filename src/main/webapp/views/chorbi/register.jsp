@@ -15,10 +15,6 @@
 
     <form:hidden path="id"/>
     <form:hidden path="version"/>
-    <form:hidden path="sendMessages"/>
-    <form:hidden path="recivedMessages"/>
-    <form:hidden path="offers"/>
-    <form:hidden path="requests"/>
 
 
     <acme:textbox path="name" code="customer.name"/>

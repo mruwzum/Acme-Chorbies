@@ -78,7 +78,7 @@ public class ChorbiController extends AbstractController {
 				actorService.registerAsAChorbi(chorbi);
 				result= new ModelAndView("redirect:list.do");
 			}catch(Throwable oops){
-				result= createEditModelAndView2(chorbi, "chorbi.commit.error");
+				result= createEditModelAndView2(chorbi, "general.commit.error");
 			}
 		}
 		return result;
@@ -108,7 +108,7 @@ public class ChorbiController extends AbstractController {
 					chorbiService.save(chorbi);
 					result= new ModelAndView("/profile.do");
 				}catch(Throwable oops){
-					result= createEditModelAndView(chorbi, "chorbi.commit.error");
+					result= createEditModelAndView(chorbi, "general.commit.error");
 				}
 			}
 			return result;
@@ -121,7 +121,7 @@ public class ChorbiController extends AbstractController {
 				chorbiService.delete(chorbi);
 				result=new ModelAndView("redirect:list.do");
 			}catch(Throwable oops){
-				result= createEditModelAndView(chorbi, "chorbi.commit.error");
+				result= createEditModelAndView(chorbi, "general.commit.error");
 			}
 
 			return result;
