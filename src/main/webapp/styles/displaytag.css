@@ -1,84 +1,105 @@
 /* displaytag.css
  *
- * Copyright (C) 2017 Universidad de Sevilla
+ * Copyright (C) 2016 Universidad de Sevilla
  * 
  * The use of this project is hereby constrained to the conditions of the 
  * TDG Licence, a copy of which you may download from 
  * http://www.tdg-seville.info/License.html
  * 
  */
- 
+body {
+	font-family: "Andale Mono";
+	font-size: 14px;
+}
+
+h1 {
+	font-family: "Andale Mono";
+	font-size: 17px;
+}
 table {
 	border: 1px solid #666;
 	width: 80%;
-	margin: 20px 0 20px 0 !important;
+	margin: 15px 0 15px 0 !important;
+	font-family: "Andale Mono";
+	font-size: 13px;
 }
 
-th,td {
+th, td {
 	padding: 2px 4px 2px 4px !important;
-	text-align: left;
+	text-align: center;
 	vertical-align: top;
+	font-family: "Andale Mono";
 }
 
 thead tr {
-	background-color: #fc0;
+	background-color: #eeabb6;
+	font-family: "Andale Mono";
 }
 
 th.sorted {
-	background-color: orange;
+	background-color: #bf4e50;
+	font-family: "Andale Mono";
 }
 
-th a,th a:visited {
+th a, th a:visited {
 	color: black;
+	font-family: "Andale Mono";
 }
 
 th a:hover {
+	font-family: "Andale Mono";
 	text-decoration: underline;
-	color: black;
+	color: #f7b7af;
 }
 
-th.sorted a,th.sortable a {
+th.sorted a, th.sortable a {
 	background-position: right;
 	display: block;
 	width: 100%;
+	font-family: "Andale Mono";
 }
 
 th.sortable a {
 	background-image: url(../images/arrow_off.png);
 	background-repeat: no-repeat;
 	background-position: center center;
-	background-position: right;	
+	background-position: right;
 }
 
 th.order1 a {
 	background-image: url(../images/arrow_down.png);
 	background-repeat: no-repeat;
-	background-position: right;		
+	background-position: right;
 }
 
 th.order2 a {
 	background-image: url(../images/arrow_up.png);
 	background-repeat: no-repeat;
-	background-position: right;	
+	background-position: right;
 }
 
 tr.odd {
-	background-color: #fff
+	background-color: #fff3dd;
+	font-family: "Andale Mono";
 }
 
-tr.tableRowEven,tr.even {
-	background-color: #fea
+tr.tableRowEven, tr.even {
+	font-family: "Andale Mono";
+	background-color: #ee888b;
 }
 
 div.exportlinks {
+	font-family: "Andale Mono";
 	background-color: #eee;
 	border: 1px dotted #999;
 	padding: 2px 4px 2px 4px;
 	margin: 2px 0 10px 0;
 	width: 79%;
+	font-size: 13px;
 }
 
 span.export {
+	font-family: "Andale Mono";
 	padding: 0 4px 1px 20px;
 	display: inline;
 	display: inline-block;
@@ -113,6 +134,8 @@ span.pagebanner {
 	margin-top: 10px;
 	display: block;
 	border-bottom: none;
+	font-family: "Andale Mono";
+	font-size: 13px;
 }
 
 span.pagelinks {
@@ -123,42 +146,52 @@ span.pagelinks {
 	display: block;
 	border-top: none;
 	margin-bottom: -5px;
+	font-family: "Andale Mono";
+	font-size: 13px;
 }
 
 .group-1 {
 	font-weight: bold;
 	padding-bottom: 10px;
 	border-top: 1px solid black;
+	font-family: "Andale Mono";
 }
 
 .group-2 {
 	font-style: italic;
 	border-top: 1px solid black;
+	font-family: "Andale Mono";
 }
 
-.subtotal-sum,.grandtotal-sum {
+.subtotal-sum, .grandtotal-sum {
 	font-weight: bold;
-	text-align: right;
+	text-align: center;
+	font-family: "Andale Mono";
 }
 
 .subtotal-header {
+	font-family: "Andale Mono";
 	padding-bottom: 0px;
 	border-top: 1px solid white;
 }
 
-.subtotal-label,.grandtotal-label {
+.subtotal-label, .grandtotal-label {
+	font-family: "Andale Mono";
 	border-top: 1px solid white;
 	font-weight: bold;
 }
 
 .grouped-table tr.even {
-	background-color: #fff;
+	font-family: "Andale Mono";
+	background-color: #ccf3ff;
 }
 
 .grouped-table tr.odd {
+	font-family: "Andale Mono";
 	background-color: #fff;
 }
 
 .grandtotal-row {
+	font-family: "Andale Mono";
 	border-top: 2px solid black;
 }

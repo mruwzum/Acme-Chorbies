@@ -1,6 +1,6 @@
 /* jmenu.css
  *
- * Copyright (C) 2017 Universidad de Sevilla
+ * Copyright (C) 2016 Universidad de Sevilla
  * 
  * The use of this project is hereby constrained to the conditions of the 
  * TDG Licence, a copy of which you may download from 
@@ -9,6 +9,7 @@
  */
 
 .jMenu {
+	font-family: "Andale Mono";
 	display: table;
 	margin: 0px;
 	padding: 0px;
@@ -17,12 +18,14 @@
 /* First level */
 
 .jMenu li {
+	font-family: "Andale Mono";
 	display: table-cell;
-	background-color: #322f32;
+	background-color: #680512;
 	margin: 0px;
 }
 
 .jMenu li a {
+	font-family: "Andale Mono";
 	padding: 10px;
 	display: block;
 	background-color: transparent;
@@ -36,6 +39,7 @@
 /* Lower levels */
 
 .jMenu li ul {
+	font-family: "Andale Mono";
 	display: none;
 	position: absolute;
 	z-index: 9999;
@@ -44,14 +48,16 @@
 }
 
 .jMenu li ul li {
-	background-color: #322f32;
+	font-family: "Andale Mono";
+	background-color: #700513;
 	display: block;
-	border-bottom: 1px solid #484548;
+	border-bottom: 1px solid #8e0618;
 	padding: 0;
 }
 
 .jMenu li ul li.arrow {
-	background-color: #322f32;
+	font-family: "Andale Mono";
+	background-color: #700513;
 	background-image: url('../images/arrow_down.png');
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -62,6 +68,7 @@
 }
 
 .jMenu li ul li a {
+	font-family: "Andale Mono";
 	font-size: 11px;
 	text-transform: none;
 	padding: 7px;
@@ -72,7 +79,8 @@
 }
 
 .jMenu li ul li a.isParent {
-	background-color: #3a3a3a;
+	font-family: "Andale Mono";
+	background-color: #700513;
 	background-image: url('../images/arrow_right.png');
 	background-repeat: no-repeat;
 	background-position: right center;
@@ -80,8 +88,9 @@
 }
 
 .jMenu li ul li a:hover {
-	background-color: #514c52;
-	border-top: 1px solid #322f32;
-	border-bottom: 1px solid #322f32;
+	font-family: "Andale Mono";
+	background-color: #8e0618;
+	border-top: 1px solid #700513;
+	border-bottom: 1px solid #680512;
 	text-decoration: none;
 }

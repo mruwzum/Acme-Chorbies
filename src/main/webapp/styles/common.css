@@ -1,19 +1,31 @@
 /* common.css
  *
- * Copyright (C) 2017 Universidad de Sevilla
+ * Copyright (C) 2016 Universidad de Sevilla
  * 
  * The use of this project is hereby constrained to the conditions of the 
  * TDG Licence, a copy of which you may download from 
  * http://www.tdg-seville.info/License.html
  * 
  */
-
+.form-group {
+    font-family: "Andale Mono";
+}
 .error {
+    font-family: "Andale Mono";
 	color: red;
 	font-weight: bolder;
 }
 
 .message {
+    font-family: "Andale Mono";
 	color: red;
 	font-weight: bolder;
+}
+
+.body {
+    font-family: "Andale Mono";
+}
+
+.h1 {
+    font-family: "Andale Mono";
 }
