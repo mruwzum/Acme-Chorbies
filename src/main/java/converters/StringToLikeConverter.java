@@ -1,7 +1,7 @@
 package converters;
 
 import domain.Actor;
-import domain.Like;
+import domain.Liked;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
@@ -15,14 +15,14 @@ import repositories.LikeRepository;
  */
 @Component
 @Transactional
-public class StringToLikeConverter  implements Converter<String, Like> {
+public class StringToLikeConverter  implements Converter<String, Liked> {
 
     @Autowired
     LikeRepository likeRepository;
 
     @Override
-    public Like convert(String text) {
-        Like result;
+    public Liked convert(String text) {
+        Liked result;
         int id;
 
         try {

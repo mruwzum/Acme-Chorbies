@@ -1,6 +1,7 @@
 package services;
 
-import domain.Like;
+import domain.Liked;
+import domain.Liked;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -33,28 +34,28 @@ public class LikeService {
 
     // Simple CRUD methods -----------------------
 
-    public Like findOne(int actorId) {
-        Like result;
+    public Liked findOne(int actorId) {
+        Liked result;
 
         result = likeRepository.findOne(actorId);
 
         return result;
     }
 
-    public Collection<Like> findAll() {
-        Collection<Like> result;
+    public Collection<Liked> findAll() {
+        Collection<Liked> result;
 
         result = likeRepository.findAll();
 
         return result;
     }
 
-    public Like save(Like actor) {
+    public Liked save(Liked actor) {
         Assert.notNull(actor);
         return likeRepository.save(actor);
     }
 
-    public void delete(Like actor) {
+    public void delete(Liked actor) {
         Assert.notNull(actor);
         Assert.isTrue(likeRepository.exists(actor.getId()));
         likeRepository.delete(actor);

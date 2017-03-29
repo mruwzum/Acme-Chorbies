@@ -9,7 +9,7 @@ import java.util.Date;
  */
 @Entity
 @Access(AccessType.PROPERTY)
-public class Like extends DomainEntity {
+public class Liked extends DomainEntity {
 
 
 

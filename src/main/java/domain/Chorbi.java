@@ -1,6 +1,7 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -26,11 +27,11 @@ public class Chorbi extends Actor {
     private Coordinate coordinate;
 
     private Collection<Chirp> chirps;
-    private Collection<Like> likes;
+    private Collection<Liked> likes;
     private Collection<Chirp> myChirps;
-    private Collection<Like> myLikes;
+    private Collection<Liked> myLikes;
 
-
+    @URL
     public String getPicture() {
         return picture;
     }
@@ -107,12 +108,12 @@ public class Chorbi extends Actor {
         this.chirps = chirps;
     }
 
-    @OneToMany(targetEntity = Like.class, mappedBy = "receiver")
-    public Collection<Like> getLikes() {
+    @OneToMany(targetEntity = Liked.class, mappedBy = "receiver")
+    public Collection<Liked> getLikes() {
         return likes;
     }
 
-    public void setLikes(Collection<Like> likes) {
+    public void setLikes(Collection<Liked> likes) {
         this.likes = likes;
     }
 
@@ -125,12 +126,12 @@ public class Chorbi extends Actor {
         this.myChirps = myChirps;
     }
 
-    @OneToMany(targetEntity = Like.class, mappedBy = "sender")
-    public Collection<Like> getMyLikes() {
+    @OneToMany(targetEntity = Liked.class, mappedBy = "sender")
+    public Collection<Liked> getMyLikes() {
         return myLikes;
     }
 
-    public void setMyLikes(Collection<Like> myLikes) {
+    public void setMyLikes(Collection<Liked> myLikes) {
         this.myLikes = myLikes;
     }
 

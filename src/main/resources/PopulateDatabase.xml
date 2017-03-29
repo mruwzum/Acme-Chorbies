@@ -15,48 +15,295 @@
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
-	
-	<!-- User accounts -->
+	<!-- UserAccounts -->
 
-	<bean id="userAccount1" class="security.UserAccount">
-		<property name="username" value="admin" />
-		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+	<bean id="userAccountadministrator1" class="security.UserAccount">
+		<property name="username" value="administrator1" />
+		<property name="password" value="d5cee333abe432891a0de57d0ee38713" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
+					<property name="authority" value="ADMINISTRATOR"/>
 				</bean>
 			</list>
 		</property>
 	</bean>
 
-	<bean id="userAccount2" class="security.UserAccount">
-		<property name="username" value="customer" />
-		<property name="password" value="91ec1f9324753048c0096d036a694f86" />
+	<bean id="userAccountadministrator2" class="security.UserAccount">
+		<property name="username" value="administrator2" />
+		<property name="password" value="82954495ff7e2a735ed2192c35b2cd00" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
+					<property name="authority" value="ADMINISTRATOR"/>
 				</bean>
 			</list>
 		</property>
 	</bean>
 
-	<bean id="userAccount3" class="security.UserAccount">
-		<property name="username" value="super" />
-		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
+	<bean id="userAccountadministrator3" class="security.UserAccount">
+		<property name="username" value="administrator3" />
+		<property name="password" value="d1849d15043d73506d6a7523a1661e2d" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
-				</bean>
-				<bean class="security.Authority">
-					<property name="authority" value="CUSTOMER" />
+					<property name="authority" value="ADMINISTRATOR"/>
 				</bean>
 			</list>
 		</property>
 	</bean>
-	
-	<!-- Other domain beans come here -->	
-	
+	<bean id="userAccountadministrator4" class="security.UserAccount">
+		<property name="username" value="administrator4" />
+		<property name="password" value="3ce013337481d5af81e21bf6791a574e" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMINISTRATOR"/>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean id="userAccountChorbi1" class="security.UserAccount">
+		<property name="username" value="chorbi1" />
+		<property name="password" value="3daa859a294cdefb20a84840240a76f5" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CHORBI" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean id="userAccountChorbi2" class="security.UserAccount">
+		<property name="username" value="chorbi2" />
+		<property name="password" value="0c8746de81268518ff83490301db8652" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CHORBI" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean id="userAccountChorbi3" class="security.UserAccount">
+		<property name="username" value="chorbi3" />
+		<property name="password" value="a2da05a88eead7e64593826cafc6a7a7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CHORBI" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean id="userAccountChorbi4" class="security.UserAccount">
+		<property name="username" value="chorbi4" />
+		<property name="password" value="a09dd233386632e297a7f4f461989563" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CHORBI" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean id="userAccountChorbi5" class="security.UserAccount">
+		<property name="username" value="chorbi5" />
+		<property name="password" value="7e062f6f2a4c0f7ec5abacef2917e033" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CHORBI" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<!-- /UserAccounts -->
+
+	<!-- Other domain beans come here -->
+	<!-- CreditCard -->
+	<bean id="creditcard1" class="domain.CreditCard">
+		<property name="holder" ref="chorbi1"/>
+		<property name="brand" value="VISA"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="expirationYear" value="2018"/>
+		<property name="CVV" value="432"/>
+		<property name="expirationMonth" value="2"/>
+	</bean>
+	<!-- CreditCard2 -->
+	<bean id="creditcard2" class="domain.CreditCard">
+		<property name="holder" ref="chorbi2"/>
+		<property name="brand" value="DINNERS"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="expirationYear" value="2019"/>
+		<property name="CVV" value="112"/>
+		<property name="expirationMonth" value="6"/>
+	</bean>
+	<!-- CreditCard3 -->
+	<bean id="creditcard3" class="domain.CreditCard">
+		<property name="holder" ref="chorbi3"/>
+		<property name="brand" value="DISCOVER"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="expirationYear" value="2018"/>
+		<property name="CVV" value="222"/>
+		<property name="expirationMonth" value="3"/>
+	</bean>
+	<!-- CreditCard4 -->
+	<bean id="creditcard4" class="domain.CreditCard">
+		<property name="holder" ref="chorbi4"/>
+		<property name="brand" value="AMEX"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="expirationYear" value="2030"/>
+		<property name="CVV" value="007"/>
+		<property name="expirationMonth" value="8"/>
+	</bean>
+	<!-- CreditCard5 -->
+	<bean id="creditcard5" class="domain.CreditCard">
+		<property name="holder" ref="chorbi5"/>
+		<property name="brand" value="MASTERCARD"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="ExpirationYear" value="2017"/>
+		<property name="CVV" value="235"/>
+		<property name="expirationMonth" value="8"/>
+	</bean>
+	<!--&lt;!&ndash; CreditCard6 &ndash;&gt;-->
+	<!--<bean id="creditcard6" class="domain.CreditCard">-->
+		<!--<property name="holder" ref="chorbi6"/>-->
+		<!--<property name="brand" value="VISA"/>-->
+		<!--<property name="number" value="54275498043695577"/>-->
+		<!--<property name="ExpirationYear" value="2019"/>-->
+		<!--<property name="CVV" value="009"/>-->
+		<!--<property name="expirationMonth" value="8"/>-->
+	<!--</bean>-->
+	<!-- /CreditCards -->
+
+	<!-- Actors -->
+
+		<!-- Administrator -->
+	<bean id="administrator1" class="domain.Administrator">
+		<property name="name" value="Administrator1Name" />
+		<property name="surname" value="Administrator1Surname" />
+		<property name="email" value="Administrator1Email@gmail.com"/>
+		<property name="phone" value="+23-6234456456"/>
+		<property name="userAccount" ref="userAccountadministrator1" />
+	</bean>
+	<bean id="administrator2" class="domain.Administrator">
+		<property name="name" value="Administrator2Name" />
+		<property name="surname" value="Administrator2Surname" />
+		<property name="email" value="Administrator2Email@gmail.com"/>
+		<property name="phone" value="+23-534745767"/>
+		<property name="userAccount" ref="userAccountadministrator2" />
+	</bean>
+	<bean id="administrator3" class="domain.Administrator">
+		<property name="name" value="Administrator3Name" />
+		<property name="surname" value="Administrator3Surname" />
+		<property name="email" value="Administrator3Email@gmail.com"/>
+		<property name="phone" value="+23-32464536754"/>
+		<property name="userAccount" ref="userAccountadministrator3" />
+	</bean>
+	<bean id="administrator4" class="domain.Administrator">
+		<property name="name" value="Administrator4Name" />
+		<property name="surname" value="Administrator4Surname" />
+		<property name="email" value="Administrator4Email@gmail.com"/>
+		<property name="phone" value="+23-32464536754"/>
+		<property name="userAccount" ref="userAccountadministrator4" />
+	</bean>
+		<!-- /Administrator-->
+		<!-- Chorbies -->
+
+	<bean id="chorbi1" class="domain.Chorbi">
+		<property name="name" value="Chorbi1Name" />
+		<property name="surname" value="Chorbi1Surname" />
+		<property name="email" value="Chorbi1Email@gmail.com"/>
+		<property name="phone" value="+23-6234456456"/>
+		<property name="userAccount" ref="userAccountChorbi1" />
+		<property name="picture" value="http://men-dating.letsbond.com/media/articles/320/tips-for-a-good-online-dating-profile_big.jpg"/>
+		<property name="description" value="Chorbi 1 description"/>
+		<property name="genre" value="MAN"/>
+		<property name="relationship" value="LOVE"/>
+		<property name="creditCard" ref="creditcard1"/>
+		<property name="birthDate" value="1985/04/23 00:00:00"/>
+
+	</bean>
+	<bean id="chorbi2" class="domain.Chorbi">
+		<property name="name" value="Chorbi2Name" />
+		<property name="surname" value="Chorbi2Surname" />
+		<property name="email" value="Chorbi2Email@gmail.com"/>
+		<property name="phone" value="+23-534745767"/>
+		<property name="userAccount" ref="userAccountChorbi2" />
+	</bean>
+	<bean id="chorbi3" class="domain.Chorbi">
+		<property name="name" value="Chorbi3Name" />
+		<property name="surname" value="Chorbi3Surname" />
+		<property name="email" value="Chorbi3Email@gmail.com"/>
+		<property name="phone" value="+23-32464536754"/>
+		<property name="userAccount" ref="userAccountChorbi3" />
+	</bean>
+	<bean id="chorbi4" class="domain.Chorbi">
+		<property name="name" value="Chorbi4Name" />
+		<property name="surname" value="Chorbi4Surname" />
+		<property name="email" value="Chorbi4Email@gmail.com"/>
+		<property name="phone" value="+23-32464536754"/>
+		<property name="userAccount" ref="userAccountChorbi4" />
+	</bean>
+	<bean id="chorbi5" class="domain.Chorbi">
+		<property name="name" value="Chorbi4Name" />
+		<property name="surname" value="Chorbi4Surname" />
+		<property name="email" value="Chorbi4Email@gmail.com"/>
+		<property name="phone" value="+23-32464536754"/>
+		<property name="userAccount" ref="userAccountChorbi5" />
+	</bean>
+	<!-- /Chorbies-->
+
+	<!-- Likes -->
+	<bean id="like1" class="domain.Liked">
+		<property name="receiver" ref="chorbi1"/>
+		<property name="sender" ref="chorbi2" />
+		<property name="text" value="Woow!"/>
+		<property name="moment" value="2017/03/29 00:00:00"/>
+	</bean>
+	<bean id="like2" class="domain.Liked">
+		<property name="receiver" ref="chorbi2"/>
+		<property name="sender" ref="chorbi1" />
+		<property name="text" value="Woow tuuuuuuu ;)!"/>
+		<property name="moment" value="2017/03/28 00:00:00"/>
+	</bean>
+	<bean id="like3" class="domain.Liked">
+		<property name="receiver" ref="chorbi3"/>
+		<property name="sender" ref="chorbi4" />
+		<property name="text" value="Woow!"/>
+		<property name="moment" value="2017/03/30 00:00:00"/>
+	</bean>
+	<bean id="like4" class="domain.Liked">
+		<property name="receiver" ref="chorbi4"/>
+		<property name="sender" ref="chorbi3" />
+		<property name="text" value=":3"/>
+		<property name="moment" value="2017/03/31 00:00:00"/>
+	</bean>
+	<bean id="like5" class="domain.Liked">
+		<property name="receiver" ref="chorbi5"/>
+		<property name="sender" ref="chorbi1" />
+		<property name="text" value="Woow!"/>
+		<property name="moment" value="2017/03/29 00:00:00"/>
+	</bean>
+	<bean id="like6" class="domain.Liked">
+		<property name="receiver" ref="chorbi1"/>
+		<property name="sender" ref="chorbi5" />
+		<property name="text" value="Woow!"/>
+		<property name="moment" value="2017/03/29 00:00:00"/>
+	</bean>
+	<bean id="like7" class="domain.Liked">
+		<property name="receiver" ref="chorbi1"/>
+		<property name="sender" ref="chorbi3" />
+		<property name="text" value="Woow!"/>
+		<property name="moment" value="2017/04/01 00:00:00"/>
+	</bean>
+	<bean id="like8" class="domain.Liked">
+		<property name="receiver" ref="chorbi3"/>
+		<property name="sender" ref="chorbi1" />
+		<property name="text" value="Woow!"/>
+		<property name="moment" value="2017/03/31 00:00:00"/>
+	</bean>
+	<!-- /Likes -->
+
 </beans>
