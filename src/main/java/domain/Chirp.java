@@ -17,10 +17,10 @@ public class Chirp extends DomainEntity {
     private String message;
     private String subject;
     private Date moment;
-    Collection<String> attachments;
+    private Collection<String> attachments;
 
-    Chorbi sender;
-    Chorbi receiver;
+    private Chorbi sender;
+    private Chorbi receiver;
 
 
     @NotBlank

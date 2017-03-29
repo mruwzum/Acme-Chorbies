@@ -121,6 +121,26 @@
 	<!-- /UserAccounts -->
 
 	<!-- Other domain beans come here -->
+
+	<!-- Banner -->
+	<bean id="banner1" class="domain.Banner">
+		<property name="url" value="http://www.ambientum.com/img_boletin/home/7-puntos-amovens.jpg"/>
+	</bean>
+
+	<bean id="banner2" class="domain.Banner">
+		<property name="url" value="http://blog.nasafcu.com/wp-content/uploads/2016/02/car_sharing_1.jpg"/>
+	</bean>
+
+	<bean id="banner3" class="domain.Banner">
+		<property name="url" value="http://www.altmedia.net.au/wp-content/uploads/2014/11/Silver_yaris_in_pod_car_share_bay_lower_res.jpeg"/>
+	</bean>
+
+	<bean id="banner4" class="domain.Banner">
+		<property name="url" value="http://www.businesstravellogue.com/files/2007/07/car-share.jpg"/>
+	</bean>
+	<!-- /Banner -->
+
+
 	<!-- CreditCard -->
 	<bean id="creditcard1" class="domain.CreditCard">
 		<property name="holder" ref="chorbi1"/>
@@ -209,7 +229,143 @@
 		<property name="userAccount" ref="userAccountadministrator4" />
 	</bean>
 		<!-- /Administrator-->
-		<!-- Chorbies -->
+	<!-- Coordinates -->
+
+	<bean id="coord1" class="domain.Coordinate">
+		<property name="city" value="Sevilla"/>
+		<property name="country" value="Sevilla"/>
+		<property name="province" value="Sevilla"/>
+		<property name="state" value="Andalucía"/>
+	</bean>
+	<bean id="coord2" class="domain.Coordinate">
+		<property name="city" value="Córdoba"/>
+		<property name="country" value="Córdoba"/>
+		<property name="province" value="Córdoba"/>
+		<property name="state" value="Andalucía"/>
+	</bean>
+	<bean id="coord3" class="domain.Coordinate">
+		<property name="city" value="Granada"/>
+		<property name="country" value="Granada"/>
+		<property name="province" value="Granada"/>
+		<property name="state" value="Andalucía"/>
+	</bean>
+	<bean id="coord4" class="domain.Coordinate">
+		<property name="city" value="Almería"/>
+		<property name="country" value="Almería"/>
+		<property name="province" value="Almería"/>
+		<property name="state" value="Andalucía"/>
+	</bean>
+	<bean id="coord5" class="domain.Coordinate">
+		<property name="city" value="Huelva"/>
+		<property name="country" value="Huelva"/>
+		<property name="province" value="Huelva"/>
+		<property name="state" value="Andalucía"/>
+	</bean>
+	<bean id="coord6" class="domain.Coordinate">
+		<property name="city" value="Cádiz"/>
+		<property name="country" value="Cádiz"/>
+		<property name="province" value="Cádiz"/>
+		<property name="state" value="Andalucía"/>
+	</bean>
+	<bean id="coord7" class="domain.Coordinate">
+		<property name="city" value="Málaga"/>
+		<property name="country" value="Málaga"/>
+		<property name="province" value="Málaga"/>
+		<property name="state" value="Andalucía"/>
+	</bean>
+
+	<!-- /Coordinates -->
+	<!-- Chirp -->
+	<bean id="Chirp1" class="domain.Chirp">
+		<property name="subject" value="title1"/>
+		<property name="moment" value="2016/04/23 23:00:12"/>
+		<property name="message" value="text1"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi1"/>
+		<property name="receiver" ref="chorbi2"/>
+	</bean>
+	<bean id="Chirp2" class="domain.Chirp">
+		<property name="subject" value="title2"/>
+		<property name="moment" value="2016/04/23 23:00:12"/>
+		<property name="message" value="text2"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi2"/>
+		<property name="receiver" ref="chorbi4"/>
+	</bean>
+	<bean id="Chirp3" class="domain.Chirp">
+		<property name="subject" value="title3"/>
+		<property name="moment" value="2016/04/23 23:00:12"/>
+		<property name="message" value="text3"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi4"/>
+		<property name="receiver" ref="chorbi2"/>
+	</bean>
+	<bean id="Chirp4" class="domain.Chirp">
+		<property name="subject" value="title4"/>
+		<property name="moment" value="2016/04/23 23:00:12"/>
+		<property name="message" value="text4"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi3"/>
+		<property name="receiver" ref="chorbi5"/>
+	</bean>
+	<bean id="Chirp5" class="domain.Chirp">
+		<property name="subject" value="title5"/>
+		<property name="moment" value="2016/04/23 23:00:12"/>
+		<property name="message" value="text5"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi2"/>
+		<property name="receiver" ref="chorbi5"/>
+	</bean>
+	<bean id="Chirp6" class="domain.Chirp">
+		<property name="subject" value="title6"/>
+		<property name="moment" value="2016/04/23 23:00:12"/>
+		<property name="message" value="text6"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi4"/>
+		<property name="receiver" ref="chorbi1"/>
+	</bean>
+	<bean id="Chirp7" class="domain.Chirp">
+		<property name="subject" value="title7"/>
+		<property name="moment" value="2016/04/23 23:00:12"/>
+		<property name="message" value="text7"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi4"/>
+		<property name="receiver" ref="chorbi3"/>
+	</bean>
+	<bean id="Chirp8" class="domain.Chirp">
+		<property name="subject" value="title8"/>
+		<property name="moment" value="2016/04/23 23:00:12"/>
+		<property name="message" value="text8"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi3"/>
+		<property name="receiver" ref="chorbi2"/>
+	</bean>
+	<bean id="Chirp9" class="domain.Chirp">
+		<property name="subject" value="title9"/>
+		<property name="moment" value="2016/04/23 23:00:12"/>
+		<property name="message" value="text9"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi2"/>
+		<property name="receiver" ref="chorbi5"/>
+	</bean>
+	<bean id="Chirp10" class="domain.Chirp">
+		<property name="subject" value="title10"/>
+		<property name="moment" value="2017/01/23 23:00:12"/>
+		<property name="message" value="text10"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi5"/>
+		<property name="receiver" ref="chorbi1"/>
+	</bean>
+	<bean id="Chirp11" class="domain.Chirp">
+		<property name="subject" value="title10"/>
+		<property name="moment" value="2017/01/23 23:00:12"/>
+		<property name="message" value="text10"/>
+		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="sender" ref="chorbi2"/>
+		<property name="receiver" ref="chorbi4"/>
+	</bean>
+	<!-- /Chirp-->
+	<!-- Chorbies -->
 
 	<bean id="chorbi1" class="domain.Chorbi">
 		<property name="name" value="Chorbi1Name" />
@@ -223,7 +379,33 @@
 		<property name="relationship" value="LOVE"/>
 		<property name="creditCard" ref="creditcard1"/>
 		<property name="birthDate" value="1985/04/23 00:00:00"/>
+		<property name="coordinate" ref="coord1"/>
+		<property name="chirps">
+			<list>
+			<ref bean="Chirp6"/>
+				<ref bean="Chirp10"/>
+			</list>
+		</property>
+		<property name="myChirps">
+			<list>
+				<ref bean="Chirp1"/>
+			</list>
+		</property>
+		<property name="likes">
+			<list>
+				<ref bean="like1"/>
+				<ref bean="like6"/>
+				<ref bean="like7"/>
+			</list>
+		</property>
+		<property name="myLikes">
+			<list>
+				<ref bean="like2"/>
+				<ref bean="like5"/>
+				<ref bean="like8"/>
 
+			</list>
+		</property>
 	</bean>
 	<bean id="chorbi2" class="domain.Chorbi">
 		<property name="name" value="Chorbi2Name" />
@@ -231,6 +413,38 @@
 		<property name="email" value="Chorbi2Email@gmail.com"/>
 		<property name="phone" value="+23-534745767"/>
 		<property name="userAccount" ref="userAccountChorbi2" />
+		<property name="birthDate" value="1990/04/12 00:00:00"/>
+		<property name="picture" value="http://weknowyourdreams.com/image.php?pic=/images/woman/woman-06.jpg"/>
+		<property name="description" value="Chorbi 2 description"/>
+		<property name="genre" value="WOMAN"/>
+		<property name="relationship" value="LOVE"/>
+		<property name="creditCard" ref="creditcard2"/>
+		<property name="coordinate" ref="coord2"/>
+		<property name="chirps">
+			<list>
+				<ref bean="Chirp1"/>
+				<ref bean="Chirp3"/>
+				<ref bean="Chirp8"/>
+			</list>
+		</property>
+		<property name="myChirps">
+			<list>
+				<ref bean="Chirp2"/>
+				<ref bean="Chirp5"/>
+				<ref bean="Chirp9"/>
+				<ref bean="Chirp11"/>
+			</list>
+		</property>
+		<property name="likes">
+			<list>
+				<ref bean="like2"/>
+			</list>
+		</property>
+		<property name="myLikes">
+			<list>
+				<ref bean="like1"/>
+			</list>
+		</property>
 	</bean>
 	<bean id="chorbi3" class="domain.Chorbi">
 		<property name="name" value="Chorbi3Name" />
@@ -238,6 +452,37 @@
 		<property name="email" value="Chorbi3Email@gmail.com"/>
 		<property name="phone" value="+23-32464536754"/>
 		<property name="userAccount" ref="userAccountChorbi3" />
+		<property name="birthDate" value="1972/12/23 00:00:00"/>
+		<property name="picture" value="http://pngimg.com/uploads/man/man_PNG6534.png"/>
+		<property name="description" value="Chorbi 3 description"/>
+		<property name="genre" value="MAN"/>
+		<property name="relationship" value="FRIENDSHIP"/>
+		<property name="creditCard" ref="creditcard3"/>
+		<property name="coordinate" ref="coord3"/>
+		<property name="chirps">
+			<list>
+				<ref bean="Chirp7"/>
+			</list>
+		</property>
+		<property name="myChirps">
+			<list>
+				<ref bean="Chirp4"/>
+				<ref bean="Chirp8"/>
+			</list>
+		</property>
+		<property name="likes">
+			<list>
+				<ref bean="like3"/>
+				<ref bean="like8"/>
+
+			</list>
+		</property>
+		<property name="myLikes">
+			<list>
+				<ref bean="like4"/>
+				<ref bean="like7"/>
+			</list>
+		</property>
 	</bean>
 	<bean id="chorbi4" class="domain.Chorbi">
 		<property name="name" value="Chorbi4Name" />
@@ -245,6 +490,36 @@
 		<property name="email" value="Chorbi4Email@gmail.com"/>
 		<property name="phone" value="+23-32464536754"/>
 		<property name="userAccount" ref="userAccountChorbi4" />
+		<property name="birthDate" value="1993/01/18 00:00:00"/>
+		<property name="picture" value="https://www.nationaleombudsman.nl/uploads/afbeelding/2012%20Jonge%20man.jpg"/>
+		<property name="description" value="Chorbi 4 description"/>
+		<property name="genre" value="MAN"/>
+		<property name="relationship" value="ACTIVITIES"/>
+		<property name="creditCard" ref="creditcard4"/>
+		<property name="coordinate" ref="coord4"/>
+		<property name="chirps">
+			<list>
+				<ref bean="Chirp2"/>
+				<ref bean="Chirp11"/>
+			</list>
+		</property>
+		<property name="myChirps">
+			<list>
+				<ref bean="Chirp3"/>
+				<ref bean="Chirp6"/>
+				<ref bean="Chirp7"/>
+			</list>
+		</property>
+		<property name="likes">
+			<list>
+				<ref bean="like4"/>
+			</list>
+		</property>
+		<property name="myLikes">
+			<list>
+				<ref bean="like3"/>
+			</list>
+		</property>
 	</bean>
 	<bean id="chorbi5" class="domain.Chorbi">
 		<property name="name" value="Chorbi4Name" />
@@ -252,6 +527,35 @@
 		<property name="email" value="Chorbi4Email@gmail.com"/>
 		<property name="phone" value="+23-32464536754"/>
 		<property name="userAccount" ref="userAccountChorbi5" />
+		<property name="birthDate" value="1990/04/23 00:00:00"/>
+		<property name="picture" value="http://si.wsj.net/public/resources/images/WW-AA663A_SANDB_M_20150925152829.jpg"/>
+		<property name="description" value="Chorbi 5 description"/>
+		<property name="genre" value="WOMAN"/>
+		<property name="relationship" value="FRIENDSHIP"/>
+		<property name="creditCard" ref="creditcard5"/>
+		<property name="coordinate" ref="coord5"/>
+		<property name="chirps">
+			<list>
+				<ref bean="Chirp10"/>
+			</list>
+		</property>
+		<property name="myChirps">
+			<list>
+				<ref bean="Chirp4"/>
+				<ref bean="Chirp5"/>
+				<ref bean="Chirp9"/>
+			</list>
+		</property>
+		<property name="likes">
+			<list>
+				<ref bean="like5"/>
+			</list>
+		</property>
+		<property name="myLikes">
+			<list>
+				<ref bean="like6"/>
+			</list>
+		</property>
 	</bean>
 	<!-- /Chorbies-->
 
@@ -305,5 +609,15 @@
 		<property name="moment" value="2017/03/31 00:00:00"/>
 	</bean>
 	<!-- /Likes -->
-
+	<!-- Search -->
+	<bean id="search1" class="domain.Search">
+		<property name="country" value="Cádiz"/>
+		<property name="age" value="32"/>
+	</bean>
+	<bean id="search2" class="domain.Search">
+		<property name="country" value="Cádiz"/>
+		<property name="age" value="26"/>
+		<property name="keyword" value="LOVE"/>
+	</bean>
+	<!-- /Search -->
 </beans>

@@ -37,7 +37,7 @@ public class CreditCard extends DomainEntity {
         this.holder = holder;
     }
 
-    @NotBlank
+    @NotNull
     public Brand getBrand() {
         return brand;
     }
