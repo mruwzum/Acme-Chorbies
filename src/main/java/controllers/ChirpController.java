@@ -27,7 +27,7 @@ import javax.validation.Valid;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("/chorbi")
+@RequestMapping("/chirp")
 public class ChirpController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
@@ -56,7 +56,17 @@ public class ChirpController extends AbstractController {
 
 		//Create Method -----------------------------------------------------------
 
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
 
+		ModelAndView result;
+
+		Chirp chirp = chirpService.create();
+		result = createEditModelAndView(chirp);
+
+		return result;
+
+	}
 
 		// Edition ---------------------------------------------------------
 

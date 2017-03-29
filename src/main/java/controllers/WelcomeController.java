@@ -11,12 +11,18 @@
 package controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
+import domain.Banner;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import services.BannerService;
 
 @Controller
 @RequestMapping("/welcome")
@@ -28,21 +34,33 @@ public class WelcomeController extends AbstractController {
 		super();
 	}
 
+
+	@Autowired
+	private BannerService bannerService;
 	// Index ------------------------------------------------------------------		
 
 	@RequestMapping(value = "/index")
 	public ModelAndView index(@RequestParam(required = false, defaultValue = "John Doe") final String name) {
 		ModelAndView result;
-		SimpleDateFormat formatter;
-		String moment;
 
-		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		moment = formatter.format(new Date());
+		Random randomGenerator = new Random();
+
+
+		List<Banner> banner = new ArrayList<>();
+		banner.addAll(bannerService.findAll());
+
+
+		int index = randomGenerator.nextInt(banner.size());
+		String bannerOut = banner.get(index).getUrl();
+
+		String ppoImg = "<img src=\"";
+		String finImg ="\" alt=\"Banner\" height=\"400\" width=\"400\">";
+
+		String bannerFin = ppoImg+bannerOut+finImg;
+
 
 		result = new ModelAndView("welcome/index");
-		result.addObject("name", name);
-		result.addObject("moment", moment);
-
+		result.addObject("banner",bannerFin);
 		return result;
 	}
 }

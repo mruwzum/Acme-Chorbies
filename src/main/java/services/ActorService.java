@@ -1,12 +1,17 @@
 package services;
 
 import domain.Actor;
+import domain.Chorbi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.ActorRepository;
+import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import security.UserAccountService;
+
 import javax.transaction.Transactional;
 import java.util.Collection;
 
@@ -17,6 +22,10 @@ public class ActorService {
 	// Managed Repository ------------------------
 	@Autowired
 	private ActorRepository actorRepository;
+	@Autowired
+	private UserAccountService userAccountService;
+	@Autowired
+	private ChorbiService chorbiService;
 
     // Supporting services -----------------------
 
@@ -55,6 +64,24 @@ public class ActorService {
 	}
 
 	// Other business methods -----------------------
+
+	public Actor registerAsAChorbi(Chorbi u) {
+		Assert.notNull(u);
+		Authority autoh = new Authority();
+		autoh.setAuthority("CHORBI");
+		UserAccount res = new UserAccount();
+		res.addAuthority(autoh);
+		res.setUsername(u.getUserAccount().getUsername());
+		Md5PasswordEncoder encoder;
+		encoder = new Md5PasswordEncoder();
+		String hash = encoder.encodePassword(u.getUserAccount().getPassword(), null);
+		res.setPassword(hash);
+		UserAccount userAccount = userAccountService.save(res);
+		u.setUserAccount(userAccount);
+		Assert.notNull(u.getUserAccount().getAuthorities(),"authorities null al registrar");
+		Chorbi resu = chorbiService.save(u);
+		return resu;
+	}
 
 
     public Actor findByPrincipal() {

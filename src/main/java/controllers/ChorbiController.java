@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import services.ActorService;
 import services.ChorbiService;
 
 import javax.validation.Valid;
@@ -36,6 +37,8 @@ public class ChorbiController extends AbstractController {
 
 		@Autowired
 		private ChorbiService chorbiService;
+		@Autowired
+		private ActorService actorService;
 
 		@RequestMapping( value="/list", method = RequestMethod.GET)
 		public ModelAndView list() {
@@ -54,8 +57,32 @@ public class ChorbiController extends AbstractController {
 
 		//Create Method -----------------------------------------------------------
 
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public ModelAndView create() {
 
+		ModelAndView result;
 
+		Chorbi chorbi = chorbiService.create();
+		result = createEditModelAndView2(chorbi);
+
+		return result;
+
+	}
+	@RequestMapping(value="/register", method=RequestMethod.POST, params="save")
+	public ModelAndView register(@Valid Chorbi chorbi, BindingResult binding){
+		ModelAndView result;
+		if (!binding.hasErrors()) {
+			result= createEditModelAndView2(chorbi);
+		}else{
+			try{
+				actorService.registerAsAChorbi(chorbi);
+				result= new ModelAndView("redirect:list.do");
+			}catch(Throwable oops){
+				result= createEditModelAndView2(chorbi, "chorbi.commit.error");
+			}
+		}
+		return result;
+	}
 		// Edition ---------------------------------------------------------
 
 		@RequestMapping(value="/edit", method=RequestMethod.GET)
@@ -122,7 +149,26 @@ public class ChorbiController extends AbstractController {
 
 		}
 
+	protected static ModelAndView createEditModelAndView2(Chorbi chorbi) {
+		ModelAndView result;
 
+		result= createEditModelAndView2(chorbi, null);
+
+		return result;
+	}
+
+
+
+	protected static ModelAndView createEditModelAndView2(Chorbi chorbi, String message) {
+		ModelAndView result;
+
+		result = new ModelAndView("chorbi/register");
+		result.addObject("chorbi", chorbi);
+		result.addObject("message", message);
+
+		return result;
+
+	}
 	}
 
 

@@ -14,13 +14,13 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <div>
-	<img src="images/logo.png" alt="Sample Co., Inc." />
+	<img src="images/logo.png" alt="Acme Chorbies, Inc." />
 </div>
 
 <div>
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
-		<security:authorize access="hasRole('ADMIN')">
+		<security:authorize access="hasRole('ADMINISTRATOR')">
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -30,7 +30,7 @@
 			</li>
 		</security:authorize>
 		
-		<security:authorize access="hasRole('CUSTOMER')">
+		<security:authorize access="hasRole('CHORBI')">
 			<li><a class="fNiv"><spring:message	code="master.page.customer" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -42,6 +42,7 @@
 		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
+		<li><a class="fNiv" href="chorbi/create.do"><spring:message code="master.page.register.chorbi"/></a>
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">

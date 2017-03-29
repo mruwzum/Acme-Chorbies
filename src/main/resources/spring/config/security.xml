@@ -39,17 +39,14 @@
 		<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
 		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
 
-		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
+		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 
-		<security:intercept-url pattern="/administrator/action-1.do" access="hasRole('ADMIN')" /> 
-		<security:intercept-url pattern="/administrator/action-2.do" access="hasRole('ADMIN')" /> 
 
-		<security:intercept-url pattern="/customer/action-1.do" access="hasRole('CUSTOMER')" /> 
-		<security:intercept-url pattern="/customer/action-2.do" access="hasRole('CUSTOMER')" /> 
+		<!--Allows everybody to register as chorbi.-->
+		<security:intercept-url pattern="/chorbi/create.do" access="permitAll"/>
 
-		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" /> 
-		<security:intercept-url pattern="/profile/action-2.do" access="isAuthenticated()" /> 
-		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" /> 
+		<!--Allows a non registered chorbi to finish and save his/her sign up-->
+		<security:intercept-url pattern="/chorbi/register.do" access="permitAll"/>
 	
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

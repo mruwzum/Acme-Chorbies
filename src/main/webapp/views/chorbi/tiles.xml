@@ -14,5 +14,8 @@
 		<put-attribute name="title" value="Actors: Edit"/>
 		<put-attribute name="body" value="/views/chorbi/edit.jsp"/>
 	</definition>
-
+	<definition name="chorbi/register" extends="master.page">
+		<put-attribute name="title" value="Actors: Register"/>
+		<put-attribute name="body" value="/views/chorbi/register.jsp"/>
+	</definition>
 </tiles-definitions>

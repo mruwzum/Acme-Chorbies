@@ -27,7 +27,7 @@ import javax.validation.Valid;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("/chorbi")
+@RequestMapping("/creditCard")
 public class CreditCardController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
@@ -55,7 +55,17 @@ public class CreditCardController extends AbstractController {
 
 
 		//Create Method -----------------------------------------------------------
+		@RequestMapping(value = "/create", method = RequestMethod.GET)
+		public ModelAndView create() {
 
+			ModelAndView result;
+
+			CreditCard creditCard = creditCardService.create();
+			result = createEditModelAndView(creditCard);
+
+			return result;
+
+		}
 
 
 		// Edition ---------------------------------------------------------
