@@ -19,19 +19,39 @@
 	<form:hidden path="likes" />
 	<form:hidden path="myChirps" />
 	<form:hidden path="myLikes" />
-
-	<%--TODO Estos hay que mostrarlos--%>
-	<form:hidden path="genre" />
-	<form:hidden path="relationship" />
 	<form:hidden path="creditCard" />
 	<form:hidden path="search" />
-	<form:hidden path="coordinate" />
 
+
+	<%--Personal information--%>
+	<spring:message code="chorbi.personal" var="personal"/>
+	<jstl:out value="${personal}"/>
 
 	<acme:textbox path="picture" code="chorbi.picture"/>
 	<br />
 	<acme:textbox path="description" code="chorbi.description"/>
 	<br />
+
+	<%-- TODO Hay que pasarle una lista con todos los elementos de los diferentes enum --%>
+	<acme:select path="genre" code="chorbi.genre" items="${availableGenre}" itemLabel="*** Select Option ***"/>
+	<acme:select path="relationship" code="chorbi.relationship" items="${availableRelation}" itemLabel="*** Select Option ***"/>
+
+
+
+	<%--Location information--%>
+	<spring:message code="chorbi.location" var="location"/>
+	<jstl:out value="${location}"/>
+
+	<acme:textbox path="coordinate.country" code="coordinate.country"/>
+	<br />
+	<acme:textbox path="coordinate.state" code="coordinate.state"/>
+	<br />
+	<acme:textbox path="coordinate.province" code="coordinate.province"/>
+	<br />
+	<acme:textbox path="coordinate.city" code="coordinate.city"/>
+	<br />
+
+
 
 	<!---------------------------- BOTONES -------------------------->
 	<acme:submit name="save" code="general.save"/>
