@@ -18,10 +18,33 @@
 	">
 
 	<util:list id="converters">
-		<!-- 
-			Add your own converters using entries of the following form: 
-			<bean class="converters.Class1ToClass2" /> 
-		-->
+
+		<!-- Actor -->
+		<bean class="converters.ActorToStringConverter"/>
+		<bean class="converters.StringToActorConverter"/>
+		<!-- Administrator -->
+		<bean class="converters.AdministratorToStringConverter"/>
+		<bean class="converters.StringToAdministratorConverter"/>
+		<!-- Chirp -->
+		<bean class="converters.ChirpToStringConverter"/>
+		<bean class="converters.StringToChirpConverter"/>
+		<!-- Chorbi -->
+		<bean class="converters.ChorbiToStringConverter"/>
+		<bean class="converters.StringToChorbiConverter"/>
+		<!-- Coordinate -->
+		<bean class="converters.CoordinateToStringConverter"/>
+		<bean class="converters.StringToCoordinateConverter"/>
+		<!-- CreditCard -->
+		<bean class="converters.CreditCardToStringConverter"/>
+		<bean class="converters.StringToCreditCardConverter"/>
+		<!-- Like -->
+		<bean class="converters.LikeToStringConverter"/>
+		<bean class="converters.StringToLikeConverter"/>
+		<!-- Search -->
+		<bean class="converters.SearchToStringConverter"/>
+		<bean class="converters.StringToSearchConverter"/>
+
+
 	</util:list>
 	
 </beans>
