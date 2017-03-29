@@ -10,9 +10,19 @@
 
 package controllers;
 
+import domain.Administrator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import services.AdministratorService;
+
+import javax.validation.Valid;
+import java.util.Collection;
 
 @Controller
 @RequestMapping("/administrator")
@@ -24,26 +34,93 @@ public class AdministratorController extends AbstractController {
 		super();
 	}
 
-	// Action-1 ---------------------------------------------------------------		
+	@Autowired
+	private AdministratorService administratorService;
 
-	@RequestMapping("/action-1")
-	public ModelAndView action1() {
+	@RequestMapping( value="/list", method = RequestMethod.GET)
+	public ModelAndView actorList() {
+
 		ModelAndView result;
+		Collection<Administrator> administrator;
 
-		result = new ModelAndView("administrator/action-1");
+		administrator = administratorService.findAll();
+		result = new ModelAndView("administrator/list");
+		result.addObject("administrator", administrator);
+		result.addObject("requestURI","administrator/list.do");
 
 		return result;
 	}
 
-	// Action-2 ---------------------------------------------------------------
 
-	@RequestMapping("/action-2")
-	public ModelAndView action2() {
+	//Create Method -----------------------------------------------------------
+
+
+
+	// Edition ---------------------------------------------------------
+
+	@RequestMapping(value="/edit", method=RequestMethod.GET)
+	public ModelAndView edit(@RequestParam int administratorId){
 		ModelAndView result;
+		Administrator administrator;
 
-		result = new ModelAndView("administrator/action-2");
+		administrator= administratorService.findOne(administratorId);
+		Assert.notNull(administrator);
+		result= createEditModelAndView(administrator);
 
 		return result;
 	}
+
+	@RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
+	public ModelAndView save(@Valid Administrator administrator, BindingResult binding){
+		ModelAndView result;
+
+		if(binding.hasErrors()){
+			result= createEditModelAndView(administrator);
+		}else{
+			try{
+				administratorService.save(administrator);
+				result= new ModelAndView("/profile.do");
+			}catch(Throwable oops){
+				result= createEditModelAndView(administrator, "administrator.commit.error");
+			}
+		}
+		return result;
+	}
+
+	@RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
+	public ModelAndView delete(Administrator administrator){
+		ModelAndView result;
+		try{
+			administratorService.delete(administrator);
+			result=new ModelAndView("redirect:list.do");
+		}catch(Throwable oops){
+			result= createEditModelAndView(administrator, "administrator.commit.error");
+		}
+
+		return result;
+	}
+
+
+	// Ancillary methods ------------------------------------------------
+
+	protected ModelAndView createEditModelAndView(Administrator administrator){
+		ModelAndView result;
+
+		result= createEditModelAndView(administrator, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndView(Administrator administrator, String message){
+		ModelAndView result;
+
+		result= new ModelAndView("administrator/edit");
+		result.addObject("administrator", administrator);
+		result.addObject("message", message);
+
+		return result;
+
+	}
+
 
 }

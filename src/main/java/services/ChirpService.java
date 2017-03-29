@@ -32,7 +32,11 @@ public class ChirpService {
     }
 
     // Simple CRUD methods -----------------------
-
+    public Chirp create() {
+        Chirp res;
+        res = new Chirp();
+        return res;
+    }
     public Chirp findOne(int actorId) {
         Chirp result;
 

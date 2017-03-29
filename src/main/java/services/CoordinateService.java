@@ -31,7 +31,11 @@ public class CoordinateService {
     }
 
     // Simple CRUD methods -----------------------
-
+    public Coordinate create() {
+        Coordinate res;
+        res = new Coordinate();
+        return res;
+    }
     public Coordinate findOne(int actorId) {
         Coordinate result;
 

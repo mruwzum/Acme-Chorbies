@@ -29,7 +29,11 @@ public class AdministratorService{
     }
 
     // Simple CRUD methods -----------------------
-
+    public Administrator create() {
+        Administrator res;
+        res = new Administrator();
+        return res;
+    }
     public Administrator findOne(int actorId) {
         Administrator result;
 

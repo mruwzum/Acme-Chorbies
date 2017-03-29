@@ -31,7 +31,11 @@ public class ChorbiService {
     }
 
     // Simple CRUD methods -----------------------
-
+    public Chorbi create() {
+        Chorbi res;
+        res = new Chorbi();
+        return res;
+    }
     public Chorbi findOne(int actorId) {
         Chorbi result;
 

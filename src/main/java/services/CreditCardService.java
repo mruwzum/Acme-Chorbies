@@ -31,7 +31,11 @@ public class CreditCardService {
     }
 
     // Simple CRUD methods -----------------------
-
+    public CreditCard create() {
+        CreditCard res;
+        res = new CreditCard();
+        return res;
+    }
     public CreditCard findOne(int actorId) {
         CreditCard result;
 

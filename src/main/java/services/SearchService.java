@@ -31,6 +31,11 @@ public class SearchService {
     }
 
     // Simple CRUD methods -----------------------
+    public Search create() {
+        Search res;
+        res = new Search();
+        return res;
+    }
 
     public Search findOne(int actorId) {
         Search result;

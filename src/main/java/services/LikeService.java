@@ -33,7 +33,11 @@ public class LikeService {
     }
 
     // Simple CRUD methods -----------------------
-
+    public Liked create() {
+        Liked res;
+        res = new Liked();
+        return res;
+    }
     public Liked findOne(int actorId) {
         Liked result;
 
