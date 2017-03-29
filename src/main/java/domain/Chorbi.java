@@ -3,7 +3,9 @@ package domain;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -18,6 +20,7 @@ public class Chorbi extends Actor {
     private Relationship relationship;
     private CreditCard creditCard;
     private Search search;
+    private Date birthDate;
 
 
     private Coordinate coordinate;
@@ -61,6 +64,12 @@ public class Chorbi extends Actor {
     public void setRelationship(Relationship relationship) {
         this.relationship = relationship;
     }
+
+    @NotNull
+    @Temporal(TemporalType.DATE)
+    public Date getBirthDate() {return birthDate;}
+
+    public void setBirthDate(Date birthDate) {this.birthDate = birthDate;}
 
     @OneToOne
     public CreditCard getCreditCard() {
