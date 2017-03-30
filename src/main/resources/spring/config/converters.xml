@@ -28,6 +28,12 @@
 		<!-- Chirp -->
 		<bean class="converters.ChirpToStringConverter"/>
 		<bean class="converters.StringToChirpConverter"/>
+		<!-- Date -->
+		<bean class="converters.DateToStringConverter"/>
+		<bean class="converters.StringToDateConverter"/>
+		<!-- UserAccount -->
+		<bean class="converters.UsserAccountToStringConverter"/>
+		<bean class="converters.StringToUserAccountConverter"/>
 		<!-- Chorbi -->
 		<bean class="converters.ChorbiToStringConverter"/>
 		<bean class="converters.StringToChorbiConverter"/>

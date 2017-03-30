@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import security.UserAccount;
+import security.UserAccountService;
 import services.ActorService;
 import services.ChorbiService;
 import services.CoordinateService;
@@ -28,6 +29,7 @@ import services.CreditCardService;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -48,7 +50,8 @@ public class ChorbiController extends AbstractController {
 		private CoordinateService coordinateService;
 		@Autowired
 		private CreditCardService creditCardService;
-
+		@Autowired
+	private UserAccountService userAccountService;
 
 		@RequestMapping( value="/list", method = RequestMethod.GET)
 		public ModelAndView list() {
@@ -110,18 +113,20 @@ public class ChorbiController extends AbstractController {
 		}
 
 		@RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-		public ModelAndView save(@Valid Chorbi chorbi, BindingResult binding){
+		public ModelAndView save(@Valid Chorbi chorbi, Coordinate coordinate, CreditCard creditCard,BindingResult binding){
 			ModelAndView result;
 
 			if(!binding.hasErrors()){
 				result= createEditModelAndView(chorbi);
 			}else{
 				try{
-					chorbi.setUserAccount(chorbiService.findByPrincipal().getUserAccount());
-					chorbi.setCreditCard(chorbiService.findByPrincipal().getCreditCard());
 
-					chorbi.setCoordinate(chorbiService.findByPrincipal().getCoordinate());
-					chorbi.setBirthDate(chorbiService.findByPrincipal().getBirthDate());
+					CreditCard creditCard1 = creditCardService.save(creditCard);
+					chorbi.setCreditCard(creditCard1);
+					Coordinate coordinate1 = coordinateService.save(coordinate);
+					coordinateService.save(coordinate1);
+					chorbi.setUserAccount(userAccountService.findByActor(chorbiService.findByPrincipal()));
+
 					chorbiService.save(chorbi);
 
 					result= new ModelAndView("chorbi/success");

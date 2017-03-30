@@ -20,7 +20,7 @@
 	<form:hidden path="myChirps" />
 	<form:hidden path="myLikes" />
 	<form:hidden path="search" />
-	<form:hidden path="birthDate" />
+
 	<form:hidden path="userAccount" />
 
 	<%--Personal information--%>
@@ -31,7 +31,7 @@
 	<acme:textbox path="surname" code="customer.surname"/>
 	<acme:textbox path="email" code="customer.email"/>
 	<acme:textbox path="phone" code="customer.phone"/>
-
+	<acme:textbox path="birthDate" code="customer.birth"/>
 	<form:label path="genre">
 		<spring:message code="chorbi.genre"/>:
 	</form:label>
