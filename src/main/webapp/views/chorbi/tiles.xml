@@ -11,11 +11,15 @@
 	</definition>
 
 	<definition name="chorbi/edit" extends="master.page">
-		<put-attribute name="title" value="Actors: Edit"/>
+		<put-attribute name="title" value="Chorbi: Edit"/>
 		<put-attribute name="body" value="/views/chorbi/edit.jsp"/>
 	</definition>
 	<definition name="chorbi/register" extends="master.page">
-		<put-attribute name="title" value="Actors: Register"/>
+		<put-attribute name="title" value="Chorbi: Register"/>
 		<put-attribute name="body" value="/views/chorbi/register.jsp"/>
+	</definition>
+	<definition name="chorbi/success" extends="master.page">
+		<put-attribute name="title" value="Chorbi: Success"/>
+		<put-attribute name="body" value="/views/chorbi/success.jsp"/>
 	</definition>
 </tiles-definitions>

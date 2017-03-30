@@ -19,37 +19,84 @@
 	<form:hidden path="likes" />
 	<form:hidden path="myChirps" />
 	<form:hidden path="myLikes" />
-	<form:hidden path="creditCard" />
 	<form:hidden path="search" />
-
+	<form:hidden path="birthDate" />
+	<form:hidden path="userAccount" />
 
 	<%--Personal information--%>
 	<spring:message code="chorbi.personal" var="personal"/>
 	<jstl:out value="${personal}"/>
 
-	<acme:textbox path="picture" code="chorbi.picture"/>
-	<br />
-	<acme:textbox path="description" code="chorbi.description"/>
-	<br />
+	<acme:textbox path="name" code="customer.name"/>
+	<acme:textbox path="surname" code="customer.surname"/>
+	<acme:textbox path="email" code="customer.email"/>
+	<acme:textbox path="phone" code="customer.phone"/>
 
-	<%-- TODO Hay que pasarle una lista con todos los elementos de los diferentes enum --%>
-	<acme:select path="genre" code="chorbi.genre" items="${availableGenre}" itemLabel="*** Select Option ***"/>
-	<acme:select path="relationship" code="chorbi.relationship" items="${availableRelation}" itemLabel="*** Select Option ***"/>
+	<form:label path="genre">
+		<spring:message code="chorbi.genre"/>:
+	</form:label>
+	<form:select path="genre">
+		<form:options/>
+	</form:select>
+	<br>
+	<form:label path="relationship">
+		<spring:message code="chorbi.relationship"/>:
+	</form:label>
+	<form:select path="relationship">
+		<form:options/>
+	</form:select>
+	<acme:textbox path="description" code="chorbi.description"/>
+	<br>
+
+	<img src="${chorbi.picture}" width="130" height="100" >
+	<acme:textbox path="picture" code="chorbi.picture"/>
 
 
 
 	<%--Location information--%>
-	<spring:message code="chorbi.location" var="location"/>
-	<jstl:out value="${location}"/>
+	<h1>Location</h1>
+	<form:label path="coordinate.country">
+		<spring:message code="coordinate.country"/>:
+	</form:label>
+	<form:input path="coordinate.country"/>
+	<form:errors cssClass="error" path="coordinate.country"/>
 
-	<acme:textbox path="coordinate.country" code="coordinate.country"/>
-	<br />
-	<acme:textbox path="coordinate.state" code="coordinate.state"/>
-	<br />
-	<acme:textbox path="coordinate.province" code="coordinate.province"/>
-	<br />
-	<acme:textbox path="coordinate.city" code="coordinate.city"/>
-	<br />
+
+	<form:label path="coordinate.state">
+		<spring:message code="coordinate.state"/>:
+	</form:label>
+	<form:input path="coordinate.state"/>
+	<form:errors cssClass="error" path="coordinate.state"/>
+
+
+	<form:label path="coordinate.city">
+		<spring:message code="coordinate.city"/>:
+	</form:label>
+	<form:input path="coordinate.city"/>
+	<form:errors cssClass="error" path="coordinate.city"/>
+
+
+	<form:label path="coordinate.province">
+		<spring:message code="coordinate.province"/>:
+	</form:label>
+	<form:input path="coordinate.province"/>
+	<form:errors cssClass="error" path="coordinate.province"/>
+
+
+	<h3><spring:message code="edit.creditcard" var="cc"/>
+		<jstl:out value="${cc}"/>
+	</h3>
+	<acme:textbox path="creditCard.holder" code="creditCard.holderName"/>
+	<form:label path="creditCard.brand">
+	<spring:message code="creditCard.brandName"/>:
+	</form:label>
+	<form:select path="creditCard.brand" code="creditCard.brandName">
+	<form:options/>
+	</form:select>
+	<acme:textbox path="creditCard.number" code="creditCard.number"/>
+	<acme:textbox path="creditCard.expirationYear" code="creditCard.expirationYear"/>
+	<acme:textbox path="creditCard.expirationMonth" code="creditCard.expirationMonth"/>
+	<acme:textbox path="creditCard.CVV" code="creditCard.CVV"/>
 
 
 

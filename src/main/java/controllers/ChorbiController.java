@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.UserAccount;
 import services.ActorService;
 import services.ChorbiService;
 import services.CoordinateService;
+import services.CreditCardService;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -44,6 +46,9 @@ public class ChorbiController extends AbstractController {
 		private ActorService actorService;
 		@Autowired
 		private CoordinateService coordinateService;
+		@Autowired
+		private CreditCardService creditCardService;
+
 
 		@RequestMapping( value="/list", method = RequestMethod.GET)
 		public ModelAndView list() {
@@ -92,13 +97,14 @@ public class ChorbiController extends AbstractController {
 		// Edition ---------------------------------------------------------
 
 		@RequestMapping(value="/edit", method=RequestMethod.GET)
-		public ModelAndView edit(@RequestParam int chorbiId){
+		public ModelAndView edit(){
 			ModelAndView result;
-			Chorbi chorbi;
-
-			chorbi= chorbiService.findOne(chorbiId);
+			Chorbi chorbi = chorbiService.findByPrincipal();
 			Assert.notNull(chorbi);
 			result= createEditModelAndView(chorbi);
+			result.addObject("genre",Genre.values());
+			result.addObject("relationship",Relationship.values());
+			result.addObject("brand",Brand.values());
 
 			return result;
 		}
@@ -111,8 +117,14 @@ public class ChorbiController extends AbstractController {
 				result= createEditModelAndView(chorbi);
 			}else{
 				try{
+					chorbi.setUserAccount(chorbiService.findByPrincipal().getUserAccount());
+					chorbi.setCreditCard(chorbiService.findByPrincipal().getCreditCard());
+
+					chorbi.setCoordinate(chorbiService.findByPrincipal().getCoordinate());
+					chorbi.setBirthDate(chorbiService.findByPrincipal().getBirthDate());
 					chorbiService.save(chorbi);
-					result= new ModelAndView("/profile.do");
+
+					result= new ModelAndView("chorbi/success");
 				}catch(Throwable oops){
 					result= createEditModelAndView(chorbi, "general.commit.error");
 				}

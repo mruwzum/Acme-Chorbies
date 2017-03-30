@@ -19,4 +19,8 @@
 		<put-attribute name="title" value="chorbi: Registrar" />
 		<put-attribute name="body" value="/views/chorbi/register.jsp" />
 	</definition>
+	<definition name="chorbi/success" extends="master.page">
+		<put-attribute name="title" value="chorbi: Exito" />
+		<put-attribute name="body" value="/views/chorbi/success.jsp" />
+	</definition>
 </tiles-definitions>

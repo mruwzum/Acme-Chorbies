@@ -25,6 +25,8 @@
 
 		<!--Administrator-->
 		<value>/views/administrator/tiles.xml</value>
+		<!--Banner-->
+		<value>/views/banner/tiles.xml</value>
 		<!--Chirp-->
 		<value>/views/chirp/tiles.xml</value>
 		<!--Chorbi-->

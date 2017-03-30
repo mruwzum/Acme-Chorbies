@@ -25,6 +25,8 @@
 
 		<!--Administrator-->
 		<value>/views/administrator/messages</value>
+		<!--Banner-->
+		<value>/views/banner/messages</value>
 		<!--Chirp-->
 		<value>/views/chirp/messages</value>
 		<!--Chorbi-->
