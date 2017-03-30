@@ -2,6 +2,8 @@ package services;
 
 import domain.Actor;
 import domain.Chorbi;
+import domain.Coordinate;
+import domain.CreditCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,7 @@ import security.UserAccountService;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.Date;
 
 @Service
 @Transactional
@@ -26,7 +29,10 @@ public class ActorService {
 	private UserAccountService userAccountService;
 	@Autowired
 	private ChorbiService chorbiService;
-
+	@Autowired
+	private CoordinateService coordinateService;
+	@Autowired
+	private CreditCardService creditCardService;
     // Supporting services -----------------------
 
     // Constructor -------------------------------
@@ -79,6 +85,29 @@ public class ActorService {
 		UserAccount userAccount = userAccountService.save(res);
 		u.setUserAccount(userAccount);
 		Assert.notNull(u.getUserAccount().getAuthorities(),"authorities null al registrar");
+
+		Date date = new Date(System.currentTimeMillis()-1000);
+
+
+		Assert.isTrue(u.getBirthDate().getYear() <= date.getYear() -18,"Menor de edad / Under age");
+
+		Coordinate coordinate = new Coordinate();
+		coordinate.setCity(u.getCoordinate().getCity());
+		coordinate.setCountry(u.getCoordinate().getCountry());
+		coordinate.setProvince(u.getCoordinate().getProvince());
+		coordinate.setState(u.getCoordinate().getState());
+		Coordinate savec = coordinateService.save(coordinate);
+		u.setCoordinate(savec);
+
+		CreditCard creditCard = new CreditCard();
+		creditCard.setBrand(u.getCreditCard().getBrand());
+		creditCard.setCVV(u.getCreditCard().getCVV());
+		creditCard.setExpirationMonth(u.getCreditCard().getExpirationMonth());
+		creditCard.setExpirationYear(u.getCreditCard().getExpirationYear());
+		creditCard.setHolder(u.getCreditCard().getHolder());
+		creditCard.setNumber(u.getCreditCard().getNumber());
+		CreditCard cre = creditCardService.save(creditCard);
+		u.setCreditCard(cre);
 		Chorbi resu = chorbiService.save(u);
 		return resu;
 	}

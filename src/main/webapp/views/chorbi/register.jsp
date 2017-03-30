@@ -22,14 +22,14 @@
     <acme:textbox path="email" code="customer.email"/>
     <acme:textbox path="phone" code="customer.phone"/>
     <acme:textbox path="birthDate" code="customer.birth"/>
-    <form:label path="chorbi.genre">
+    <form:label path="genre">
         <spring:message code="chorbi.genre"/>:
     </form:label>
     <form:select path="genre">
         <form:options/>
     </form:select>
     <br>
-    <form:label path="chorbi.relationship">
+    <form:label path="relationship">
         <spring:message code="chorbi.relationship"/>:
     </form:label>
     <form:select path="relationship">
