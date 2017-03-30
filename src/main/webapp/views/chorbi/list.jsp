@@ -10,31 +10,26 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
-	<div>
-		<H5>
-			<a href="chorbi/create.do"> <spring:message
-					code="general.create" />
-			</a>
-		</H5>
-	</div>
-</security:authorize>
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="chorbis" requestURI="${requestURI}" id="row">
+	name="chorbies" requestURI="${requestURI}" id="row">
 
 
-	<!-- Attributes -->
+	<%--<!-- Attributes -->--%>
 
-	<security:authorize access="permitAll">
-		<display:column>
-			<a href="chorbi/edit.do?chorbiId=${row.id}"> <spring:message
-					code="general.edit" />
-			</a>
-		</display:column>
-	</security:authorize>
-	
+	<%--<security:authorize access="permitAll">--%>
+		<%--<display:column>--%>
+			<%--<a href="chorbi/edit.do?chorbiId=${row.id}"> <spring:message--%>
+					<%--code="general.edit" />--%>
+			<%--</a>--%>
+		<%--</display:column>--%>
+	<%--</security:authorize>--%>
+	<spring:message code="chorbi.picture" var="picture" />
+	<display:column title="${picture}">
+		<img src="${row.picture}" width="130" height="100" >
+	</display:column>
+
 	<spring:message code="administrator.name" var="name" />
 	<display:column property="name" title="${name}" sortable="true" />
 	<spring:message code="administrator.surname" var="surname" />

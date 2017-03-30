@@ -66,25 +66,25 @@
     <form:input path="coordinate.province"/>
     <form:errors cssClass="error" path="coordinate.province"/>
 
-    <h3><spring:message code="edit.creditcard" var="cc"/>
-        <jstl:out value="${cc}"/>
-    </h3>
-    <acme:textbox path="creditCard.holder" code="creditCard.holderName"/>
-    <br />
-    <form:label path="creditCard.brand">
-        <spring:message code="creditCard.brandName"/>:
-    </form:label>
-    <form:select path="creditCard.brand" code="creditCard.brandName">
-        <form:options/>
-    </form:select>
-    <acme:textbox path="creditCard.number" code="creditCard.number"/>
-    <br />
-    <acme:textbox path="creditCard.ExpirationYear" code="creditCard.expirationYear"/>
-    <br />
-    <acme:textbox path="creditCard.ExpirationMonth" code="creditCard.expirationMonth"/>
-    <br />
-    <acme:textbox path="creditCard.CVV" code="creditCard.CVV"/>
-    <br />
+    <%--<h3><spring:message code="edit.creditcard" var="cc"/>--%>
+        <%--<jstl:out value="${cc}"/>--%>
+    <%--</h3>--%>
+    <%--<acme:textbox path="creditCard.holder" code="creditCard.holderName"/>--%>
+    <%--<br />--%>
+    <%--<form:label path="creditCard.brand">--%>
+        <%--<spring:message code="creditCard.brandName"/>:--%>
+    <%--</form:label>--%>
+    <%--<form:select path="creditCard.brand" code="creditCard.brandName">--%>
+        <%--<form:options/>--%>
+    <%--</form:select>--%>
+    <%--<acme:textbox path="creditCard.number" code="creditCard.number"/>--%>
+    <%--<br />--%>
+    <%--<acme:textbox path="creditCard.ExpirationYear" code="creditCard.expirationYear"/>--%>
+    <%--<br />--%>
+    <%--<acme:textbox path="creditCard.ExpirationMonth" code="creditCard.expirationMonth"/>--%>
+    <%--<br />--%>
+    <%--<acme:textbox path="creditCard.CVV" code="creditCard.CVV"/>--%>
+    <%--<br />--%>
 
 
     <br/>

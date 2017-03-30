@@ -124,19 +124,15 @@
 
 	<!-- Banner -->
 	<bean id="banner1" class="domain.Banner">
-		<property name="url" value="http://www.ambientum.com/img_boletin/home/7-puntos-amovens.jpg"/>
+		<property name="url" value="http://i.imgur.com/UY1x8KM.png"/>
 	</bean>
 
 	<bean id="banner2" class="domain.Banner">
-		<property name="url" value="http://blog.nasafcu.com/wp-content/uploads/2016/02/car_sharing_1.jpg"/>
+		<property name="url" value="http://i.imgur.com/LtQYadW.png"/>
 	</bean>
 
 	<bean id="banner3" class="domain.Banner">
-		<property name="url" value="http://www.altmedia.net.au/wp-content/uploads/2014/11/Silver_yaris_in_pod_car_share_bay_lower_res.jpeg"/>
-	</bean>
-
-	<bean id="banner4" class="domain.Banner">
-		<property name="url" value="http://www.businesstravellogue.com/files/2007/07/car-share.jpg"/>
+		<property name="url" value="http://i.imgur.com/eViE38q.png"/>
 	</bean>
 	<!-- /Banner -->
 
@@ -414,7 +410,7 @@
 		<property name="phone" value="+23-534745767"/>
 		<property name="userAccount" ref="userAccountChorbi2" />
 		<property name="birthDate" value="1990/04/12 00:00:00"/>
-		<property name="picture" value="http://weknowyourdreams.com/image.php?pic=/images/woman/woman-06.jpg"/>
+		<property name="picture" value="http://www.wonderslist.com/wp-content/uploads/2015/10/Doutzen-Kroes-Most-Beautiful-Dutch-Woman.jpg"/>
 		<property name="description" value="Chorbi 2 description"/>
 		<property name="genre" value="WOMAN"/>
 		<property name="relationship" value="LOVE"/>

@@ -54,7 +54,7 @@ public class WelcomeController extends AbstractController {
 		String bannerOut = banner.get(index).getUrl();
 
 		String ppoImg = "<img src=\"";
-		String finImg ="\" alt=\"Banner\" height=\"400\" width=\"400\">";
+		String finImg ="\" alt=\"Banner\" height=\"400\" width=\"700\">";
 
 		String bannerFin = ppoImg+bannerOut+finImg;
 

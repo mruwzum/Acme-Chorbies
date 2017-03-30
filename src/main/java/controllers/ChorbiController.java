@@ -52,9 +52,9 @@ public class ChorbiController extends AbstractController {
 			Collection<Chorbi> chorbies;
 
 			chorbies = chorbiService.findAll();
-			result = new ModelAndView("chrobi/list");
+			result = new ModelAndView("chorbi/list");
 			result.addObject("chorbies", chorbies);
-			result.addObject("requestURI","chrobi/list.do");
+			result.addObject("requestURI","chorbi/list.do");
 
 			return result;
 		}
@@ -71,23 +71,22 @@ public class ChorbiController extends AbstractController {
 		result = createEditModelAndView2(chorbi);
 	result.addObject("genre",Genre.values());
 		result.addObject("relationship",Relationship.values());
-		result.addObject("creditCard.brand", Brand.values());
 		return result;
 
 	}
 	@RequestMapping(value="/register", method=RequestMethod.POST, params="save")
 	public ModelAndView register(@Valid Chorbi chorbi, BindingResult binding){
 		ModelAndView result;
-//		if (!binding.hasErrors()) {
-//			result= createEditModelAndView2(chorbi);
-//		}else{
-//			try{
+		if (!binding.hasErrors()) {
+			result= createEditModelAndView2(chorbi);
+		}else{
+			try{
 				actorService.registerAsAChorbi(chorbi);
 				result= new ModelAndView("redirect:list.do");
-//			}catch(Throwable oops){
-//				result= createEditModelAndView2(chorbi, "general.commit.error");
-//			}
-//		}
+			}catch(Throwable oops){
+				result= createEditModelAndView2(chorbi, "general.commit.error");
+			}
+		}
 		return result;
 	}
 		// Edition ---------------------------------------------------------
@@ -108,7 +107,7 @@ public class ChorbiController extends AbstractController {
 		public ModelAndView save(@Valid Chorbi chorbi, BindingResult binding){
 			ModelAndView result;
 
-			if(binding.hasErrors()){
+			if(!binding.hasErrors()){
 				result= createEditModelAndView(chorbi);
 			}else{
 				try{
