@@ -10,7 +10,7 @@
 
 package controllers;
 
-import domain.Chorbi;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -21,9 +21,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.ActorService;
 import services.ChorbiService;
+import services.CoordinateService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping("/chorbi")
@@ -39,6 +42,8 @@ public class ChorbiController extends AbstractController {
 		private ChorbiService chorbiService;
 		@Autowired
 		private ActorService actorService;
+		@Autowired
+		private CoordinateService coordinateService;
 
 		@RequestMapping( value="/list", method = RequestMethod.GET)
 		public ModelAndView list() {
@@ -64,23 +69,25 @@ public class ChorbiController extends AbstractController {
 
 		Chorbi chorbi = chorbiService.create();
 		result = createEditModelAndView2(chorbi);
-
+	result.addObject("genre",Genre.values());
+		result.addObject("relationship",Relationship.values());
+		result.addObject("creditCard.brand", Brand.values());
 		return result;
 
 	}
 	@RequestMapping(value="/register", method=RequestMethod.POST, params="save")
 	public ModelAndView register(@Valid Chorbi chorbi, BindingResult binding){
 		ModelAndView result;
-		if (!binding.hasErrors()) {
-			result= createEditModelAndView2(chorbi);
-		}else{
-			try{
+//		if (!binding.hasErrors()) {
+//			result= createEditModelAndView2(chorbi);
+//		}else{
+//			try{
 				actorService.registerAsAChorbi(chorbi);
 				result= new ModelAndView("redirect:list.do");
-			}catch(Throwable oops){
-				result= createEditModelAndView2(chorbi, "general.commit.error");
-			}
-		}
+//			}catch(Throwable oops){
+//				result= createEditModelAndView2(chorbi, "general.commit.error");
+//			}
+//		}
 		return result;
 	}
 		// Edition ---------------------------------------------------------

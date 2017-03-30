@@ -1,5 +1,6 @@
 package domain;
 
+import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Access;
@@ -19,8 +20,8 @@ public class CreditCard extends DomainEntity {
 
 
 
-    private Chorbi holder;
-    private Long number;
+    private String holder;
+    private String number;
     private int ExpirationYear;
     private int ExpirationMonth;
     private String CVV;
@@ -28,12 +29,12 @@ public class CreditCard extends DomainEntity {
 
     private Brand brand;
 
-    @OneToOne
-    public Chorbi getHolder() {
+    @NotBlank
+    public String getHolder() {
         return holder;
     }
 
-    public void setHolder(Chorbi holder) {
+    public void setHolder(String holder) {
         this.holder = holder;
     }
 
@@ -47,12 +48,12 @@ public class CreditCard extends DomainEntity {
     }
 
 
-    @NotNull
-    public Long getNumber() {
+    @CreditCardNumber
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Long number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

@@ -143,7 +143,7 @@
 
 	<!-- CreditCard -->
 	<bean id="creditcard1" class="domain.CreditCard">
-		<property name="holder" ref="chorbi1"/>
+		<property name="holder" value="chorbi1"/>
 		<property name="brand" value="VISA"/>
 		<property name="number" value="54275498043695577"/>
 		<property name="expirationYear" value="2018"/>
@@ -152,7 +152,7 @@
 	</bean>
 	<!-- CreditCard2 -->
 	<bean id="creditcard2" class="domain.CreditCard">
-		<property name="holder" ref="chorbi2"/>
+		<property name="holder" value="chorbi2"/>
 		<property name="brand" value="DINNERS"/>
 		<property name="number" value="54275498043695577"/>
 		<property name="expirationYear" value="2019"/>
@@ -161,7 +161,7 @@
 	</bean>
 	<!-- CreditCard3 -->
 	<bean id="creditcard3" class="domain.CreditCard">
-		<property name="holder" ref="chorbi3"/>
+		<property name="holder" value="chorbi3"/>
 		<property name="brand" value="DISCOVER"/>
 		<property name="number" value="54275498043695577"/>
 		<property name="expirationYear" value="2018"/>
@@ -170,7 +170,7 @@
 	</bean>
 	<!-- CreditCard4 -->
 	<bean id="creditcard4" class="domain.CreditCard">
-		<property name="holder" ref="chorbi4"/>
+		<property name="holder" value="chorbi4"/>
 		<property name="brand" value="AMEX"/>
 		<property name="number" value="54275498043695577"/>
 		<property name="expirationYear" value="2030"/>
@@ -179,7 +179,7 @@
 	</bean>
 	<!-- CreditCard5 -->
 	<bean id="creditcard5" class="domain.CreditCard">
-		<property name="holder" ref="chorbi5"/>
+		<property name="holder" value="chorbi5"/>
 		<property name="brand" value="MASTERCARD"/>
 		<property name="number" value="54275498043695577"/>
 		<property name="ExpirationYear" value="2017"/>
