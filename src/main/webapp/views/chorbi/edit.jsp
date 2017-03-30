@@ -32,6 +32,9 @@
 	<acme:textbox path="email" code="customer.email"/>
 	<acme:textbox path="phone" code="customer.phone"/>
 	<acme:textbox path="birthDate" code="customer.birth"/>
+
+
+
 	<form:label path="genre">
 		<spring:message code="chorbi.genre"/>:
 	</form:label>
@@ -55,50 +58,31 @@
 
 	<%--Location information--%>
 	<h1>Location</h1>
-	<form:label path="coordinate.country">
-		<spring:message code="coordinate.country"/>:
-	</form:label>
-	<form:input path="coordinate.country"/>
-	<form:errors cssClass="error" path="coordinate.country"/>
 
 
-	<form:label path="coordinate.state">
-		<spring:message code="coordinate.state"/>:
-	</form:label>
-	<form:input path="coordinate.state"/>
-	<form:errors cssClass="error" path="coordinate.state"/>
 
 
-	<form:label path="coordinate.city">
-		<spring:message code="coordinate.city"/>:
-	</form:label>
-	<form:input path="coordinate.city"/>
-	<form:errors cssClass="error" path="coordinate.city"/>
 
 
-	<form:label path="coordinate.province">
-		<spring:message code="coordinate.province"/>:
-	</form:label>
-	<form:input path="coordinate.province"/>
-	<form:errors cssClass="error" path="coordinate.province"/>
 
-
-	<h3><spring:message code="edit.creditcard" var="cc"/>
-		<jstl:out value="${cc}"/>
-	</h3>
-	<acme:textbox path="creditCard.holder" code="creditCard.holderName"/>
 	<form:label path="creditCard.brand">
 	<spring:message code="creditCard.brandName"/>:
 	</form:label>
 	<form:select path="creditCard.brand" code="creditCard.brandName">
 	<form:options/>
 	</form:select>
+
+
+	<acme:textbox path="creditCard.holder" code="creditCard.holderName"/>
 	<acme:textbox path="creditCard.number" code="creditCard.number"/>
 	<acme:textbox path="creditCard.expirationYear" code="creditCard.expirationYear"/>
 	<acme:textbox path="creditCard.expirationMonth" code="creditCard.expirationMonth"/>
 	<acme:textbox path="creditCard.CVV" code="creditCard.CVV"/>
 
-
+	<acme:textbox path="coordinate.country" code="coordinate.country"/>
+	<acme:textbox path="coordinate.state" code="coordinate.state"/>
+	<acme:textbox path="coordinate.city" code="coordinate.city"/>
+	<acme:textbox path="coordinate.province" code="coordinate.province"/>
 
 	<!---------------------------- BOTONES -------------------------->
 	<acme:submit name="save" code="general.save"/>

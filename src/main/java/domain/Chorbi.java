@@ -73,7 +73,7 @@ public class Chorbi extends Actor {
 
     public void setBirthDate(Date birthDate) {this.birthDate = birthDate;}
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     public CreditCard getCreditCard() {
         return creditCard;
     }
@@ -82,7 +82,7 @@ public class Chorbi extends Actor {
         this.creditCard = creditCard;
     }
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     public Coordinate getCoordinate() {
         return coordinate;
     }

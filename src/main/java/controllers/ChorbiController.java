@@ -113,27 +113,26 @@ public class ChorbiController extends AbstractController {
 		}
 
 		@RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-		public ModelAndView save(@Valid Chorbi chorbi, Coordinate coordinate, CreditCard creditCard,BindingResult binding){
+		public ModelAndView save(@Valid Chorbi chorbi,BindingResult binding){
 			ModelAndView result;
 
-			if(!binding.hasErrors()){
-				result= createEditModelAndView(chorbi);
-			}else{
-				try{
+//			if(!binding.hasErrors()){
+//				result= createEditModelAndView(chorbi);
+//			}else{
+//				try{
 
-					CreditCard creditCard1 = creditCardService.save(creditCard);
-					chorbi.setCreditCard(creditCard1);
-					Coordinate coordinate1 = coordinateService.save(coordinate);
-					coordinateService.save(coordinate1);
-					chorbi.setUserAccount(userAccountService.findByActor(chorbiService.findByPrincipal()));
-
+//					creditCardService.save(chorbi.getCreditCard());
+//					//chorbi.setCreditCard(creditCard1);
+//					coordinateService.save(chorbi.getCoordinate());
+//					//coordinateService.save(coordinate1);
+//					userAccountService.save(chorbi.getUserAccount());
 					chorbiService.save(chorbi);
 
 					result= new ModelAndView("chorbi/success");
-				}catch(Throwable oops){
-					result= createEditModelAndView(chorbi, "general.commit.error");
-				}
-			}
+//				}catch(Throwable oops){
+//					result= createEditModelAndView(chorbi, "general.commit.error");
+//				}
+//			}
 			return result;
 		}
 
