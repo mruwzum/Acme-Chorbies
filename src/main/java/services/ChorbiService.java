@@ -1,6 +1,7 @@
 package services;
 
 import domain.Chorbi;
+import domain.Liked;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -87,6 +88,8 @@ public class ChorbiService {
 
         return result;
     }
+
+
 
     public void flush(){
         chorbiRepository.flush();

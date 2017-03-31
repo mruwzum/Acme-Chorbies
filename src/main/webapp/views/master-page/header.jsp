@@ -39,6 +39,14 @@
 					<li><a href="search/list.do"><spring:message code="master.page.customer.searc.2" /></a></li>
 				</ul>
 			</li>
+			<li><a class="fNiv"><spring:message	code="master.page.like" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="chorbi/mylikes.do"><spring:message code="master.page.chorbi.my.likes" /></a></li>
+					<li><a href="chorbi/likes.do"><spring:message code="master.page.chorbi.likes" /></a></li>
+
+				</ul>
+			</li>
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">

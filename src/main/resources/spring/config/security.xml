@@ -53,6 +53,18 @@
 		<!--Allows an authenticated user as chorbi to edit his chorbi profile.-->
 		<security:intercept-url pattern="/chorbi/edit.do" access="hasRole('CHORBI')"/>
 
+
+
+		<!--Allows chorbies to likes other chorbies.-->
+		<security:intercept-url pattern="/chorbi/like.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/liked/edit.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/chorbi/mylikes.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/chorbi/likes.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/liked/delete.do" access="hasRole('CHORBI')"/>
+
+
+
+
 		<!--Allows an authenticated chorbi to search.-->
 		<security:intercept-url pattern="/search/create.do" access="hasRole('CHORBI')"/>
 		<!--Allows an authenticated chorbi to search.-->
@@ -62,7 +74,7 @@
 
 
 
-	
+
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 

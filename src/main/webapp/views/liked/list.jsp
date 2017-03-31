@@ -13,7 +13,7 @@
 <security:authorize access="permitAll">
 	<div>
 		<H5>
-			<a href="like/create.do"> <spring:message
+			<a href="liked/create.do"> <spring:message
 					code="general.create" />
 			</a>
 		</H5>
@@ -27,12 +27,14 @@
 
 	<!-- Attributes -->
 
-	<security:authorize access="permitAll">
+	<security:authorize access="hasRole('CHORBI')">
+		<jstl:if test="${my}">
 		<display:column>
-			<a href="like/edit.do?likeId=${row.id}"> <spring:message
-					code="general.edit" />
+			<a href="liked/delete.do?likeId=${row.id}"> <spring:message
+					code="general.delete" />
 			</a>
 		</display:column>
+		</jstl:if>
 	</security:authorize>
 	
 	<spring:message code="like.moment" var="moment" />

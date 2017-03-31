@@ -57,4 +57,6 @@ public class Liked extends DomainEntity {
         this.receiver = receiver;
     }
 
+
+
 }

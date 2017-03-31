@@ -19,18 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import security.UserAccount;
-import security.UserAccountService;
-import services.ActorService;
-import services.ChorbiService;
-import services.CoordinateService;
-import services.CreditCardService;
+import services.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
-import java.util.List;
 
 @Controller
 @RequestMapping("/chorbi")
@@ -47,11 +39,8 @@ public class ChorbiController extends AbstractController {
 		@Autowired
 		private ActorService actorService;
 		@Autowired
-		private CoordinateService coordinateService;
-		@Autowired
-		private CreditCardService creditCardService;
-		@Autowired
-	private UserAccountService userAccountService;
+		private LikedService likedService;
+
 
 		@RequestMapping( value="/list", method = RequestMethod.GET)
 		public ModelAndView list() {
@@ -191,6 +180,51 @@ public class ChorbiController extends AbstractController {
 		return result;
 
 	}
+
+
+
+	//Like
+	@RequestMapping(value = "/like",method = RequestMethod.GET)
+	public ModelAndView createLike(@RequestParam int chorbiId){
+
+			ModelAndView res;
+
+			Liked liked = likedService.create();
+			Chorbi receiver = chorbiService.findOne(chorbiId);
+			liked.setReceiver(receiver);
+			liked.setSender(chorbiService.findByPrincipal());
+			res = new ModelAndView("liked/edit");
+			res.addObject("liked", liked);
+
+			return res;
+
+
+	}
+
+	@RequestMapping(value = "/mylikes")
+	public ModelAndView myLikeList(){
+
+		ModelAndView res;
+		Collection<Liked> myLiked = chorbiService.findByPrincipal().getMyLikes();
+		Boolean my = true;
+		res =  new ModelAndView("liked/list");
+		res.addObject("likes", myLiked);
+		res.addObject("my",my);
+		return res;
+
+	}
+
+	@RequestMapping(value = "/likes")
+	public ModelAndView likes(){
+		ModelAndView res;
+		Collection<Liked> Liked = chorbiService.findByPrincipal().getLikes();
+		res =  new ModelAndView("liked/list");
+		res.addObject("likes", Liked);
+		return res;
+
+	}
+
+
 	}
 
 

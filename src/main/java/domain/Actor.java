@@ -68,4 +68,9 @@ public abstract class Actor extends DomainEntity {
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
     }
+
+    @Override
+    public String toString() {
+        return name + " " + surname;
+    }
 }

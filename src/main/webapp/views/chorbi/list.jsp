@@ -18,13 +18,7 @@
 
 	<%--<!-- Attributes -->--%>
 
-	<%--<security:authorize access="permitAll">--%>
-		<%--<display:column>--%>
-			<%--<a href="chorbi/edit.do?chorbiId=${row.id}"> <spring:message--%>
-					<%--code="general.edit" />--%>
-			<%--</a>--%>
-		<%--</display:column>--%>
-	<%--</security:authorize>--%>
+
 	<spring:message code="chorbi.picture" var="picture" />
 	<display:column title="${picture}">
 		<img src="${row.picture}" width="130" height="100" >
@@ -43,5 +37,13 @@
 	<spring:message code="chorbi.coordinate" var="coordinate" />
 	<display:column property="coordinate" title="${coordinate}" sortable="true" />
 
+
+	<security:authorize access="hasRole('CHORBI')">
+		<display:column>
+			<a href="chorbi/like.do?chorbiId=${row.id}"> <spring:message
+					code="chorbi.like" />
+			</a>
+		</display:column>
+	</security:authorize>
 
 </display:table>

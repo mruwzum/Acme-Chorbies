@@ -1,17 +1,14 @@
 package services;
 
 import domain.Liked;
-import domain.Liked;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
-import repositories.ActorRepository;
-import repositories.LikeRepository;
-import security.LoginService;
-import security.UserAccount;
+import repositories.LikedRepository;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.Date;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -19,16 +16,17 @@ import java.util.Collection;
 
 @Service
 @Transactional
-public class LikeService {
+public class LikedService {
 
     // Managed Repository ------------------------
     @Autowired
-    private LikeRepository likeRepository;
+    private LikedRepository likedRepository;
+
 
     // Supporting services -----------------------
 
     // Constructor -------------------------------
-    public LikeService() {
+    public LikedService() {
         super();
     }
 
@@ -41,7 +39,7 @@ public class LikeService {
     public Liked findOne(int actorId) {
         Liked result;
 
-        result = likeRepository.findOne(actorId);
+        result = likedRepository.findOne(actorId);
 
         return result;
     }
@@ -49,28 +47,47 @@ public class LikeService {
     public Collection<Liked> findAll() {
         Collection<Liked> result;
 
-        result = likeRepository.findAll();
+        result = likedRepository.findAll();
 
         return result;
     }
 
     public Liked save(Liked actor) {
         Assert.notNull(actor);
-        return likeRepository.save(actor);
+        return likedRepository.save(actor);
     }
 
     public void delete(Liked actor) {
         Assert.notNull(actor);
-        Assert.isTrue(likeRepository.exists(actor.getId()));
-        likeRepository.delete(actor);
+        Assert.isTrue(likedRepository.exists(actor.getId()));
+        likedRepository.delete(actor);
     }
 
     // Other business methods -----------------------
 
 
 
+    public Boolean postLike(Liked liked){
+        Boolean res = false;
+
+        try {
+            liked.setMoment(new Date(System.currentTimeMillis()-1000));
+            liked.getReceiver().getLikes().add(liked);
+            liked.getSender().getMyLikes().add(liked);
+            res = true;
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return res;
+    }
+
+
     public void flush(){
-        likeRepository.flush();
+        likedRepository.flush();
     }
 
 }

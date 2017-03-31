@@ -36,7 +36,7 @@
 		<!--Credit Card-->
 		<value>/views/credit-card/messages</value>
 		<!--Like-->
-		<value>/views/like/messages</value>
+		<value>/views/liked/messages</value>
 		<!--Search-->
 		<value>/views/search/messages</value>
 

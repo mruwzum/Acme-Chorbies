@@ -101,7 +101,7 @@ public class Chorbi extends Actor {
         this.chirps = chirps;
     }
 
-    @OneToMany(targetEntity = Liked.class, mappedBy = "receiver")
+    @OneToMany(targetEntity = Liked.class, mappedBy = "receiver", cascade = CascadeType.ALL)
     public Collection<Liked> getLikes() {
         return likes;
     }
@@ -119,7 +119,7 @@ public class Chorbi extends Actor {
         this.myChirps = myChirps;
     }
 
-    @OneToMany(targetEntity = Liked.class, mappedBy = "sender")
+    @OneToMany(targetEntity = Liked.class, mappedBy = "sender",cascade = CascadeType.ALL)
     public Collection<Liked> getMyLikes() {
         return myLikes;
     }

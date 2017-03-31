@@ -36,7 +36,7 @@
 		<!--Credit Card-->
 		<value>/views/credit-card/tiles.xml</value>
 		<!--Like-->
-		<value>/views/like/tiles.xml</value>
+		<value>/views/liked/tiles.xml</value>
 		<!--Search-->
 		<value>/views/search/tiles.xml</value>
 

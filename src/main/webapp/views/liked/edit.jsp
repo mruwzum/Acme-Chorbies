@@ -11,7 +11,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="like/edit.do" modelAttribute="like">
+<form:form action="liked/edit.do" modelAttribute="liked">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
