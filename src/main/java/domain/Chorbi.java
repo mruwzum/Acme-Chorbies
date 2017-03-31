@@ -21,7 +21,6 @@ public class Chorbi extends Actor {
     private Genre genre;
     private Relationship relationship;
     private CreditCard creditCard;
-    private Search search;
     private Date birthDate;
 
 
@@ -31,6 +30,7 @@ public class Chorbi extends Actor {
     private Collection<Liked> likes;
     private Collection<Chirp> myChirps;
     private Collection<Liked> myLikes;
+    private Collection<Search> mySearches;
 
     @URL
     public String getPicture() {
@@ -91,14 +91,6 @@ public class Chorbi extends Actor {
         this.coordinate = coordinate;
     }
 
-    @OneToOne
-    public Search getSearch() {
-        return search;
-    }
-
-    public void setSearch(Search search) {
-        this.search = search;
-    }
 
     @OneToMany(targetEntity = Chirp.class, mappedBy = "receiver")
     public Collection<Chirp> getChirps() {
@@ -136,4 +128,12 @@ public class Chorbi extends Actor {
         this.myLikes = myLikes;
     }
 
+    @OneToMany
+    public Collection<Search> getMySearches() {
+        return mySearches;
+    }
+
+    public void setMySearches(Collection<Search> mySearches) {
+        this.mySearches = mySearches;
+    }
 }

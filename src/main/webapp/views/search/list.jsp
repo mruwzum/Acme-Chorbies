@@ -10,15 +10,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
-	<div>
-		<H5>
-			<a href="search/create.do"> <spring:message
-					code="general.create" />
-			</a>
-		</H5>
-	</div>
-</security:authorize>
+
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
@@ -26,20 +18,24 @@
 
 
 	<!-- Attributes -->
-
-	<security:authorize access="permitAll">
-		<display:column>
-			<a href="search/edit.do?searchId=${row.id}"> <spring:message
-					code="general.edit" />
-			</a>
-		</display:column>
-	</security:authorize>
 	
 	<spring:message code="search.age" var="age" />
 	<display:column property="age" title="${age}" sortable="true" />
 	<spring:message code="search.keyword" var="keyword" />
 	<display:column property="keyword" title="${keyword}" sortable="true" />
-	<spring:message code="search.country" var="country" />
-	<display:column property="country" title="${country}" sortable="true" />
+	<spring:message code="chorbi.genre" var="genre" />
+	<display:column property="genre" title="${genre}" sortable="true" />
+	<spring:message code="chorbi.relationship" var="relationship" />
+	<display:column property="relationship" title="${relationship}" sortable="true" />
 
+	<spring:message code="coordinate.country" var="coordinate.country" />
+	<display:column property="coordinate.country" title="${country}" sortable="true" />
+
+
+	<spring:message code="coordinate.state" var="coordinate.state" />
+	<display:column property="coordinate.state" title="${state}" sortable="true" />
+	<spring:message code="coordinate.province" var="coordinate.province" />
+	<display:column property="coordinate.province" title="${province}" sortable="true" />
+	<spring:message code="coordinate.city" var="coordinate.city" />
+	<display:column property="coordinate.city" title="${city}" sortable="true" />
 </display:table>

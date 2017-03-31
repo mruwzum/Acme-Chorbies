@@ -118,6 +118,28 @@
 			</list>
 		</property>
 	</bean>
+	<bean id="userAccountShurrita" class="security.UserAccount">
+		<property name="username" value="shurrita" />
+		<property name="password" value="12881aa458b6d90866d9c06732b00b64" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CHORBI" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	<bean id="userAccountAntolon" class="security.UserAccount">
+		<property name="username" value="mruwzum" />
+		<property name="password" value="12881aa458b6d90866d9c06732b00b64" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CHORBI" />
+				</bean>
+			</list>
+		</property>
+	</bean>
 	<!-- /UserAccounts -->
 
 	<!-- Other domain beans come here -->
@@ -182,6 +204,24 @@
 		<property name="CVV" value="235"/>
 		<property name="expirationMonth" value="8"/>
 	</bean>
+	<!-- CreditCard6 -->
+	<bean id="creditcard6" class="domain.CreditCard">
+		<property name="holder" value="David de la torre"/>
+		<property name="brand" value="MASTERCARD"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="ExpirationYear" value="2020"/>
+		<property name="CVV" value="235"/>
+		<property name="expirationMonth" value="8"/>
+	</bean>
+	<!-- CreditCard7 -->
+	<bean id="creditcard7" class="domain.CreditCard">
+		<property name="holder" value="Miguel Angel Antolin"/>
+		<property name="brand" value="MASTERCARD"/>
+		<property name="number" value="54275498043695577"/>
+		<property name="ExpirationYear" value="2020"/>
+		<property name="CVV" value="235"/>
+		<property name="expirationMonth" value="8"/>
+	</bean>
 	<!--&lt;!&ndash; CreditCard6 &ndash;&gt;-->
 	<!--<bean id="creditcard6" class="domain.CreditCard">-->
 		<!--<property name="holder" ref="chorbi6"/>-->
@@ -229,43 +269,43 @@
 
 	<bean id="coord1" class="domain.Coordinate">
 		<property name="city" value="Sevilla"/>
-		<property name="country" value="Sevilla"/>
+		<property name="country" value="Spain"/>
 		<property name="province" value="Sevilla"/>
 		<property name="state" value="Andalucía"/>
 	</bean>
 	<bean id="coord2" class="domain.Coordinate">
 		<property name="city" value="Córdoba"/>
-		<property name="country" value="Córdoba"/>
+		<property name="country" value="Spain"/>
 		<property name="province" value="Córdoba"/>
 		<property name="state" value="Andalucía"/>
 	</bean>
 	<bean id="coord3" class="domain.Coordinate">
 		<property name="city" value="Granada"/>
-		<property name="country" value="Granada"/>
+		<property name="country" value="Spain"/>
 		<property name="province" value="Granada"/>
 		<property name="state" value="Andalucía"/>
 	</bean>
 	<bean id="coord4" class="domain.Coordinate">
 		<property name="city" value="Almería"/>
-		<property name="country" value="Almería"/>
+		<property name="country" value="Spain"/>
 		<property name="province" value="Almería"/>
 		<property name="state" value="Andalucía"/>
 	</bean>
 	<bean id="coord5" class="domain.Coordinate">
 		<property name="city" value="Huelva"/>
-		<property name="country" value="Huelva"/>
+		<property name="country" value="Spain"/>
 		<property name="province" value="Huelva"/>
 		<property name="state" value="Andalucía"/>
 	</bean>
 	<bean id="coord6" class="domain.Coordinate">
 		<property name="city" value="Cádiz"/>
-		<property name="country" value="Cádiz"/>
+		<property name="country" value="Spain"/>
 		<property name="province" value="Cádiz"/>
 		<property name="state" value="Andalucía"/>
 	</bean>
 	<bean id="coord7" class="domain.Coordinate">
 		<property name="city" value="Málaga"/>
-		<property name="country" value="Málaga"/>
+		<property name="country" value="Spain"/>
 		<property name="province" value="Málaga"/>
 		<property name="state" value="Andalucía"/>
 	</bean>
@@ -362,7 +402,6 @@
 	</bean>
 	<!-- /Chirp-->
 	<!-- Chorbies -->
-
 	<bean id="chorbi1" class="domain.Chorbi">
 		<property name="name" value="Chorbi1Name" />
 		<property name="surname" value="Chorbi1Surname" />
@@ -378,7 +417,7 @@
 		<property name="coordinate" ref="coord1"/>
 		<property name="chirps">
 			<list>
-			<ref bean="Chirp6"/>
+				<ref bean="Chirp6"/>
 				<ref bean="Chirp10"/>
 			</list>
 		</property>
@@ -400,6 +439,76 @@
 				<ref bean="like5"/>
 				<ref bean="like8"/>
 
+			</list>
+		</property>
+		<property name="mySearches">
+			<list>
+				<ref bean="search1"/>
+			</list>
+		</property>
+	</bean>
+	<bean id="chorbi0" class="domain.Chorbi">
+		<property name="name" value="David" />
+		<property name="surname" value="de la Torre Díaz" />
+		<property name="email" value="daviddelatorre00@gmail.com"/>
+		<property name="phone" value="+34-648208840"/>
+		<property name="userAccount" ref="userAccountShurrita" />
+		<property name="picture" value="https://pbs.twimg.com/media/BVSJa4wIAAAksTV.jpg"/>
+		<property name="description" value="Ingeniero informático dispuesto a conocer a una chica que sepa de Java"/>
+		<property name="genre" value="MAN"/>
+		<property name="relationship" value="LOVE"/>
+		<property name="creditCard" ref="creditcard6"/>
+		<property name="birthDate" value="1995/04/23 00:00:00"/>
+		<property name="coordinate" ref="coord1"/>
+		<property name="chirps">
+			<list>
+			</list>
+		</property>
+		<property name="myChirps">
+			<list>
+			</list>
+		</property>
+		<property name="likes">
+			<list>
+			</list>
+		</property>
+		<property name="myLikes">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="chorbi0a" class="domain.Chorbi">
+		<property name="name" value="Miguel Ángel" />
+		<property name="surname" value="Antolín Bermúdez" />
+		<property name="email" value="ma.antolinbermudez@gmail.com"/>
+		<property name="phone" value="+23-626225021"/>
+		<property name="userAccount" ref="userAccountAntolon" />
+		<property name="picture" value="https://pbs.twimg.com/profile_images/753519498980798464/sru1pCKN_400x400.jpg"/>
+		<property name="description" value=" Solo se que no se nada"/>
+		<property name="genre" value="MAN"/>
+		<property name="relationship" value="ACTIVITIES"/>
+		<property name="creditCard" ref="creditcard7"/>
+		<property name="birthDate" value="1991/07/22 17:05:15"/>
+		<property name="coordinate" ref="coord1"/>
+		<property name="chirps">
+			<list>
+			<ref bean="Chirp6"/>
+
+			</list>
+		</property>
+		<property name="myChirps">
+			<list>
+
+			</list>
+		</property>
+		<property name="likes">
+			<list>
+
+			</list>
+		</property>
+		<property name="myLikes">
+			<list>
 			</list>
 		</property>
 	</bean>
@@ -477,6 +586,11 @@
 			<list>
 				<ref bean="like4"/>
 				<ref bean="like7"/>
+			</list>
+		</property>
+		<property name="mySearches">
+			<list>
+				<ref bean="search2"/>
 			</list>
 		</property>
 	</bean>
@@ -607,12 +721,17 @@
 	<!-- /Likes -->
 	<!-- Search -->
 	<bean id="search1" class="domain.Search">
-		<property name="country" value="Cádiz"/>
-		<property name="age" value="32"/>
+		<property name="age" value="26"/>
+		<property name="relationship" value="ACTIVITIES"/>
+		<property name="genre" value="MAN"/>
+		<property name="coordinate" ref="coord1"/>
+		<property name="keyword" value="Sevilla"/>
 	</bean>
 	<bean id="search2" class="domain.Search">
-		<property name="country" value="Cádiz"/>
-		<property name="age" value="26"/>
+		<property name="age" value="30"/>
+		<property name="relationship" value="LOVE"/>
+		<property name="genre" value="WOMAN"/>
+		<property name="coordinate" ref="coord1"/>
 		<property name="keyword" value="LOVE"/>
 	</bean>
 	<!-- /Search -->

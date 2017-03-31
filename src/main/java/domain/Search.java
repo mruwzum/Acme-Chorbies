@@ -1,8 +1,6 @@
 package domain;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -13,8 +11,10 @@ public class Search extends DomainEntity {
 
 
     private Integer age;
+    private Relationship relationship;
+    private Genre genre;
+    private Coordinate coordinate;
     private String keyword;
-    private String country;
 
 
     public Integer getAge() {
@@ -25,19 +25,35 @@ public class Search extends DomainEntity {
         this.age = age;
     }
 
+    public Relationship getRelationship() {
+        return relationship;
+    }
+
+    public void setRelationship(Relationship relationship) {
+        this.relationship = relationship;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+    @OneToOne(cascade = CascadeType.ALL)
+    public Coordinate getCoordinate() {
+        return coordinate;
+    }
+
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
+    }
+
     public String getKeyword() {
         return keyword;
     }
 
     public void setKeyword(String keyword) {
         this.keyword = keyword;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 }

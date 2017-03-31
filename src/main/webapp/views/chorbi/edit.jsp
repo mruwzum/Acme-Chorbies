@@ -19,7 +19,7 @@
 	<form:hidden path="likes" />
 	<form:hidden path="myChirps" />
 	<form:hidden path="myLikes" />
-	<form:hidden path="search" />
+	<form:hidden path="mySearches" />
 
 	<form:hidden path="userAccount" />
 
@@ -57,7 +57,7 @@
 
 
 	<%--Location information--%>
-	<h1>Location</h1>
+	<h1>CreditCard&Location</h1>
 
 
 
@@ -78,7 +78,7 @@
 	<acme:textbox path="creditCard.expirationYear" code="creditCard.expirationYear"/>
 	<acme:textbox path="creditCard.expirationMonth" code="creditCard.expirationMonth"/>
 	<acme:textbox path="creditCard.CVV" code="creditCard.CVV"/>
-
+<br>
 	<acme:textbox path="coordinate.country" code="coordinate.country"/>
 	<acme:textbox path="coordinate.state" code="coordinate.state"/>
 	<acme:textbox path="coordinate.city" code="coordinate.city"/>

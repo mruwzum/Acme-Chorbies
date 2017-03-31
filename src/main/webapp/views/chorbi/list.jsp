@@ -12,7 +12,7 @@
 
 
 <!-- Listing grid -->
-<display:table pagesize="5" class="displaytag" keepStatus="true"
+<display:table pagesize="15" class="displaytag" keepStatus="true"
 	name="chorbies" requestURI="${requestURI}" id="row">
 
 

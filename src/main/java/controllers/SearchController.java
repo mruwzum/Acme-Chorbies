@@ -1,4 +1,7 @@
 package controllers;
+import domain.Chorbi;
+import domain.Genre;
+import domain.Relationship;
 import domain.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,8 +15,7 @@ import services.ChorbiService;
 import services.SearchService;
 
 import javax.validation.Valid;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/search")
@@ -32,9 +34,8 @@ public class SearchController extends AbstractController {
 	public ModelAndView finderList() {
 		
 		ModelAndView result;
-		Collection<Search> finders;
-		
-		finders = searchService.findAll();
+		Collection<Search> finders = new HashSet<>();
+		finders.addAll(chorbiService.findByPrincipal().getMySearches());
 		result = new ModelAndView("search/list");
 		result.addObject("searchs", finders);
 		result.addObject("requestURI","search/list.do");
@@ -52,6 +53,8 @@ public class SearchController extends AbstractController {
 		
 		Search search = searchService.create();
 		result = createEditModelAndView(search);
+        result.addObject("genre", Genre.values());
+        result.addObject("relationship", Relationship.values());
 		
 		return result;
 
@@ -67,26 +70,37 @@ public class SearchController extends AbstractController {
         search= searchService.findOne(searchId);
         Assert.notNull(search);
         result= createEditModelAndView(search);
-         
+        result.addObject("genre",Genre.values());
+        result.addObject("relationship",Relationship.values());
         return result;
     }
      
     @RequestMapping(value="/find", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Search search, BindingResult binding){
         ModelAndView result;
-         
-        if(binding.hasErrors()){
-            result= createEditModelAndView(search);
-        }else{
-            try{
-                Collection<Search> searches = searchService.findAll();
-                 searchService.save(search);
-                result= new ModelAndView("search/list");
-                result.addObject("searches",searches);
-            }catch(Throwable oops){
-                result= createEditModelAndView(search, "search.commit.error");
-            }
+
+//        if(!binding.hasErrors()){
+//            result= createEditModelAndView(search);
+//        }else{
+//            try{
+        if (search.getCoordinate().getCity().isEmpty()) {
+            search.getCoordinate().setCity("void");
         }
+            List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
+
+
+            searchService.save(search);
+
+            chorbiService.findByPrincipal().getMySearches().add(search);
+            result= new ModelAndView("chorbi/list");
+            result.addObject("chorbies",chorbies);
+
+
+
+//            }catch(Throwable oops){
+//                result= createEditModelAndView(search, "general.commit.error");
+//            }
+//        }
         return result;
     }
      
@@ -97,7 +111,7 @@ public class SearchController extends AbstractController {
             searchService.delete(search);
             result=new ModelAndView("redirect:list.do");
         }catch(Throwable oops){
-            result= createEditModelAndView(search, "search.commit.error");
+            result= createEditModelAndView(search, "general.commit.error");
         }
          
         return result;   
