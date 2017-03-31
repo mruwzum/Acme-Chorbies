@@ -63,6 +63,20 @@
 		<security:intercept-url pattern="/liked/delete.do" access="hasRole('CHORBI')"/>
 
 
+		<!--Allows an administrator to ban chorbies.-->
+		<security:intercept-url pattern="/administrator/ban.do" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/administrator/unban.do" access="hasRole('ADMINISTRATOR')"/>
+
+		<!--Allows an administrator to change banner.-->
+		<security:intercept-url pattern="/banner/edit.do" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/banner/list.do" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/banner/create.do" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/banner/delte.do" access="hasRole('ADMINISTRATOR')"/>
+
+
+
+
+
 
 
 		<!--Allows an authenticated chorbi to search.-->

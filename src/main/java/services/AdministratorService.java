@@ -1,14 +1,17 @@
 package services;
 
 import domain.Administrator;
+import domain.Chorbi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.AdministratorRepository;
+import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -85,6 +88,48 @@ public class AdministratorService{
         result = administratorRepository.findByUserAccountId(userAccount.getId());
 
         return result;
+    }
+
+
+    public Boolean banChorbi(Chorbi chorbi){
+        Boolean res = false;
+
+        if(!chorbi.getUserAccount().getAuthorities().isEmpty()){
+            Authority authority =  new Authority();
+            authority.setAuthority("CHORBI");
+            Authority authority2 =  new Authority();
+            authority2.setAuthority("BAN");
+
+            chorbi.getUserAccount().addAuthority(authority2);
+            chorbi.getUserAccount().removeAuthority(authority);
+
+            chorbi.setBanned(true);
+
+            res = true;
+
+        }
+        return res;
+
+    }
+
+
+    public Boolean unbanChorbi(Chorbi chorbi){
+        Boolean res = false;
+
+            Authority authority =  new Authority();
+            authority.setAuthority("CHORBI");
+            Authority authority2 =  new Authority();
+            authority2.setAuthority("BAN");
+            chorbi.getUserAccount().addAuthority(authority);
+            chorbi.getUserAccount().removeAuthority(authority2);
+
+
+            chorbi.setBanned(false);
+
+            res = true;
+
+        return res;
+
     }
 
     public void flush(){

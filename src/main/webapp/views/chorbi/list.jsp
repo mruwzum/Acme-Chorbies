@@ -46,4 +46,18 @@
 		</display:column>
 	</security:authorize>
 
+	<security:authorize access="hasRole('ADMINISTRATOR')">
+		<display:column>
+			<jstl:if test="${not row.banned}">
+			<a href="administrator/ban.do?chorbiId=${row.id}"> <spring:message
+					code="chorbi.ban" />
+			</a>
+			</jstl:if>
+			<jstl:if test="${row.banned}">
+				<a href="administrator/unban.do?chorbiId=${row.id}"> <spring:message
+					code="chorbi.unban" />
+			</jstl:if>
+		</display:column>
+	</security:authorize>
+
 </display:table>

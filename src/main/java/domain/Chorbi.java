@@ -22,6 +22,7 @@ public class Chorbi extends Actor {
     private Relationship relationship;
     private CreditCard creditCard;
     private Date birthDate;
+    private Boolean isBanned;
 
 
     private Coordinate coordinate;
@@ -136,4 +137,15 @@ public class Chorbi extends Actor {
     public void setMySearches(Collection<Search> mySearches) {
         this.mySearches = mySearches;
     }
+
+
+    public Boolean getBanned() {
+        return isBanned;
+    }
+
+    public void setBanned(Boolean banned) {
+        isBanned = banned;
+    }
+
+
 }

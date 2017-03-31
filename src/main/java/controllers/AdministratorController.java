@@ -11,6 +11,7 @@
 package controllers;
 
 import domain.Administrator;
+import domain.Chorbi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.AdministratorService;
+import services.ChorbiService;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -36,6 +38,8 @@ public class AdministratorController extends AbstractController {
 
 	@Autowired
 	private AdministratorService administratorService;
+	@Autowired
+	private ChorbiService chorbiService;
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
 	public ModelAndView actorList() {
@@ -131,6 +135,48 @@ public class AdministratorController extends AbstractController {
 		return result;
 
 	}
+
+	@RequestMapping(value = "/ban", method = RequestMethod.GET)
+	public ModelAndView banChorbi(int chorbiId){
+
+		ModelAndView res;
+		Chorbi chorbi = chorbiService.findOne(chorbiId);
+
+//		try {
+			administratorService.banChorbi(chorbi);
+			res = new ModelAndView("chorbi/success");
+//		} catch (Exception e) {
+//			res = new ModelAndView("chorbi/error");
+//			res.addObject("trace", e.fillInStackTrace());
+//		}
+
+
+		return res;
+
+
+	}
+
+
+	@RequestMapping(value = "/unban", method = RequestMethod.GET)
+	public ModelAndView unbanChorbi(int chorbiId){
+
+		ModelAndView res;
+		Chorbi chorbi = chorbiService.findOne(chorbiId);
+
+		try {
+			administratorService.unbanChorbi(chorbi);
+			res = new ModelAndView("chorbi/success");
+		} catch (Exception e) {
+			res = new ModelAndView("chorbi/error");
+			res.addObject("trace", e.toString());
+		}
+
+
+		return res;
+
+
+	}
+
 
 
 }

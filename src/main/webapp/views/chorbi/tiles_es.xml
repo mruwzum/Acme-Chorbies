@@ -23,4 +23,8 @@
 		<put-attribute name="title" value="chorbi: Exito" />
 		<put-attribute name="body" value="/views/chorbi/success.jsp" />
 	</definition>
+	<definition name="chorbi/error" extends="master.page">
+		<put-attribute name="title" value="Chorbi: Error"/>
+		<put-attribute name="body" value="/views/chorbi/error.jsp"/>
+	</definition>
 </tiles-definitions>

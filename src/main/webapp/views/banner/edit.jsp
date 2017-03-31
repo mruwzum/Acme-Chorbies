@@ -28,12 +28,12 @@
     <!---------------------------- BOTONES -------------------------->
 
     <input type="submit" name="save"
-           value="<spring:message code="comment.save" />"/>
+           value="<spring:message code="general.save" />"/>
 
 
 
     <input type="button" name="cancel"
-           value="<spring:message code="comment.cancel" />"
+           value="<spring:message code="general.cancel" />"
            onclick="window.location.replace('banner/list.do')"/>
 
 </form:form>

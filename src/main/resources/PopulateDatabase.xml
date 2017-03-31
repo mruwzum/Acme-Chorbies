@@ -415,6 +415,7 @@
 		<property name="creditCard" ref="creditcard1"/>
 		<property name="birthDate" value="1985/04/23 00:00:00"/>
 		<property name="coordinate" ref="coord1"/>
+		<property name="banned" value="false"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp6"/>
@@ -460,6 +461,7 @@
 		<property name="creditCard" ref="creditcard6"/>
 		<property name="birthDate" value="1995/04/23 00:00:00"/>
 		<property name="coordinate" ref="coord1"/>
+		<property name="banned" value="false"/>
 		<property name="chirps">
 			<list>
 			</list>
@@ -491,6 +493,7 @@
 		<property name="creditCard" ref="creditcard7"/>
 		<property name="birthDate" value="1991/07/22 17:05:15"/>
 		<property name="coordinate" ref="coord1"/>
+		<property name="banned" value="false"/>
 		<property name="chirps">
 			<list>
 			<ref bean="Chirp6"/>
@@ -525,6 +528,7 @@
 		<property name="relationship" value="LOVE"/>
 		<property name="creditCard" ref="creditcard2"/>
 		<property name="coordinate" ref="coord2"/>
+		<property name="banned" value="false"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp1"/>
@@ -564,6 +568,7 @@
 		<property name="relationship" value="FRIENDSHIP"/>
 		<property name="creditCard" ref="creditcard3"/>
 		<property name="coordinate" ref="coord3"/>
+		<property name="banned" value="false"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp7"/>
@@ -607,6 +612,7 @@
 		<property name="relationship" value="ACTIVITIES"/>
 		<property name="creditCard" ref="creditcard4"/>
 		<property name="coordinate" ref="coord4"/>
+		<property name="banned" value="false"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp2"/>
@@ -644,6 +650,7 @@
 		<property name="relationship" value="FRIENDSHIP"/>
 		<property name="creditCard" ref="creditcard5"/>
 		<property name="coordinate" ref="coord5"/>
+		<property name="banned" value="false"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp10"/>

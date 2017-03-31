@@ -42,7 +42,7 @@
     <security:authorize access="hasRole('ADMINISTRATOR')">
         <display:column>
             <a href="banner/delete.do?bannerId=${row.id}"> <spring:message
-                    code="comment.delete"/>
+                    code="general.delete"/>
             </a>
         </display:column>
     </security:authorize>

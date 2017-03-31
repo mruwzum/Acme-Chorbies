@@ -99,15 +99,7 @@ public class ActorService {
 		Coordinate savec = coordinateService.save(coordinate);
 		u.setCoordinate(savec);
 
-//		CreditCard creditCard = new CreditCard();
-//		creditCard.setBrand(u.getCreditCard().getBrand());
-//		creditCard.setCVV(u.getCreditCard().getCVV());
-//		creditCard.setExpirationMonth(u.getCreditCard().getExpirationMonth());
-//		creditCard.setExpirationYear(u.getCreditCard().getExpirationYear());
-//		creditCard.setHolder(u.getCreditCard().getHolder());
-//		creditCard.setNumber(u.getCreditCard().getNumber());
-//		CreditCard cre = creditCardService.save(creditCard);
-//		u.setCreditCard(cre);
+
 		Chorbi resu = chorbiService.save(u);
 		return resu;
 	}

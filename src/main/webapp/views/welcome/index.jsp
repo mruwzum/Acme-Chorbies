@@ -21,7 +21,12 @@
 <%--<p><spring:message code="welcome.greeting.current.time" /> ${moment}</p>--%>
 
 
+<security:authorize access="hasRole('BAN')">
+    <spring:message code="actor.banneda" var="suc"/>
+    <h1><jstl:out value="${suc}"/></h1>
 
+
+</security:authorize>
 
 
 <br>
