@@ -47,78 +47,78 @@ public class AdministratorController extends AbstractController {
 	@Autowired
 	private SearchCacheService searchCacheService;
 
-	@RequestMapping( value="/list", method = RequestMethod.GET)
-	public ModelAndView actorList() {
+//	@RequestMapping( value="/list", method = RequestMethod.GET)
+//	public ModelAndView actorList() {
+//
+//		ModelAndView result;
+//		Collection<Administrator> administrator;
+//
+//		administrator = administratorService.findAll();
+//		result = new ModelAndView("administrator/list");
+//		result.addObject("administrator", administrator);
+//		result.addObject("requestURI","administrator/list.do");
+//
+//		return result;
+//	}
+//
+//
+//	//Create Method -----------------------------------------------------------
+//
+//
+//
+//	@RequestMapping(value = "/create", method = RequestMethod.GET)
+//	public ModelAndView create() {
+//
+//		ModelAndView result;
+//		Administrator administrator = administratorService.create();
+//		result = createEditModelAndView(administrator);
+//		return result;
+//
+//	}
 
-		ModelAndView result;
-		Collection<Administrator> administrator;
-
-		administrator = administratorService.findAll();
-		result = new ModelAndView("administrator/list");
-		result.addObject("administrator", administrator);
-		result.addObject("requestURI","administrator/list.do");
-
-		return result;
-	}
-
-
-	//Create Method -----------------------------------------------------------
-
-
-
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
-
-		ModelAndView result;
-		Administrator administrator = administratorService.create();
-		result = createEditModelAndView(administrator);
-		return result;
-
-	}
-
-	// Edition ---------------------------------------------------------
-
-	@RequestMapping(value="/edit", method=RequestMethod.GET)
-	public ModelAndView edit(@RequestParam int administratorId){
-		ModelAndView result;
-		Administrator administrator;
-
-		administrator= administratorService.findOne(administratorId);
-		Assert.notNull(administrator);
-		result= createEditModelAndView(administrator);
-
-		return result;
-	}
-
-	@RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
-	public ModelAndView save(@Valid Administrator administrator, BindingResult binding){
-		ModelAndView result;
-
-		if(binding.hasErrors()){
-			result= createEditModelAndView(administrator);
-		}else{
-			try{
-				administratorService.save(administrator);
-				result= new ModelAndView("chorbi/list.do");
-			}catch(Throwable oops){
-				result= createEditModelAndView(administrator, "administrator.commit.error");
-			}
-		}
-		return result;
-	}
-
-	@RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-	public ModelAndView delete(Administrator administrator){
-		ModelAndView result;
-		try{
-			administratorService.delete(administrator);
-			result=new ModelAndView("redirect:list.do");
-		}catch(Throwable oops){
-			result= createEditModelAndView(administrator, "administrator.commit.error");
-		}
-
-		return result;
-	}
+//	// Edition ---------------------------------------------------------
+//
+//	@RequestMapping(value="/edit", method=RequestMethod.GET)
+//	public ModelAndView edit(@RequestParam int administratorId){
+//		ModelAndView result;
+//		Administrator administrator;
+//
+//		administrator= administratorService.findOne(administratorId);
+//		Assert.notNull(administrator);
+//		result= createEditModelAndView(administrator);
+//
+//		return result;
+//	}
+//
+//	@RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
+//	public ModelAndView save(@Valid Administrator administrator, BindingResult binding){
+//		ModelAndView result;
+//
+//		if(binding.hasErrors()){
+//			result= createEditModelAndView(administrator);
+//		}else{
+//			try{
+//				administratorService.save(administrator);
+//				result= new ModelAndView("chorbi/list.do");
+//			}catch(Throwable oops){
+//				result= createEditModelAndView(administrator, "administrator.commit.error");
+//			}
+//		}
+//		return result;
+//	}
+//
+//	@RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
+//	public ModelAndView delete(Administrator administrator){
+//		ModelAndView result;
+//		try{
+//			administratorService.delete(administrator);
+//			result=new ModelAndView("redirect:list.do");
+//		}catch(Throwable oops){
+//			result= createEditModelAndView(administrator, "administrator.commit.error");
+//		}
+//
+//		return result;
+//	}
 
 
 	// Ancillary methods ------------------------------------------------

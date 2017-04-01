@@ -39,34 +39,34 @@ public class ChirpController extends AbstractController {
 		@Autowired
 		private ChirpService chirpService;
 
-		@RequestMapping( value="/list", method = RequestMethod.GET)
-		public ModelAndView list() {
-
-			ModelAndView result;
-			Collection<Chirp> chirps;
-
-			chirps = chirpService.findAll();
-			result = new ModelAndView("chirp/list");
-			result.addObject("chirps", chirps);
-			result.addObject("requestURI","chirp/list.do");
-
-			return result;
-		}
-
-
-		//Create Method -----------------------------------------------------------
-
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
-
-		ModelAndView result;
-
-		Chirp chirp = chirpService.create();
-		result = createEditModelAndView(chirp);
-
-		return result;
-
-	}
+//		@RequestMapping( value="/list", method = RequestMethod.GET)
+//		public ModelAndView list() {
+//
+//			ModelAndView result;
+//			Collection<Chirp> chirps;
+//
+//			chirps = chirpService.findAll();
+//			result = new ModelAndView("chirp/list");
+//			result.addObject("chirps", chirps);
+//			result.addObject("requestURI","chirp/list.do");
+//
+//			return result;
+//		}
+//
+//
+//		//Create Method -----------------------------------------------------------
+//
+//	@RequestMapping(value = "/create", method = RequestMethod.GET)
+//	public ModelAndView create() {
+//
+//		ModelAndView result;
+//
+//		Chirp chirp = chirpService.create();
+//		result = createEditModelAndView(chirp);
+//
+//		return result;
+//
+//	}
 
 		// Edition ---------------------------------------------------------
 
@@ -99,18 +99,18 @@ public class ChirpController extends AbstractController {
 			return result;
 		}
 
-		@RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-		public ModelAndView delete(Chirp chirp){
-			ModelAndView result;
-			try{
-				chirpService.delete(chirp);
-				result=new ModelAndView("redirect:list.do");
-			}catch(Throwable oops){
-				result= createEditModelAndView(chirp, "chirp.commit.error");
-			}
-
-			return result;
-		}
+//		@RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
+//		public ModelAndView delete(Chirp chirp){
+//			ModelAndView result;
+//			try{
+//				chirpService.delete(chirp);
+//				result=new ModelAndView("redirect:list.do");
+//			}catch(Throwable oops){
+//				result= createEditModelAndView(chirp, "chirp.commit.error");
+//			}
+//
+//			return result;
+//		}
 
 
 	@RequestMapping(value="/delete", method=RequestMethod.GET)

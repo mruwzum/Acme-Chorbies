@@ -93,16 +93,21 @@ public class ChorbiController extends AbstractController {
 	@RequestMapping(value="/register", method=RequestMethod.POST, params="save")
 	public ModelAndView register(@Valid Chorbi chorbi, BindingResult binding){
 		ModelAndView result;
-		if (!binding.hasErrors()) {
-			result= createEditModelAndView2(chorbi);
-		}else{
-			try{
-				actorService.registerAsAChorbi(chorbi);
-				result= new ModelAndView("redirect:list.do");
-			}catch(Throwable oops){
-				result= createEditModelAndView2(chorbi, "general.commit.error");
+		if(chorbi.getAge() >= 18){
+			if (!binding.hasErrors()) {
+				result= createEditModelAndView2(chorbi);
+			}else{
+				try{
+					actorService.registerAsAChorbi(chorbi);
+					result= new ModelAndView("redirect:list.do");
+				}catch(Throwable oops){
+					result= createEditModelAndView2(chorbi, "general.commit.error");
+				}
 			}
+		}else{
+			result =  new ModelAndView("chorbi/error");
 		}
+
 		return result;
 	}
 		// Edition ---------------------------------------------------------
@@ -123,39 +128,23 @@ public class ChorbiController extends AbstractController {
 		@RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
 		public ModelAndView save(@Valid Chorbi chorbi,BindingResult binding){
 			ModelAndView result;
-
-//			if(!binding.hasErrors()){
-//				result= createEditModelAndView(chorbi);
-//			}else{
-//				try{
-
-//					creditCardService.save(chorbi.getCreditCard());
-//					//chorbi.setCreditCard(creditCard1);
-//					coordinateService.save(chorbi.getCoordinate());
-//					//coordinateService.save(coordinate1);
-//					userAccountService.save(chorbi.getUserAccount());
 					chorbiService.save(chorbi);
-
 					result= new ModelAndView("chorbi/success");
-//				}catch(Throwable oops){
-//					result= createEditModelAndView(chorbi, "general.commit.error");
-//				}
+			return result;
+		}
+
+//		@RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
+//		public ModelAndView delete(Chorbi chorbi){
+//			ModelAndView result;
+//			try{
+//				chorbiService.delete(chorbi);
+//				result=new ModelAndView("redirect:list.do");
+//			}catch(Throwable oops){
+//				result= createEditModelAndView(chorbi, "general.commit.error");
 //			}
-			return result;
-		}
-
-		@RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-		public ModelAndView delete(Chorbi chorbi){
-			ModelAndView result;
-			try{
-				chorbiService.delete(chorbi);
-				result=new ModelAndView("redirect:list.do");
-			}catch(Throwable oops){
-				result= createEditModelAndView(chorbi, "general.commit.error");
-			}
-
-			return result;
-		}
+//
+//			return result;
+//		}
 
 
 		// Ancillary methods ------------------------------------------------

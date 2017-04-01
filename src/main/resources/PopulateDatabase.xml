@@ -452,8 +452,8 @@
 		</property>
 	</bean>
 	<bean id="chorbi0" class="domain.Chorbi">
-		<property name="name" value="David" />
-		<property name="surname" value="de la Torre Díaz" />
+		<property name="name" value="peeri" />
+		<property name="surname" value="peri" />
 		<property name="email" value="daviddelatorre00@gmail.com"/>
 		<property name="phone" value="+34-648208840"/>
 		<property name="userAccount" ref="userAccountShurrita" />

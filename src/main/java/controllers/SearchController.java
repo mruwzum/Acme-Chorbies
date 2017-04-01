@@ -128,18 +128,18 @@ public class SearchController extends AbstractController {
         return result;
     }
      
-    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(Search search){
-        ModelAndView result;
-        try{
-            searchService.delete(search);
-            result=new ModelAndView("redirect:list.do");
-        }catch(Throwable oops){
-            result= createEditModelAndView(search, "general.commit.error");
-        }
-         
-        return result;   
-    }
+//    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
+//    public ModelAndView delete(Search search){
+//        ModelAndView result;
+//        try{
+//            searchService.delete(search);
+//            result=new ModelAndView("redirect:list.do");
+//        }catch(Throwable oops){
+//            result= createEditModelAndView(search, "general.commit.error");
+//        }
+//
+//        return result;
+//    }
 	
 	// Ancillary methods ------------------------------------------------
     

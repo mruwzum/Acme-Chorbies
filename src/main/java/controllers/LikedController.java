@@ -37,34 +37,34 @@ public class LikedController extends AbstractController {
     @Autowired
     private LikedService likedService;
 
-    @RequestMapping( value="/list", method = RequestMethod.GET)
-    public ModelAndView list() {
+//    @RequestMapping( value="/list", method = RequestMethod.GET)
+//    public ModelAndView list() {
+//
+//        ModelAndView result;
+//        Collection<Liked> chirps;
+//
+//        chirps = likedService.findAll();
+//        result = new ModelAndView("liked/list");
+//        result.addObject("likes", chirps);
+//        result.addObject("requestURI","liked/list.do");
+//
+//        return result;
+//    }
+//
 
-        ModelAndView result;
-        Collection<Liked> chirps;
-
-        chirps = likedService.findAll();
-        result = new ModelAndView("liked/list");
-        result.addObject("likes", chirps);
-        result.addObject("requestURI","liked/list.do");
-
-        return result;
-    }
-
-
-    //Create Method -----------------------------------------------------------
-
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public ModelAndView create() {
-
-        ModelAndView result;
-
-        Liked chirp = likedService.create();
-        result = createEditModelAndView(chirp);
-
-        return result;
-
-    }
+//    //Create Method -----------------------------------------------------------
+//
+//    @RequestMapping(value = "/create", method = RequestMethod.GET)
+//    public ModelAndView create() {
+//
+//        ModelAndView result;
+//
+//        Liked chirp = likedService.create();
+//        result = createEditModelAndView(chirp);
+//
+//        return result;
+//
+//    }
 
     // Edition ---------------------------------------------------------
 
@@ -83,8 +83,6 @@ public class LikedController extends AbstractController {
     @RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Liked liked, BindingResult binding){
         ModelAndView result;
-
-        //TODO esto no esta probado con el binding
 
         if(!binding.hasErrors()){
             result= createEditModelAndView(liked);

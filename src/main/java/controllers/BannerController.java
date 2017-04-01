@@ -125,20 +125,20 @@ public class BannerController extends AbstractController {
         return result;
     }
 
-    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
-    public ModelAndView delete(@Valid int bannerId){
-        ModelAndView result;
-        try{
-            Banner banner = bannerService.findOne(bannerId);
-            bannerService.delete(banner);
-            result=new ModelAndView("redirect:list.do");
-        }catch(Throwable oops){
-            Banner banner = bannerService.findOne(bannerId);
-            result= createEditModelAndView(banner, "banner.commit.error");
-        }
-
-        return result;
-    }
+//    @RequestMapping(value="/edit", method=RequestMethod.POST, params="delete")
+//    public ModelAndView delete(@Valid int bannerId){
+//        ModelAndView result;
+//        try{
+//            Banner banner = bannerService.findOne(bannerId);
+//            bannerService.delete(banner);
+//            result=new ModelAndView("redirect:list.do");
+//        }catch(Throwable oops){
+//            Banner banner = bannerService.findOne(bannerId);
+//            result= createEditModelAndView(banner, "banner.commit.error");
+//        }
+//
+//        return result;
+//    }
     @RequestMapping(value="/delete", method=RequestMethod.GET)
     public ModelAndView delete2(@RequestParam int bannerId){
         ModelAndView result;
