@@ -50,6 +50,7 @@
 
 		<!--Allows an authenticated user to list all chorbies.-->
 		<security:intercept-url pattern="/chorbi/list.do" access="hasAnyRole('CHORBI','ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/chorbi/listAll.do" access="hasRole('ADMINISTRATOR')"/>
 		<!--Allows an authenticated user as chorbi to edit his chorbi profile.-->
 		<security:intercept-url pattern="/chorbi/edit.do" access="hasRole('CHORBI')"/>
 

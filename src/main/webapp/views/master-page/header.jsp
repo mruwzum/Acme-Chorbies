@@ -32,7 +32,7 @@
 					<li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li>					
 				</ul>
 			</li>
-			<li><a href="chorbi/list.do"><spring:message code="master.page.chorbi.list" /></a></li>
+			<li><a href="chorbi/listAll.do"><spring:message code="master.page.chorbi.list" /></a></li>
 			<li><a href="administrator/changeCache.do"><spring:message code="master.page.administrator.change" /></a></li>
 
 		</security:authorize>

@@ -61,7 +61,20 @@ public class ChorbiController extends AbstractController {
 
 			return result;
 		}
+	@RequestMapping( value="/listAll", method = RequestMethod.GET)
+	public ModelAndView listAll() {
 
+		ModelAndView result;
+		Collection<Chorbi> chorbies ;
+
+		chorbies = chorbiService.findAll();
+
+		result = new ModelAndView("chorbi/list");
+		result.addObject("chorbies", chorbies);
+		result.addObject("requestURI","chorbi/list.do");
+
+		return result;
+	}
 
 		//Create Method -----------------------------------------------------------
 
