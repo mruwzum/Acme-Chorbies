@@ -733,6 +733,7 @@
 		<property name="genre" value="MAN"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="keyword" value="Sevilla"/>
+		<property name="owner" ref="chorbi1"/>
 	</bean>
 	<bean id="search2" class="domain.Search">
 		<property name="age" value="30"/>
@@ -740,6 +741,7 @@
 		<property name="genre" value="WOMAN"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="keyword" value="LOVE"/>
+		<property name="owner" ref="chorbi2"/>
 	</bean>
 	<!-- /Search -->
 </beans>

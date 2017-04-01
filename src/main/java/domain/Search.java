@@ -15,6 +15,7 @@ public class Search extends DomainEntity {
     private Genre genre;
     private Coordinate coordinate;
     private String keyword;
+    private Chorbi owner;
 
 
     public Integer getAge() {
@@ -55,5 +56,14 @@ public class Search extends DomainEntity {
 
     public void setKeyword(String keyword) {
         this.keyword = keyword;
+    }
+
+    @ManyToOne
+    public Chorbi getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Chorbi owner) {
+        this.owner = owner;
     }
 }

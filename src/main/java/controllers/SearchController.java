@@ -52,6 +52,7 @@ public class SearchController extends AbstractController {
 		ModelAndView result;
 		
 		Search search = searchService.create();
+
 		result = createEditModelAndView(search);
         result.addObject("genre", Genre.values());
         result.addObject("relationship", Relationship.values());
@@ -88,10 +89,12 @@ public class SearchController extends AbstractController {
         }
             List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
 
+        search.setOwner(chorbiService.findByPrincipal());
+        Search search1 = searchService.save(search);
+        Chorbi chorbi = chorbiService.findByPrincipal();
+        chorbi.getMySearches().add(search1);
+       // search1.getOwner().getMySearches().add(search1);
 
-            searchService.save(search);
-
-            chorbiService.findByPrincipal().getMySearches().add(search);
             result= new ModelAndView("chorbi/list");
             result.addObject("chorbies",chorbies);
 
