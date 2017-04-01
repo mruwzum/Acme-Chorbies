@@ -11,10 +11,7 @@ import security.LoginService;
 import security.UserAccount;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -101,24 +98,45 @@ public class SearchService {
         return res;
     }
 
-    public Boolean checkCreditCard(Chorbi chorbi){
+    public Boolean checkCreditCard(CreditCard creditCard){
         Boolean res = false;
-        CreditCard creditCard = chorbi.getCreditCard();
-        //TODO hacer mas generico el año
-        int yearAct = 2017;
+        Integer yearAct0 = (((new Date(System.currentTimeMillis())).getYear()));
+        String year ="20"+ yearAct0.toString().substring(1);
+        Integer yearAct = new Integer(year);
         int monthAct = new Date(System.currentTimeMillis()).getMonth();
         if(creditCard==null){
             res = false;
         }else if (creditCard.getExpirationYear()==yearAct && creditCard.getExpirationMonth()<monthAct){
             res = false;
+            creditCard.setValid(false);
         }else if (creditCard.getExpirationYear()==yearAct && creditCard.getExpirationMonth()>=monthAct){
             res =  true;
+            creditCard.setValid(true);
         }else if (creditCard.getExpirationYear()>=yearAct){
             res=   true;
+            creditCard.setValid(true);
         }else if (creditCard.getExpirationYear()<yearAct){
             res= false;
+            creditCard.setValid(false);
         }
         return res;
     }
+    public void checkTime(Collection<Search> searches){
+        Date sys = new Date(System.currentTimeMillis());
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(sys);
+
+        System.out.println(sys.getHours());
+        System.out.println(sys.getMinutes());
+        System.out.println(cal.get(Calendar.DAY_OF_MONTH));
+
+        for (Search s : searches){
+            if (s.getCreationDate().getTime()<= sys.getTime()-12){
+                searches.remove(s);
+            }
+        }
+
+    }
+
 
 }

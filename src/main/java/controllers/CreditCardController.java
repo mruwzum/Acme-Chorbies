@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.ChorbiService;
 import services.CreditCardService;
+import services.SearchService;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -38,6 +39,8 @@ public class CreditCardController extends AbstractController {
 
 		@Autowired
 		private CreditCardService creditCardService;
+		@Autowired
+		private SearchService searchService;
 
 		@RequestMapping( value="/list", method = RequestMethod.GET)
 		public ModelAndView list() {
@@ -90,6 +93,7 @@ public class CreditCardController extends AbstractController {
 				result= createEditModelAndView(creditCard);
 			}else{
 				try{
+					searchService.checkCreditCard(creditCard);
 					creditCardService.save(creditCard);
 					result= new ModelAndView("/profile.do");
 				}catch(Throwable oops){

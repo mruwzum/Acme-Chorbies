@@ -1,6 +1,7 @@
 package domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -16,6 +17,7 @@ public class Search extends DomainEntity {
     private Coordinate coordinate;
     private String keyword;
     private Chorbi owner;
+    private Date creationDate;
 
 
     public Integer getAge() {
@@ -65,5 +67,14 @@ public class Search extends DomainEntity {
 
     public void setOwner(Chorbi owner) {
         this.owner = owner;
+    }
+
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 }

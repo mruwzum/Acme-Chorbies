@@ -36,8 +36,9 @@ public class SearchController extends AbstractController {
 		ModelAndView result;
 		Collection<Search> finders = new HashSet<>();
 //TODO CAPTURAR ERROR BONITO
-		Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal()),"invalid cc / cc no válida");
+		Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()),"invalid cc / cc no válida");
 		finders.addAll(chorbiService.findByPrincipal().getMySearches());
+		searchService.checkTime(finders);
 		result = new ModelAndView("search/list");
 		result.addObject("searchs", finders);
 		result.addObject("requestURI","search/list.do");
@@ -88,7 +89,7 @@ public class SearchController extends AbstractController {
         search= searchService.findOne(searchId);
         Assert.notNull(search);
         //TODO CAPTURAR ERROR BONITO
-        Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal()),"invalid cc / cc no válida");
+        Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()),"invalid cc / cc no válida");
         if (search.getCoordinate().getCity().isEmpty()) {
             search.getCoordinate().setCity("void");
         }
@@ -107,7 +108,7 @@ public class SearchController extends AbstractController {
 //        }else{
 //            try{
         //TODO CAPTURAR ERROR BONITO
-        Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal()),"invalid cc / cc no válida");
+        Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()),"invalid cc / cc no válida");
         if (search.getCoordinate().getCity().isEmpty()) {
             search.getCoordinate().setCity("void");
         }

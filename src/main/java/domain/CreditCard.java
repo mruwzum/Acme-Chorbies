@@ -25,6 +25,7 @@ public class CreditCard extends DomainEntity {
     private int ExpirationYear;
     private int ExpirationMonth;
     private String CVV;
+    private Boolean valid;
 
 
     private Brand brand;
@@ -83,5 +84,13 @@ public class CreditCard extends DomainEntity {
 
     public void setCVV(String CVV) {
         this.CVV = CVV;
+    }
+
+    public Boolean getValid() {
+        return valid;
+    }
+
+    public void setValid(Boolean valid) {
+        this.valid = valid;
     }
 }
