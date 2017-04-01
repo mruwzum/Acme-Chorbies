@@ -3,6 +3,7 @@ package services;
 import domain.Chirp;
 import domain.Chorbi;
 import domain.Liked;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -16,6 +17,8 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -143,4 +146,35 @@ public class ChorbiService {
         }
         return retur;
     }
+    private String checkTextForPhonesAndReplaceIt(String textToReplace){
+        String res = "";
+        String regexpPhone = "(\\+\\d{1,3}[ -.])?(\\(?\\d+\\)?[ -.]?)+";
+        Pattern phone = Pattern.compile(regexpPhone);
+        Matcher matcher = phone.matcher(textToReplace);
+        if(matcher.find()){
+            res = matcher.replaceAll("***");
+         }else{
+        return textToReplace;
+    }
+        return res;
+    }
+    private String checkTextForEmailsAndReplaceIt(String textToReplace){
+        String res = "";
+        String regexpMail = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
+        Pattern mail = Pattern.compile(regexpMail);
+        Matcher matcher1 = mail.matcher(textToReplace);
+        if(matcher1.find()){
+            res = matcher1.replaceAll("***");
+        }else{
+            return textToReplace;
+        }
+        return res;
+    }
+
+   public String megaTextChecker(String text){
+        String res = checkTextForEmailsAndReplaceIt(text);
+        String res2 = checkTextForPhonesAndReplaceIt(res);
+        return res2;
+   }
+
 }

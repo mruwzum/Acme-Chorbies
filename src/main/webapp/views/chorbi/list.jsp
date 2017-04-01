@@ -13,7 +13,7 @@
 
 <!-- Listing grid -->
 <display:table pagesize="15" class="displaytag" keepStatus="true"
-	name="chorbies" requestURI="${requestURI}" id="row">
+	name="chorbies" id="row">
 
 
 	<%--<!-- Attributes -->--%>
@@ -28,8 +28,8 @@
 	<display:column property="name" title="${name}" sortable="true" />
 	<spring:message code="administrator.surname" var="surname" />
 	<display:column property="surname" title="${surname}" sortable="true" />
-	<spring:message code="chorbi.description" var="description" />
-	<display:column property="description" title="${description}" sortable="true" />
+	<%--<spring:message code="chorbi.description" var="description" />--%>
+	<%--<display:column property="description" title="${description}" sortable="true" />--%>
 	<spring:message code="chorbi.genre" var="genre" />
 	<display:column property="genre" title="${genre}" sortable="true" />
 	<spring:message code="chorbi.relationship" var="relationship" />

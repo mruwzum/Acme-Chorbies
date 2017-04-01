@@ -10,15 +10,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
-	<div>
-		<H5>
-			<a href="liked/create.do"> <spring:message
-					code="general.create" />
-			</a>
-		</H5>
-	</div>
-</security:authorize>
+
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
@@ -43,5 +35,15 @@
 	<display:column property="text" title="${text}" sortable="true" />
 	<spring:message code="like.sender" var="sender" />
 	<display:column property="sender" title="${sender}" sortable="true" />
-
+	<spring:message code="like.receiver" var="receiver" />
+	<display:column property="receiver" title="${receiver}" sortable="true" />
+	<security:authorize access="hasRole('CHORBI')">
+		<jstl:if test="${my}">
+		<display:column>
+				<a href="chorbi/view.do?likeId=${row.id}"> <spring:message
+						code="general.viewz" />
+				</a>
+			</display:column>
+		</jstl:if>
+	</security:authorize>
 </display:table>

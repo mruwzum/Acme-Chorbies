@@ -412,7 +412,7 @@
 		<property name="phone" value="+23-6234456456"/>
 		<property name="userAccount" ref="userAccountChorbi1" />
 		<property name="picture" value="http://men-dating.letsbond.com/media/articles/320/tips-for-a-good-online-dating-profile_big.jpg"/>
-		<property name="description" value="Chorbi 1 description"/>
+		<property name="description" value="Chorbi 1 description +23-32464536754 with an contact email pepe@gmail.com "/>
 		<property name="genre" value="MAN"/>
 		<property name="relationship" value="LOVE"/>
 		<property name="creditCard" ref="creditcard1"/>
@@ -526,7 +526,7 @@
 		<property name="userAccount" ref="userAccountChorbi2" />
 		<property name="age" value="27"/>
 		<property name="picture" value="http://www.wonderslist.com/wp-content/uploads/2015/10/Doutzen-Kroes-Most-Beautiful-Dutch-Woman.jpg"/>
-		<property name="description" value="Chorbi 2 description"/>
+		<property name="description" value="Chorbi description"/>
 		<property name="genre" value="WOMAN"/>
 		<property name="relationship" value="LOVE"/>
 		<property name="creditCard" ref="creditcard2"/>
@@ -566,7 +566,7 @@
 		<property name="userAccount" ref="userAccountChorbi3" />
 		<property name="age" value="45"/>
 		<property name="picture" value="http://pngimg.com/uploads/man/man_PNG6534.png"/>
-		<property name="description" value="Chorbi 3 description"/>
+		<property name="description" value="Chorbi  description call me now!! +23-32464536754"/>
 		<property name="genre" value="MAN"/>
 		<property name="relationship" value="FRIENDSHIP"/>
 		<property name="creditCard" ref="creditcard3"/>
@@ -610,7 +610,7 @@
 		<property name="userAccount" ref="userAccountChorbi4" />
 		<property name="age" value="24"/>
 		<property name="picture" value="https://www.nationaleombudsman.nl/uploads/afbeelding/2012%20Jonge%20man.jpg"/>
-		<property name="description" value="Chorbi 4 description"/>
+		<property name="description" value="Chorbi  description call me now!! +23-32464536754 "/>
 		<property name="genre" value="MAN"/>
 		<property name="relationship" value="ACTIVITIES"/>
 		<property name="creditCard" ref="creditcard4"/>
@@ -648,7 +648,7 @@
 		<property name="userAccount" ref="userAccountChorbi5" />
 		<property name="age" value="27"/>
 		<property name="picture" value="http://si.wsj.net/public/resources/images/WW-AA663A_SANDB_M_20150925152829.jpg"/>
-		<property name="description" value="Chorbi 5 description"/>
+		<property name="description" value="Chorbi description"/>
 		<property name="genre" value="WOMAN"/>
 		<property name="relationship" value="FRIENDSHIP"/>
 		<property name="creditCard" ref="creditcard5"/>

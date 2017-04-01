@@ -289,7 +289,22 @@ public class ChorbiController extends AbstractController {
 
 	}
 
+	@RequestMapping(value="/view", method=RequestMethod.GET)
+	public ModelAndView view(@RequestParam int likeId){
+		ModelAndView result;
+		Liked liked = likedService.findOne(likeId);
+		Chorbi chorbi = liked.getReceiver();
+String des = chorbiService.megaTextChecker(chorbi.getDescription());
+		result = new ModelAndView("chorbi/view");
 
+		result.addObject("name",chorbi.getName());
+		result.addObject("surname",chorbi.getSurname());
+		result.addObject("age",chorbi.getAge());
+		result.addObject("picture",chorbi.getPicture());
+		result.addObject("description",des);
+
+		return result;
+	}
 
 	}
 

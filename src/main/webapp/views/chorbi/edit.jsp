@@ -31,7 +31,7 @@
 	<acme:textbox path="surname" code="customer.surname"/>
 	<acme:textbox path="email" code="customer.email"/>
 	<acme:textbox path="phone" code="customer.phone"/>
-	<acme:textbox path="birthDate" code="customer.birth"/>
+	<acme:textbox path="age" code="customer.birth"/>
 
 
 

@@ -54,7 +54,7 @@
 		<!--Allows an authenticated user as chorbi to edit his chorbi profile.-->
 		<security:intercept-url pattern="/chorbi/edit.do" access="hasRole('CHORBI')"/>
 
-
+		<security:intercept-url pattern="/chorbi/view.do" access="hasRole('CHORBI')"/>
 
 		<!--Allows chorbies to likes other chorbies.-->
 		<security:intercept-url pattern="/chorbi/like.do" access="hasRole('CHORBI')"/>

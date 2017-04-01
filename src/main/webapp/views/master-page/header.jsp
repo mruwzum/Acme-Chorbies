@@ -29,7 +29,6 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="banner/list.do"><spring:message code="master.page.administrator.action.1" /></a></li>
-					<li><a href="administrator/action-2.do"><spring:message code="master.page.administrator.action.2" /></a></li>					
 				</ul>
 			</li>
 			<li><a href="chorbi/listAll.do"><spring:message code="master.page.chorbi.list" /></a></li>

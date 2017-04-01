@@ -109,4 +109,11 @@ public class SearchServiceTest extends AbstractTest {
         System.out.println(searchesAux);
     }
 
+
+    @Test
+    public void banText(){
+String text = "Hola, soy anto y soy un chico formal horbi 4 description call me now!! +23-32464536754  ";
+        String res = chorbiService.megaTextChecker(text);
+        System.out.println(res);
+    }
 }
