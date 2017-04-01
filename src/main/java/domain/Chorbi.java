@@ -2,6 +2,7 @@ package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
@@ -21,7 +22,7 @@ public class Chorbi extends Actor {
     private Genre genre;
     private Relationship relationship;
     private CreditCard creditCard;
-    private Date birthDate;
+    private int age;
     private Boolean isBanned;
 
 
@@ -69,10 +70,10 @@ public class Chorbi extends Actor {
     }
 
     @NotNull
-    @Temporal(TemporalType.DATE)
-    public Date getBirthDate() {return birthDate;}
+    @Range(min=0, max=99)
+    public int getAge() {return age;}
 
-    public void setBirthDate(Date birthDate) {this.birthDate = birthDate;}
+    public void setAge(int age) {this.age = age;}
 
     @OneToOne(cascade = CascadeType.ALL)
     public CreditCard getCreditCard() {

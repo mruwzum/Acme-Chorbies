@@ -15,4 +15,9 @@
 		<put-attribute name="body" value="/views/administrator/edit.jsp" />
 	</definition>
 
+	<definition name="administrator/editCache" extends="master.page">
+		<put-attribute name="title" value="administrator: Editar Cache"/>
+		<put-attribute name="body" value="/views/administrator/editCache.jsp"/>
+	</definition>
+
 </tiles-definitions>

@@ -12,6 +12,7 @@ package controllers;
 
 import domain.Administrator;
 import domain.Chorbi;
+import domain.SearchCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -22,9 +23,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import services.AdministratorService;
 import services.ChorbiService;
+import services.SearchCacheService;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping("/administrator")
@@ -40,6 +44,8 @@ public class AdministratorController extends AbstractController {
 	private AdministratorService administratorService;
 	@Autowired
 	private ChorbiService chorbiService;
+	@Autowired
+	private SearchCacheService searchCacheService;
 
 	@RequestMapping( value="/list", method = RequestMethod.GET)
 	public ModelAndView actorList() {
@@ -178,5 +184,30 @@ public class AdministratorController extends AbstractController {
 	}
 
 
+	@RequestMapping("/changeCache")
+	public ModelAndView changeCache(){
+		ModelAndView res;
+
+		List<SearchCache> caches = new ArrayList<>(searchCacheService.findAll());
+		res = new ModelAndView("administrator/editCache");
+		res.addObject("searchCache", caches.get(0));
+
+
+		return res;
+	}
+	@RequestMapping(value = "/editCache", method=RequestMethod.POST, params="save" )
+	public ModelAndView editCache(@Valid SearchCache searchCache){
+		ModelAndView res;
+
+		try {
+			searchCacheService.save(searchCache);
+			res = new ModelAndView("chorbi/success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			res =  new ModelAndView("chorbi/error");
+		}
+
+		return res;
+	}
 
 }

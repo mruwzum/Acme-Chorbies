@@ -25,6 +25,8 @@ public class SearchService {
     private SearchRepository searchRepository;
     @Autowired
     private ChorbiService chorbiService;
+    @Autowired
+    private SearchCacheService searchCacheService;
 
     // Supporting services -----------------------
 
@@ -81,7 +83,7 @@ public class SearchService {
             return chorbis;
         }else {
             for (Chorbi p : chorbis){
-                if ((p.getBirthDate().getYear()-este)==age||p.getGenre().equals(genre)||p.getRelationship().equals(relationship)||p.getCoordinate().getCity().equals(coordinate.getCity())||p.getCoordinate().getCountry().equals(coordinate.getCountry())||p.getCoordinate().getState().equals(coordinate.getState()) || p.getCoordinate().getProvince().equals(coordinate.getProvince())&& containsKey(chorbis,keyword)){
+                if ((p.getAge()==age||p.getGenre().equals(genre)||p.getRelationship().equals(relationship)||p.getCoordinate().getCity().equals(coordinate.getCity())||p.getCoordinate().getCountry().equals(coordinate.getCountry())||p.getCoordinate().getState().equals(coordinate.getState()) || p.getCoordinate().getProvince().equals(coordinate.getProvince())&& containsKey(chorbis,keyword))){
                     aux.add(p);
                 }
             }
@@ -123,7 +125,8 @@ public class SearchService {
     }
     public void checkTime(Collection<Search> searches){
         Date actual = new Date(System.currentTimeMillis());
-        Integer hour = 12;
+        List<SearchCache> caches = new ArrayList<>(searchCacheService.findAll());
+        Integer hour = caches.get(0).getCacheValue();
         Long VALUEZ = hour * 60 * 60 * 1000L;
         for (Search s : searches) {
             if (Math.abs(s.getCreationDate().getTime() - actual.getTime()) > VALUEZ) {

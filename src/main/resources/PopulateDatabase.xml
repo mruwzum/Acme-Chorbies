@@ -416,7 +416,7 @@
 		<property name="genre" value="MAN"/>
 		<property name="relationship" value="LOVE"/>
 		<property name="creditCard" ref="creditcard1"/>
-		<property name="birthDate" value="1985/04/23 00:00:00"/>
+		<property name="age" value="32"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="banned" value="false"/>
 		<property name="chirps">
@@ -462,7 +462,7 @@
 		<property name="genre" value="MAN"/>
 		<property name="relationship" value="LOVE"/>
 		<property name="creditCard" ref="creditcard6"/>
-		<property name="birthDate" value="1995/04/23 00:00:00"/>
+		<property name="age" value="21"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="banned" value="false"/>
 		<property name="chirps">
@@ -494,7 +494,7 @@
 		<property name="genre" value="MAN"/>
 		<property name="relationship" value="ACTIVITIES"/>
 		<!--<property name="creditCard" ref="creditcard7"/>-->
-		<property name="birthDate" value="1991/07/22 17:05:15"/>
+		<property name="age" value="25"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="banned" value="false"/>
 		<property name="chirps">
@@ -524,7 +524,7 @@
 		<property name="email" value="Chorbi2Email@gmail.com"/>
 		<property name="phone" value="+23-534745767"/>
 		<property name="userAccount" ref="userAccountChorbi2" />
-		<property name="birthDate" value="1990/04/12 00:00:00"/>
+		<property name="age" value="27"/>
 		<property name="picture" value="http://www.wonderslist.com/wp-content/uploads/2015/10/Doutzen-Kroes-Most-Beautiful-Dutch-Woman.jpg"/>
 		<property name="description" value="Chorbi 2 description"/>
 		<property name="genre" value="WOMAN"/>
@@ -564,7 +564,7 @@
 		<property name="email" value="Chorbi3Email@gmail.com"/>
 		<property name="phone" value="+23-32464536754"/>
 		<property name="userAccount" ref="userAccountChorbi3" />
-		<property name="birthDate" value="1972/12/23 00:00:00"/>
+		<property name="age" value="45"/>
 		<property name="picture" value="http://pngimg.com/uploads/man/man_PNG6534.png"/>
 		<property name="description" value="Chorbi 3 description"/>
 		<property name="genre" value="MAN"/>
@@ -608,7 +608,7 @@
 		<property name="email" value="Chorbi4Email@gmail.com"/>
 		<property name="phone" value="+23-32464536754"/>
 		<property name="userAccount" ref="userAccountChorbi4" />
-		<property name="birthDate" value="1993/01/18 00:00:00"/>
+		<property name="age" value="24"/>
 		<property name="picture" value="https://www.nationaleombudsman.nl/uploads/afbeelding/2012%20Jonge%20man.jpg"/>
 		<property name="description" value="Chorbi 4 description"/>
 		<property name="genre" value="MAN"/>
@@ -646,7 +646,7 @@
 		<property name="email" value="Chorbi4Email@gmail.com"/>
 		<property name="phone" value="+23-32464536754"/>
 		<property name="userAccount" ref="userAccountChorbi5" />
-		<property name="birthDate" value="1990/04/23 00:00:00"/>
+		<property name="age" value="27"/>
 		<property name="picture" value="http://si.wsj.net/public/resources/images/WW-AA663A_SANDB_M_20150925152829.jpg"/>
 		<property name="description" value="Chorbi 5 description"/>
 		<property name="genre" value="WOMAN"/>
@@ -749,4 +749,11 @@
 		<property name="creationDate" value="2017/04/01 00:00:00"/>
 	</bean>
 	<!-- /Search -->
+
+	<!-- Search Cache-->
+	<bean id="searchCache1" class="domain.SearchCache">
+		<property name="cacheValue" value="12"/>
+	</bean>
+
+	<!-- /Search Cache -->
 </beans>
