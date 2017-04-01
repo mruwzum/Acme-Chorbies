@@ -95,7 +95,7 @@ public class CreditCardController extends AbstractController {
 				try{
 					searchService.checkCreditCard(creditCard);
 					creditCardService.save(creditCard);
-					result= new ModelAndView("/profile.do");
+					result= new ModelAndView("chorbi/list.do");
 				}catch(Throwable oops){
 					result= createEditModelAndView(creditCard, "general.commit.error");
 				}

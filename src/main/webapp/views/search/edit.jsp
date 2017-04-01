@@ -44,5 +44,8 @@
 
 	<!---------------------------- BOTONES -------------------------->
 	<acme:submit name="save" code="search.save"/>
+	<input type="button" name="cancel"
+		   value="<spring:message code="general.cancel" />"
+		   onclick="javascript: window.location.replace('/chorbi/list.do')" />
 
 </form:form>

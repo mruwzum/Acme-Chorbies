@@ -99,7 +99,7 @@ public class AdministratorController extends AbstractController {
 		}else{
 			try{
 				administratorService.save(administrator);
-				result= new ModelAndView("/profile.do");
+				result= new ModelAndView("chorbi/list.do");
 			}catch(Throwable oops){
 				result= createEditModelAndView(administrator, "administrator.commit.error");
 			}
