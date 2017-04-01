@@ -27,12 +27,21 @@
 
 	<!-- Attributes -->
 
-	<security:authorize access="permitAll">
-		<display:column>
-			<a href="chirp/edit.do?chirpId=${row.id}"> <spring:message
-					code="general.edit" />
-			</a>
-		</display:column>
+	<security:authorize access="hasRole('CHORBI')">
+		<jstl:if test="${re}">
+			<display:column>
+				<a href="chirp/resend.do?chirpId=${row.id}"> <spring:message
+						code="chirp.resend" />
+				</a>
+			</display:column>
+		</jstl:if>
+		<jstl:if test="${pl}">
+			<display:column>
+				<a href="chirp/reply.do?chirpId=${row.id}"> <spring:message
+						code="chirp.reply" />
+				</a>
+			</display:column>
+		</jstl:if>
 	</security:authorize>
 	
 	<spring:message code="chirp.message" var="message" />

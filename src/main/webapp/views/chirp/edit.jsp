@@ -21,7 +21,6 @@
 
 
 
-
 	<acme:textbox path="message" code="chirp.message"/>
 	<br />
 	<acme:textbox path="subject" code="chirp.subject"/>

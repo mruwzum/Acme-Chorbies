@@ -92,8 +92,8 @@ public class Chorbi extends Actor {
         this.coordinate = coordinate;
     }
 
-
-    @OneToMany(targetEntity = Chirp.class, mappedBy = "receiver")
+//TODO mirar los cascade
+    @OneToMany(targetEntity = Chirp.class, mappedBy = "receiver", cascade = CascadeType.ALL)
     public Collection<Chirp> getChirps() {
         return chirps;
     }
@@ -111,7 +111,7 @@ public class Chorbi extends Actor {
         this.likes = likes;
     }
 
-    @OneToMany(targetEntity = Chirp.class, mappedBy = "sender")
+    @OneToMany(targetEntity = Chirp.class, mappedBy = "sender", cascade = CascadeType.ALL)
     public Collection<Chirp> getMyChirps() {
         return myChirps;
     }

@@ -100,6 +100,9 @@ public class ActorService {
 		u.setCoordinate(savec);
 
 
+		u.setBanned(false);
+
+
 		Chorbi resu = chorbiService.save(u);
 		return resu;
 	}

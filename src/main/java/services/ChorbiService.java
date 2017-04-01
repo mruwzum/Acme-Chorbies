@@ -1,5 +1,6 @@
 package services;
 
+import domain.Chirp;
 import domain.Chorbi;
 import domain.Liked;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,6 +91,39 @@ public class ChorbiService {
     }
 
 
+
+    public Collection<Liked> getMyLikes(){
+
+        Chorbi chorbi = findByPrincipal();
+        Assert.notNull(chorbi);
+        Collection<Liked> myLiked = findByPrincipal().getMyLikes();
+        return myLiked;
+    }
+
+    public Collection<Liked> getLikes(){
+
+        Chorbi chorbi = findByPrincipal();
+        Assert.notNull(chorbi);
+        Collection<Liked> likeds = findByPrincipal().getLikes();
+        return likeds;
+    }
+
+
+    public Collection<Chirp> getMyChirps(){
+
+        Chorbi chorbi = findByPrincipal();
+        Assert.notNull(chorbi);
+        Collection<Chirp> myChirps= findByPrincipal().getMyChirps();
+        return myChirps;
+    }
+
+    public Collection<Chirp> getChirps(){
+
+        Chorbi chorbi = findByPrincipal();
+        Assert.notNull(chorbi);
+        Collection<Chirp> Chirps= findByPrincipal().getChirps();
+        return Chirps;
+    }
 
     public void flush(){
         chorbiRepository.flush();

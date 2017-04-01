@@ -57,6 +57,14 @@
 
 				</ul>
 			</li>
+			<li><a class="fNiv"><spring:message	code="master.page.chirp" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="chorbi/mychirps.do"><spring:message code="master.page.chorbi.my.chirps" /></a></li>
+					<li><a href="chorbi/chirps.do"><spring:message code="master.page.chorbi.chirp" /></a></li>
+
+				</ul>
+			</li>
 			<li><a href="chorbi/list.do"><spring:message code="master.page.chorbi.list" /></a></li>
 
 		</security:authorize>

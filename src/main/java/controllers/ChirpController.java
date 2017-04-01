@@ -86,16 +86,16 @@ public class ChirpController extends AbstractController {
 		public ModelAndView save(@Valid Chirp chirp, BindingResult binding){
 			ModelAndView result;
 
-			if(binding.hasErrors()){
-				result= createEditModelAndView(chirp);
-			}else{
-				try{
-					chirpService.save(chirp);
-					result= new ModelAndView("/profile.do");
-				}catch(Throwable oops){
-					result= createEditModelAndView(chirp, "chirp.commit.error");
-				}
-			}
+//			if(binding.hasErrors()){
+//				result= createEditModelAndView(chirp);
+//			}else{
+//				try{
+					chirpService.postChirp(chirp);
+					result= new ModelAndView("chorbi/success");
+//				}catch(Throwable oops){
+//					result= createEditModelAndView(chirp, "chirp.commit.error");
+//				}
+//			}
 			return result;
 		}
 
@@ -133,6 +133,47 @@ public class ChirpController extends AbstractController {
 			return result;
 
 		}
+
+
+		//OTHER METHODS
+
+	@RequestMapping(value="/resend", method=RequestMethod.GET)
+	public ModelAndView resend(@RequestParam int chirpId){
+		ModelAndView result;
+		Chirp chirp= chirpService.findOne(chirpId);
+		Assert.notNull(chirp);
+
+		try {
+			chirpService.resend(chirp);
+			result = new ModelAndView("chorbi/success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = new ModelAndView("chorbi/error");
+
+		}
+
+		return result;
+	}
+
+	@RequestMapping(value="/reply", method=RequestMethod.GET)
+	public ModelAndView reply(@RequestParam int chirpId){
+		ModelAndView result;
+		Chirp chirp= chirpService.findOne(chirpId);
+		Assert.notNull(chirp);
+
+		try {
+			Chirp chirp1 =  chirpService.reply(chirp);
+			result =  new ModelAndView("chirp/edit");
+			result.addObject("chirp", chirp1);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = new ModelAndView("chorbi/error");
+
+		}
+
+		return result;
+	}
 
 
 	}

@@ -84,16 +84,18 @@ public class LikedController extends AbstractController {
     public ModelAndView save(@Valid Liked liked, BindingResult binding){
         ModelAndView result;
 
-//        if(binding.hasErrors()){
-//            result= createEditModelAndView(liked);
-//        }else{
-//            try{
+        //TODO esto no esta probado con el binding
+
+        if(!binding.hasErrors()){
+            result= createEditModelAndView(liked);
+        }else{
+            try{
                 likedService.postLike(liked);
                 result= new ModelAndView("chorbi/success");
-//            }catch(Throwable oops){
-//                result= createEditModelAndView(liked, "chirp.commit.error");
-//            }
-//        }
+            }catch(Throwable oops){
+                result= createEditModelAndView(liked, "chirp.commit.error");
+            }
+        }
         return result;
     }
 

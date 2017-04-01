@@ -74,8 +74,14 @@
 		<security:intercept-url pattern="/banner/delte.do" access="hasRole('ADMINISTRATOR')"/>
 
 
-
-
+		<!--Allows chorbies to chirp other chorbies.-->
+		<security:intercept-url pattern="/chorbi/chirp.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/chirp/edit.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/chorbi/mychirps.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/chorbi/chirps.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/chirp/delete.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/chirp/resend.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/chirp/reply.do" access="hasRole('CHORBI')"/>
 
 
 

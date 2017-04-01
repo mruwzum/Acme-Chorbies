@@ -40,6 +40,8 @@ public class ChorbiController extends AbstractController {
 		private ActorService actorService;
 		@Autowired
 		private LikedService likedService;
+		@Autowired
+		private ChirpService chirpService;
 
 
 		@RequestMapping( value="/list", method = RequestMethod.GET)
@@ -205,7 +207,7 @@ public class ChorbiController extends AbstractController {
 	public ModelAndView myLikeList(){
 
 		ModelAndView res;
-		Collection<Liked> myLiked = chorbiService.findByPrincipal().getMyLikes();
+		Collection<Liked> myLiked = chorbiService.getMyLikes();
 		Boolean my = true;
 		res =  new ModelAndView("liked/list");
 		res.addObject("likes", myLiked);
@@ -217,12 +219,59 @@ public class ChorbiController extends AbstractController {
 	@RequestMapping(value = "/likes")
 	public ModelAndView likes(){
 		ModelAndView res;
-		Collection<Liked> Liked = chorbiService.findByPrincipal().getLikes();
+		Collection<Liked> Liked = chorbiService.getLikes();
 		res =  new ModelAndView("liked/list");
 		res.addObject("likes", Liked);
 		return res;
 
 	}
+
+
+	//Chirp
+	@RequestMapping(value = "/chirp" , method = RequestMethod.GET)
+	public ModelAndView createChirp(@RequestParam int chorbiId){
+
+
+		ModelAndView res;
+
+		Chirp chirp = chirpService.create();
+		Chorbi receiver = chorbiService.findOne(chorbiId);
+
+		chirp.setReceiver(receiver);
+		chirp.setSender(chorbiService.findByPrincipal());
+		res =  new ModelAndView("chirp/edit");
+		res.addObject("chirp", chirp);
+
+		return res;
+
+
+	}
+
+	@RequestMapping(value = "/mychirps")
+	public ModelAndView myChirpList(){
+
+		ModelAndView res;
+		Collection<Chirp> myLiked = chorbiService.getMyChirps();
+		Boolean re = true;
+		res =  new ModelAndView("chirp/list");
+		res.addObject("chirps", myLiked);
+		res.addObject("re",re);
+		return res;
+
+	}
+
+	@RequestMapping(value = "/chirps")
+	public ModelAndView chirps(){
+		ModelAndView res;
+		Boolean pl = true;
+		Collection<Chirp> Liked = chorbiService.findByPrincipal().getChirps();
+		res =  new ModelAndView("chirp/list");
+		res.addObject("chirps", Liked);
+		res.addObject("pl",pl);
+		return res;
+
+	}
+
 
 
 	}

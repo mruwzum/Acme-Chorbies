@@ -46,6 +46,14 @@
 		</display:column>
 	</security:authorize>
 
+	<security:authorize access="hasRole('CHORBI')">
+		<display:column>
+			<a href="chorbi/chirp.do?chorbiId=${row.id}"> <spring:message
+					code="chorbi.chirp" />
+			</a>
+		</display:column>
+	</security:authorize>
+
 	<security:authorize access="hasRole('ADMINISTRATOR')">
 		<display:column>
 			<jstl:if test="${not row.banned}">
