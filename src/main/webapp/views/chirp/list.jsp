@@ -10,15 +10,6 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="permitAll">
-	<div>
-		<H5>
-			<a href="chirp/create.do"> <spring:message
-					code="general.create" />
-			</a>
-		</H5>
-	</div>
-</security:authorize>
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
