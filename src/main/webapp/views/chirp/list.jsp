@@ -13,7 +13,7 @@
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="chirps" requestURI="${requestURI}" id="row">
+	name="chirps" id="row">
 
 
 	<!-- Attributes -->
@@ -46,6 +46,8 @@
 	<display:column property="subject" title="${subject}" sortable="true" />
 	<spring:message code="chirp.moment" var="moment" />
 	<display:column property="moment" title="${moment}" sortable="true" />
-
-
+	<spring:message code="chirp.sender" var="sender" />
+	<display:column property="sender" title="${sender}" sortable="true" />
+	<spring:message code="chirp.receiver" var="sender" />
+	<display:column property="receiver" title="${receiver}" sortable="true" />
 </display:table>

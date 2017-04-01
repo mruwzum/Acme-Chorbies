@@ -319,7 +319,7 @@
 		<property name="subject" value="title1"/>
 		<property name="moment" value="2016/04/23 23:00:12"/>
 		<property name="message" value="text1"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="https://pi.tedcdn.com/r/pf.tedcdn.com/images/playlists/in_the_mood_for_love_1200x627.jpg"/>
 		<property name="sender" ref="chorbi1"/>
 		<property name="receiver" ref="chorbi2"/>
 	</bean>
@@ -327,7 +327,7 @@
 		<property name="subject" value="title2"/>
 		<property name="moment" value="2016/04/23 23:00:12"/>
 		<property name="message" value="text2"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="https://static.pexels.com/photos/6371/red-love-heart-valentines.jpg"/>
 		<property name="sender" ref="chorbi2"/>
 		<property name="receiver" ref="chorbi4"/>
 	</bean>
@@ -335,7 +335,7 @@
 		<property name="subject" value="title3"/>
 		<property name="moment" value="2016/04/23 23:00:12"/>
 		<property name="message" value="text3"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="https://www.psychologies.co.uk/sites/default/files/field/image/Life%20Lab%20love%20languages.jpg"/>
 		<property name="sender" ref="chorbi4"/>
 		<property name="receiver" ref="chorbi2"/>
 	</bean>
@@ -343,7 +343,7 @@
 		<property name="subject" value="title4"/>
 		<property name="moment" value="2016/04/23 23:00:12"/>
 		<property name="message" value="text4"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="http://wishesmessages.com/wp-content/uploads/2013/04/Heart-i-love-you-never-leave-me-message-640x480.jpg"/>
 		<property name="sender" ref="chorbi3"/>
 		<property name="receiver" ref="chorbi5"/>
 	</bean>
@@ -351,7 +351,7 @@
 		<property name="subject" value="title5"/>
 		<property name="moment" value="2016/04/23 23:00:12"/>
 		<property name="message" value="text5"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="http://www.clipartkid.com/images/31/love-you-clipart-clipart-panda-free-clipart-images-Nrbxqi-clipart.png"/>
 		<property name="sender" ref="chorbi2"/>
 		<property name="receiver" ref="chorbi5"/>
 	</bean>
@@ -359,7 +359,7 @@
 		<property name="subject" value="title6"/>
 		<property name="moment" value="2016/04/23 23:00:12"/>
 		<property name="message" value="text6"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="https://www.psychologies.co.uk/sites/default/files/field/image/Life%20Lab%20love%20languages.jpg"/>
 		<property name="sender" ref="chorbi4"/>
 		<property name="receiver" ref="chorbi1"/>
 	</bean>
@@ -367,7 +367,7 @@
 		<property name="subject" value="title7"/>
 		<property name="moment" value="2016/04/23 23:00:12"/>
 		<property name="message" value="text7"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="http://sites.psu.edu/siowfa15/wp-content/uploads/sites/29639/2015/09/love-4.jpg"/>
 		<property name="sender" ref="chorbi4"/>
 		<property name="receiver" ref="chorbi3"/>
 	</bean>
@@ -375,7 +375,7 @@
 		<property name="subject" value="title8"/>
 		<property name="moment" value="2016/04/23 23:00:12"/>
 		<property name="message" value="text8"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="https://pb-assets.tedcdn.com/system/baubles/files/000/000/958/original/topics_trh_love.jpg"/>
 		<property name="sender" ref="chorbi3"/>
 		<property name="receiver" ref="chorbi2"/>
 	</bean>
@@ -383,7 +383,7 @@
 		<property name="subject" value="title9"/>
 		<property name="moment" value="2016/04/23 23:00:12"/>
 		<property name="message" value="text9"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="https://www.psychologies.co.uk/sites/default/files/field/image/Life%20Lab%20love%20languages.jpg"/>
 		<property name="sender" ref="chorbi2"/>
 		<property name="receiver" ref="chorbi5"/>
 	</bean>
@@ -391,7 +391,7 @@
 		<property name="subject" value="title10"/>
 		<property name="moment" value="2017/01/23 23:00:12"/>
 		<property name="message" value="text10"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="https://www.hopespeak.com/blog/wp-content/uploads/2015/05/Without-saying-I-love-you.jpg"/>
 		<property name="sender" ref="chorbi5"/>
 		<property name="receiver" ref="chorbi1"/>
 	</bean>
@@ -399,7 +399,7 @@
 		<property name="subject" value="title10"/>
 		<property name="moment" value="2017/01/23 23:00:12"/>
 		<property name="message" value="text10"/>
-		<property name="attachments" value="sdfasdfsdfsdfsd"/>
+		<property name="attachments" value="http://www.desicomments.com/wp-content/uploads/Animated-Image-Of-Open-Love-Envelope.gif"/>
 		<property name="sender" ref="chorbi2"/>
 		<property name="receiver" ref="chorbi4"/>
 	</bean>
