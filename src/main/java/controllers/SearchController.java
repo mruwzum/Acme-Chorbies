@@ -85,43 +85,46 @@ public class SearchController extends AbstractController {
 
 
     @RequestMapping(value="/findR", method=RequestMethod.GET)
-    public ModelAndView findR(@RequestParam int searchId){
+    public ModelAndView findR(@RequestParam int searchId) {
         ModelAndView result;
         Search search;
 
-        search= searchService.findOne(searchId);
+        search = searchService.findOne(searchId);
         Assert.notNull(search);
-        //TODO CAPTURAR ERROR BONITO
-        Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()),"invalid cc / cc no válida");
-        if (search.getCoordinate().getCity().isEmpty()) {
-            search.getCoordinate().setCity("void");
-        }
-        List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
+        if (searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard())) {
+            if (search.getCoordinate().getCity().isEmpty()) {
+                search.getCoordinate().setCity("void");
+            }
+            List<Chorbi> chorbies = searchService.finder(search.getAge(), search.getRelationship(), search.getGenre(), search.getCoordinate(), search.getKeyword());
 
-        result= new ModelAndView("chorbi/list");
-        result.addObject("chorbies",chorbies);
+            result = new ModelAndView("chorbi/list");
+            result.addObject("chorbies", chorbies);
+        } else {
+            result =  new ModelAndView("credit-card/error");
+        }
         return result;
     }
     @RequestMapping(value="/find", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Search search, BindingResult binding){
         ModelAndView result;
 
-        //TODO CAPTURAR ERROR BONITO
-        Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()),"invalid cc / cc no válida");
-        if (search.getCoordinate().getCity().isEmpty()) {
-            search.getCoordinate().setCity("void");
-        }
+        if(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard())){
+            if (search.getCoordinate().getCity().isEmpty()) {
+                search.getCoordinate().setCity("void");
+            }
             search.setCreationDate(new Date(System.currentTimeMillis()-100));
             List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
 
-        search.setOwner(chorbiService.findByPrincipal());
-        Search search1 = searchService.save(search);
-        Chorbi chorbi = chorbiService.findByPrincipal();
-        chorbi.getMySearches().add(search1);
+            search.setOwner(chorbiService.findByPrincipal());
+            Search search1 = searchService.save(search);
+            Chorbi chorbi = chorbiService.findByPrincipal();
+            chorbi.getMySearches().add(search1);
 
             result= new ModelAndView("chorbi/list");
             result.addObject("chorbies",chorbies);
-
+        }else{
+            result =  new ModelAndView("credit-card/error");
+        }
         return result;
     }
      
