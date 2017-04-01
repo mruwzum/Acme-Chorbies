@@ -122,16 +122,11 @@ public class SearchService {
         return res;
     }
     public void checkTime(Collection<Search> searches){
-        Date sys = new Date(System.currentTimeMillis());
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(sys);
-
-        System.out.println(sys.getHours());
-        System.out.println(sys.getMinutes());
-        System.out.println(cal.get(Calendar.DAY_OF_MONTH));
-
-        for (Search s : searches){
-            if (s.getCreationDate().getTime()<= sys.getTime()-12){
+        Date actual = new Date(System.currentTimeMillis());
+        Integer hour = 12;
+        Long VALUEZ = hour * 60 * 60 * 1000L;
+        for (Search s : searches) {
+            if (Math.abs(s.getCreationDate().getTime() - actual.getTime()) > VALUEZ) {
                 searches.remove(s);
             }
         }

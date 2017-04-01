@@ -2,6 +2,7 @@ package services;
 
 import domain.Chorbi;
 import domain.CreditCard;
+import domain.Search;
 import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Before;
@@ -13,9 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import utilities.AbstractTest;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -95,14 +94,19 @@ public class SearchServiceTest extends AbstractTest {
     }
 
     @Test
-    public void chechtime(){
-        Date sys = new Date(System.currentTimeMillis());
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(sys);
-
-        System.out.println(sys.getHours());
-        System.out.println(sys.getMinutes());
-        System.out.println(cal.get(Calendar.DAY_OF_MONTH));
-
+    public void chechtime() {
+        Date actual = new Date(System.currentTimeMillis());
+        Integer hour = 12;
+        Long VALUEZ = hour * 60 * 60 * 1000L;
+        List<Search> searches = new ArrayList<>(searchService.findAll());
+        System.out.println(searches);
+        Collection<Search> searchesAux = new HashSet<>();
+        for (Search s : searches) {
+            if (Math.abs(s.getCreationDate().getTime() - actual.getTime()) > VALUEZ) {
+                searchesAux.add(s);
+            }
+        }
+        System.out.println(searchesAux);
     }
+
 }

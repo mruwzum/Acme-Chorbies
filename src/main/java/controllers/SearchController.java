@@ -35,13 +35,16 @@ public class SearchController extends AbstractController {
 		
 		ModelAndView result;
 		Collection<Search> finders = new HashSet<>();
-//TODO CAPTURAR ERROR BONITO
-		Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()),"invalid cc / cc no válida");
-		finders.addAll(chorbiService.findByPrincipal().getMySearches());
-		searchService.checkTime(finders);
-		result = new ModelAndView("search/list");
-		result.addObject("searchs", finders);
-		result.addObject("requestURI","search/list.do");
+		if(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard())){
+            finders.addAll(chorbiService.findByPrincipal().getMySearches());
+            searchService.checkTime(finders);
+            result = new ModelAndView("search/list");
+            result.addObject("searchs", finders);
+            result.addObject("requestURI","search/list.do");
+        }else{
+		    result =  new ModelAndView("credit-card/error");
+        }
+
 
 		return result;
 	}
@@ -103,32 +106,22 @@ public class SearchController extends AbstractController {
     public ModelAndView save(@Valid Search search, BindingResult binding){
         ModelAndView result;
 
-//        if(!binding.hasErrors()){
-//            result= createEditModelAndView(search);
-//        }else{
-//            try{
         //TODO CAPTURAR ERROR BONITO
         Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()),"invalid cc / cc no válida");
         if (search.getCoordinate().getCity().isEmpty()) {
             search.getCoordinate().setCity("void");
         }
+            search.setCreationDate(new Date(System.currentTimeMillis()-100));
             List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
 
         search.setOwner(chorbiService.findByPrincipal());
         Search search1 = searchService.save(search);
         Chorbi chorbi = chorbiService.findByPrincipal();
         chorbi.getMySearches().add(search1);
-       // search1.getOwner().getMySearches().add(search1);
 
             result= new ModelAndView("chorbi/list");
             result.addObject("chorbies",chorbies);
 
-
-
-//            }catch(Throwable oops){
-//                result= createEditModelAndView(search, "general.commit.error");
-//            }
-//        }
         return result;
     }
      
