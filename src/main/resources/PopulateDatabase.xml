@@ -173,7 +173,7 @@
 		<property name="holder" value="chorbi2"/>
 		<property name="brand" value="DINNERS"/>
 		<property name="number" value="54275498043695577"/>
-		<property name="expirationYear" value="2019"/>
+		<property name="expirationYear" value="2016"/>
 		<property name="CVV" value="112"/>
 		<property name="expirationMonth" value="6"/>
 	</bean>
@@ -490,7 +490,7 @@
 		<property name="description" value=" Solo se que no se nada"/>
 		<property name="genre" value="MAN"/>
 		<property name="relationship" value="ACTIVITIES"/>
-		<property name="creditCard" ref="creditcard7"/>
+		<!--<property name="creditCard" ref="creditcard7"/>-->
 		<property name="birthDate" value="1991/07/22 17:05:15"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="banned" value="false"/>

@@ -1,5 +1,6 @@
 package services;
 
+import converters.DateToStringConverter;
 import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -96,6 +97,26 @@ public class SearchService {
             if (p.getDescription().contains(keyword) || p.getCoordinate().getProvince().contains(keyword) || p.getCoordinate().getCity().contains(keyword)|| p.getCoordinate().getState().contains(keyword)||p.getCoordinate().getCountry().contains(keyword)){
                 res = true;
             }
+        }
+        return res;
+    }
+
+    public Boolean checkCreditCard(Chorbi chorbi){
+        Boolean res = false;
+        CreditCard creditCard = chorbi.getCreditCard();
+        //TODO hacer mas generico el año
+        int yearAct = 2017;
+        int monthAct = new Date(System.currentTimeMillis()).getMonth();
+        if(creditCard==null){
+            res = false;
+        }else if (creditCard.getExpirationYear()==yearAct && creditCard.getExpirationMonth()<monthAct){
+            res = false;
+        }else if (creditCard.getExpirationYear()==yearAct && creditCard.getExpirationMonth()>=monthAct){
+            res =  true;
+        }else if (creditCard.getExpirationYear()>=yearAct){
+            res=   true;
+        }else if (creditCard.getExpirationYear()<yearAct){
+            res= false;
         }
         return res;
     }

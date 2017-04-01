@@ -35,11 +35,13 @@ public class SearchController extends AbstractController {
 		
 		ModelAndView result;
 		Collection<Search> finders = new HashSet<>();
+//TODO CAPTURAR ERROR BONITO
+		Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal()),"invalid cc / cc no válida");
 		finders.addAll(chorbiService.findByPrincipal().getMySearches());
 		result = new ModelAndView("search/list");
 		result.addObject("searchs", finders);
 		result.addObject("requestURI","search/list.do");
-		
+
 		return result;
 	}
 	
@@ -52,7 +54,8 @@ public class SearchController extends AbstractController {
 		ModelAndView result;
 		
 		Search search = searchService.create();
-
+        //TODO CAPTURAR ERROR BONITO
+        Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal()),"invalid cc / cc no válida");
 		result = createEditModelAndView(search);
         result.addObject("genre", Genre.values());
         result.addObject("relationship", Relationship.values());
