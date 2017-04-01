@@ -113,6 +113,17 @@ public class ChirpController extends AbstractController {
 		}
 
 
+	@RequestMapping(value="/delete", method=RequestMethod.GET)
+	public ModelAndView delete(int chirpId){
+		ModelAndView result;
+
+		chirpService.delete(chirpService.findOne(chirpId));
+		result=new ModelAndView("chorbi/success");
+
+
+		return result;
+	}
+
 		// Ancillary methods ------------------------------------------------
 
 		protected ModelAndView createEditModelAndView(Chirp chirp){

@@ -34,6 +34,11 @@
 						code="chirp.resend" />
 				</a>
 			</display:column>
+			<display:column>
+				<a href="chirp/delete.do?chirpId=${row.id}"> <spring:message
+						code="general.delete" />
+				</a>
+			</display:column>
 		</jstl:if>
 		<jstl:if test="${pl}">
 			<display:column>
