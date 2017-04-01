@@ -130,7 +130,7 @@ public class Chorbi extends Actor {
         this.myLikes = myLikes;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "owner")
     public Collection<Search> getMySearches() {
         return mySearches;
     }

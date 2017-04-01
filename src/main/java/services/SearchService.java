@@ -128,13 +128,17 @@ public class SearchService {
         List<SearchCache> caches = new ArrayList<>(searchCacheService.findAll());
         Integer hour = caches.get(0).getCacheValue();
         Long VALUEZ = hour * 60 * 60 * 1000L;
-        for (Search s : searches) {
-            if (Math.abs(s.getCreationDate().getTime() - actual.getTime()) > VALUEZ) {
-                searches.remove(s);
-            }
-        }
+        if (caches.isEmpty()){
 
-    }
+        }else {
+            for (Search s : searches) {
+                if (Math.abs(s.getCreationDate().getTime() - actual.getTime()) > VALUEZ) {
+                    searches.remove(s);
+                }
+            }
+
+        }
+        }
 
 
 }
