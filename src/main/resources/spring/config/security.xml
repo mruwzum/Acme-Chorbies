@@ -91,7 +91,7 @@
 		<security:intercept-url pattern="/search/list.do" access="hasRole('CHORBI')"/>
 		<security:intercept-url pattern="/search/edit.do" access="hasRole('CHORBI')"/>
 		<security:intercept-url pattern="/search/find.do" access="hasRole('CHORBI')"/>
-
+		<security:intercept-url pattern="/search/findR.do" access="hasRole('CHORBI')"/>
 
 
 

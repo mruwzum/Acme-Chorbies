@@ -17,6 +17,13 @@
 	name="searchs" requestURI="${requestURI}" id="row">
 
 
+	<security:authorize access="hasRole('CHORBI')">
+		<display:column>
+			<a href="search/findR.do?searchId=${row.id}"> <spring:message
+					code="general.view.search" />
+			</a>
+		</display:column>
+	</security:authorize>
 	<!-- Attributes -->
 	
 	<spring:message code="search.age" var="age" />

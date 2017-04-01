@@ -54,8 +54,8 @@ public class SearchController extends AbstractController {
 		ModelAndView result;
 		
 		Search search = searchService.create();
-        //TODO CAPTURAR ERROR BONITO
-        Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal()),"invalid cc / cc no válida");
+
+
 		result = createEditModelAndView(search);
         result.addObject("genre", Genre.values());
         result.addObject("relationship", Relationship.values());
@@ -78,7 +78,26 @@ public class SearchController extends AbstractController {
         result.addObject("relationship",Relationship.values());
         return result;
     }
-     
+
+
+    @RequestMapping(value="/findR", method=RequestMethod.GET)
+    public ModelAndView findR(@RequestParam int searchId){
+        ModelAndView result;
+        Search search;
+
+        search= searchService.findOne(searchId);
+        Assert.notNull(search);
+        //TODO CAPTURAR ERROR BONITO
+        Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal()),"invalid cc / cc no válida");
+        if (search.getCoordinate().getCity().isEmpty()) {
+            search.getCoordinate().setCity("void");
+        }
+        List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
+
+        result= new ModelAndView("chorbi/list");
+        result.addObject("chorbies",chorbies);
+        return result;
+    }
     @RequestMapping(value="/find", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Search search, BindingResult binding){
         ModelAndView result;
@@ -87,6 +106,8 @@ public class SearchController extends AbstractController {
 //            result= createEditModelAndView(search);
 //        }else{
 //            try{
+        //TODO CAPTURAR ERROR BONITO
+        Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal()),"invalid cc / cc no válida");
         if (search.getCoordinate().getCity().isEmpty()) {
             search.getCoordinate().setCity("void");
         }
