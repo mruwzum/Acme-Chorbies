@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import security.Authority;
 import services.*;
 
 import javax.validation.Valid;
@@ -48,9 +49,12 @@ public class ChorbiController extends AbstractController {
 		public ModelAndView list() {
 
 			ModelAndView result;
-			Collection<Chorbi> chorbies;
+			Collection<Chorbi> chorbies ;
 
-			chorbies = chorbiService.findAll();
+			chorbies = chorbiService.chobiIsBanned();
+
+
+
 			result = new ModelAndView("chorbi/list");
 			result.addObject("chorbies", chorbies);
 			result.addObject("requestURI","chorbi/list.do");

@@ -8,11 +8,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.ActorRepository;
 import repositories.ChorbiRepository;
+import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -129,4 +132,15 @@ public class ChorbiService {
         chorbiRepository.flush();
     }
 
+    public Collection<Chorbi> chobiIsBanned(){
+        List<Chorbi> retur = new ArrayList<>();
+        Authority auth = new Authority();
+        auth.setAuthority("BAN");
+        for (Chorbi c : findAll()){
+            if (!c.getUserAccount().getAuthorities().contains(auth)){
+                retur.add(c);
+            }
+        }
+        return retur;
+    }
 }
