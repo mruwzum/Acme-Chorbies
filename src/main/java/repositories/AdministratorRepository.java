@@ -31,15 +31,28 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     Integer maxAgeOfTheChorbies();
     @Query("select min(age) from Chorbi")
     Integer minAgeOfTheChorbies();
-//
-//    //The ratio of chorbies who have not registered a credit card or have regis- tered an invalid credit card
-//    Double ratioOfChorbiesWhoHaveNotCreditCardRegistered();
-//
-//
+
+
+
+    @Query("select c from Chorbi c")
+    Collection<Chorbi> allChorbi();
+
+    //The ratio of chorbies who have not registered a credit card or have regis- tered an invalid credit card
+    @Query("select c from Chorbi c where c.creditCard.valid=false")
+    Collection<Chorbi> chorbiWithInvalidCreditCard();
+    @Query("select c from Chorbi c where  c.creditCard is null ")
+    Collection<Chorbi> chorbiWithoutCreditCard();
+
+
 //    //The ratios of chorbies who search for ?activities?, ?friendship?, and ?love?.
-//    Double ratioOfChorbiesWhoSearchActivities();
-//    Double ratioOfChorbiesWhoSearchFriendship();
-//    Double ratioOfChorbiesWhoSearchLove();
+
+    @Query("select c from Chorbi c where c.relationship=0")
+    Collection<Chorbi> chorbiWhoSearchActivities();
+    @Query("select c from Chorbi c where c.relationship=1")
+    Collection<Chorbi> chorbiWhoSearchFriendShip();
+    @Query("select c from Chorbi c where c.relationship=2")
+    Collection<Chorbi> chorbiWhoSearchLove();
+
 
     //The list of chorbies, sorted by the number of likes they have got
 

@@ -641,8 +641,8 @@
 		</property>
 	</bean>
 	<bean id="chorbi5" class="domain.Chorbi">
-		<property name="name" value="Chorbi4Name" />
-		<property name="surname" value="Chorbi4Surname" />
+		<property name="name" value="Chorbi5Name" />
+		<property name="surname" value="Chorbi5Surname" />
 		<property name="email" value="Chorbi4Email@gmail.com"/>
 		<property name="phone" value="+23-32464536754"/>
 		<property name="userAccount" ref="userAccountChorbi5" />

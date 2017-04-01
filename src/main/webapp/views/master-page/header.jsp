@@ -33,6 +33,8 @@
 			</li>
 			<li><a href="chorbi/listAll.do"><spring:message code="master.page.chorbi.list" /></a></li>
 			<li><a href="administrator/changeCache.do"><spring:message code="master.page.administrator.change" /></a></li>
+			<li><a href="administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
+
 
 		</security:authorize>
 		
