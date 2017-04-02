@@ -1,10 +1,9 @@
 package services;
 
-import domain.Chorbi;
-import domain.CreditCard;
-import domain.Search;
+import domain.*;
 import org.joda.time.DateTime;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,89 +30,151 @@ public class SearchServiceTest extends AbstractTest {
    private ChorbiService chorbiService;
    @Autowired
    private SearchService searchService;
-
+    @Autowired
+    private CreditCardService creditCardService;
 
     @Before
     public void setUp() {
+        authenticate("chorbi2");
+        CreditCard creditCard = creditCardService.create();
+        creditCard.setBrand(Brand.AMEX);
+        creditCard.setCVV("345");
+        creditCard.setExpirationMonth(8);
+        creditCard.setExpirationYear(2012);
+        creditCard.setHolder("chorbi2");
+        creditCard.setNumber("54275498043695577");
+        chorbiService.findByPrincipal().setCreditCard(creditCard);
+        unauthenticate();
+        authenticate("chorbi1");
+        CreditCard creditCard1 = creditCardService.create();
+        creditCard1.setBrand(Brand.AMEX);
+        creditCard1.setCVV("345");
+        creditCard1.setExpirationMonth(8);
+        creditCard1.setExpirationYear(2020);
+        creditCard1.setHolder("chorbi1");
+        creditCard1.setNumber("54275498043695577");
+        chorbiService.findByPrincipal().setCreditCard(creditCard1);
+        unauthenticate();
+        authenticate("chorbi1");
+        Search search = searchService.create();
+        search.setAge(23);
+        search.setRelationship(Relationship.ACTIVITIES);
+        search.setKeyword("Sevilla");
+        search.setGenre(Genre.MAN);
+        search.setCreationDate(new Date("2017/03/30 00:00:00"));
+        chorbiService.findByPrincipal().getMySearches().add(search);
+        Search search1 = searchService.create();
+        search1.setAge(23);
+        search1.setRelationship(Relationship.ACTIVITIES);
+        search1.setKeyword("Sevilla");
+        search1.setGenre(Genre.MAN);
+        search1.setCreationDate(new Date("2017/03/30 00:00:00"));
+        chorbiService.findByPrincipal().getMySearches().add(search1);
+        Search search2 = searchService.create();
+        search2.setAge(23);
+        search2.setRelationship(Relationship.ACTIVITIES);
+        search2.setKeyword("Sevilla");
+        search2.setGenre(Genre.MAN);
+        search2.setCreationDate(new Date("2017/03/30 00:00:00"));
+        chorbiService.findByPrincipal().getMySearches().add(search2);
+        unauthenticate();
     }
 
     @After
     public void tearDown() {
     }
 
-    @Test
-    public void checkCreditCard() throws Exception {
+
+    //CHECK CREDIT CARD WITH POSITIVE AND NEGATIVE TEST FOR A VALID, NOT VALID OR EMPTY CREDIT CARD
+    @Test(expected = AssertionError.class)
+    public void checkCreditCardNotValid() throws Exception {
         authenticate("chorbi2");
         Chorbi chorbi = chorbiService.findByPrincipal();
-
-
-        System.out.println(chorbi.getCreditCard());
-
-        Integer yearAct0 = (((new Date(System.currentTimeMillis())).getYear()));
-        String year ="20"+ yearAct0.toString().substring(1);
-        Integer finy = new Integer(year);
-
-        System.out.println(finy);
-
-        System.out.println(searchService.checkCreditCard(chorbi.getCreditCard()));
-
-
+        Assert.assertTrue(searchService.checkCreditCard(chorbi.getCreditCard()));
         authenticate(null);
+        searchService.flush();
+    }
+    @Test
+    public void checkCreditCardValid() throws Exception {
         authenticate("chorbi1");
         Chorbi chorbi1 = chorbiService.findByPrincipal();
-
-
-        System.out.println(chorbi1.getCreditCard());
-
-        Integer yearAct01 = (((new Date(System.currentTimeMillis())).getYear()));
-        String year1 ="20"+ yearAct01.toString().substring(1);
-        Integer finy1 = new Integer(year1);
-
-        System.out.println(finy1);
-
-        System.out.println(searchService.checkCreditCard(chorbi1.getCreditCard()));
-
-
+        searchService.checkCreditCard(chorbi1.getCreditCard());
+        Assert.assertTrue(searchService.checkCreditCard(chorbi1.getCreditCard()));
         authenticate(null);
+        searchService.flush();
+    }
+    @Test
+    public void checkCreditCardEMpty() throws Exception {
         authenticate("mruwzum");
         Chorbi chorbi11 = chorbiService.findByPrincipal();
-
-
-        System.out.println(chorbi11.getCreditCard());
-
-        Integer yearAct011 = (((new Date(System.currentTimeMillis())).getYear()));
-        String year11 ="20"+ yearAct011.toString().substring(1);
-        Integer finy11 = new Integer(year11);
-
-        System.out.println(finy11);
-
-        System.out.println(searchService.checkCreditCard(chorbi11.getCreditCard()));
-
-
+        searchService.checkCreditCard(chorbi11.getCreditCard());
+        Assert.assertTrue(!searchService.checkCreditCard(chorbi11.getCreditCard()));
         authenticate(null);
+        searchService.flush();
     }
-
+    // CHECK TIME FOR SEARCHES AND DELETE THEM FROM SYSTEM
     @Test
     public void chechtime() {
-        Date actual = new Date(System.currentTimeMillis());
-        Integer hour = 12;
-        Long VALUEZ = hour * 60 * 60 * 1000L;
-        List<Search> searches = new ArrayList<>(searchService.findAll());
-        System.out.println(searches);
-        Collection<Search> searchesAux = new HashSet<>();
-        for (Search s : searches) {
-            if (Math.abs(s.getCreationDate().getTime() - actual.getTime()) > VALUEZ) {
-                searchesAux.add(s);
-            }
-        }
-        System.out.println(searchesAux);
+        Collection<Search> searches = searchService.findAll();
+        int sizeA = searches.size();
+        searchService.checkTime(searches);
+        int sizeB = searches.size();
+        Assert.assertTrue(sizeA!=sizeB);
+        searchService.flush();
+    }
+    @Test(expected = AssertionError.class)
+    public void chechtimeEmpty() {
+        Collection<Search> searches = searchService.findAll();
+        searches.removeAll(searches);
+        int sizeA = searches.size();
+        searchService.checkTime(searches);
+        int sizeB = searches.size();
+        Assert.assertTrue(sizeA!=sizeB);
+        searchService.flush();
     }
 
-
+    //BAN TEXT POSITIVE&NEGATIVE TESTS
     @Test
-    public void banText(){
-String text = "Hola, soy anto y soy un chico formal horbi 4 description call me now!! +23-32464536754  ";
+    public void banTextWithNotValidText(){
+
+        String text = "Hola, soy anto chicoantolin@gmail.com y soy un chico formal horbi 4 description call me now!! +23-32464536754  ";
         String res = chorbiService.megaTextChecker(text);
-        System.out.println(res);
+        Assert.assertTrue(res.contains("***"));
+        searchService.flush();
     }
+    @Test
+    public void banTextWithValidText(){
+
+        String text = "Hola, soy anto y soy un chico formal horbi descrip  ";
+        String res = chorbiService.megaTextChecker(text);
+        Assert.assertTrue(!res.contains("***"));
+        searchService.flush();
+    }
+
+    //FINDER POSITIVE&NEGATIVE TESTS
+    @Test
+    public void finderPositive(){
+        authenticate("chorbi1");
+       List<Search> searches = new ArrayList<>(searchService.findAll());
+       Search search = searches.get(0);
+       Assert.assertTrue( searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()));
+       List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
+       org.springframework.util.Assert.notEmpty(chorbies);
+       unauthenticate();
+
+    }
+    @Test(expected = AssertionError.class)
+    public void finderNegative(){
+        authenticate("chorbi2");
+        List<Search> searches = new ArrayList<>(searchService.findAll());
+        Search search = searches.get(0);
+        Assert.assertTrue( searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()));
+        List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
+        org.springframework.util.Assert.notEmpty(chorbies);
+
+        unauthenticate();
+
+    }
+
+
 }
