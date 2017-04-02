@@ -148,4 +148,66 @@ public class AdministratorServiceTest extends AbstractTest {
 
     //TODO DASHBOARD TESTS
 
+
+    @Test
+    public void dashboardPostiveTest(){
+        authenticate("administrator1");
+
+        Assert.assertTrue(administratorService.chorbiesPerCity()!=null);
+        Assert.assertTrue(administratorService.chorbiesPerCountry()!=null);
+        Assert.assertTrue(administratorService.averageAgesOfTheChorbies()!=null);
+        Assert.assertTrue(administratorService.maxAgeOfTheChorbies()!=null);
+        Assert.assertTrue(administratorService.minAgeOfTheChorbies()!=null);
+        Assert.assertTrue(administratorService.chorbiesSortedByTheNumberOfLikes()!=null);
+        Assert.assertTrue(administratorService.averageNumberOfLikesPerChorbi()!=null);
+        Assert.assertTrue(administratorService.maxNumberOfLikePerChorbi()!=null);
+        Assert.assertTrue(administratorService.minNumberOfLikePerChorbi()!=null);
+        Assert.assertTrue(administratorService.averageNumberOfChirpsReceived()!=null);
+        Assert.assertTrue(administratorService.maxNumberOfChirpsReceived()!=null);
+        Assert.assertTrue(administratorService.minNumberOfChirpsReceived()!=null);
+        Assert.assertTrue(administratorService.averageNumberOfChirpsSended()!=null);
+        Assert.assertTrue(administratorService.maxNumberOfChirpsSended()!=null);
+        Assert.assertTrue(administratorService.chorbieWhoHaveMoreChirpsReceived()!=null);
+        Assert.assertTrue(administratorService.chorbieWhoHaveMoreChirpsSended()!=null);
+        Assert.assertTrue(administratorService.ratioOfChorbiesWhoHaveInvalidOrUnregisteredCreditCard()!=null);
+        Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchActivites()!=null);
+        Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchFriendShip()!=null);
+        Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchLove()!=null);
+
+
+        unauthenticate();
+        administratorService.flush();
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void dashboardNegativeTest(){
+        authenticate(null);
+
+
+        Assert.assertTrue(administratorService.chorbiesPerCity()!=null);
+        Assert.assertTrue(administratorService.chorbiesPerCountry()!=null);
+        Assert.assertTrue(administratorService.averageAgesOfTheChorbies()!=null);
+        Assert.assertTrue(administratorService.maxAgeOfTheChorbies()!=null);
+        Assert.assertTrue(administratorService.minAgeOfTheChorbies()!=null);
+        Assert.assertTrue(administratorService.chorbiesSortedByTheNumberOfLikes()!=null);
+        Assert.assertTrue(administratorService.averageNumberOfLikesPerChorbi()!=null);
+        Assert.assertTrue(administratorService.maxNumberOfLikePerChorbi()!=null);
+        Assert.assertTrue(administratorService.minNumberOfLikePerChorbi()!=null);
+        Assert.assertTrue(administratorService.averageNumberOfChirpsReceived()!=null);
+        Assert.assertTrue(administratorService.maxNumberOfChirpsReceived()!=null);
+        Assert.assertTrue(administratorService.minNumberOfChirpsReceived()!=null);
+        Assert.assertTrue(administratorService.averageNumberOfChirpsSended()!=null);
+        Assert.assertTrue(administratorService.maxNumberOfChirpsSended()!=null);
+        Assert.assertTrue(administratorService.chorbieWhoHaveMoreChirpsReceived()!=null);
+        Assert.assertTrue(administratorService.chorbieWhoHaveMoreChirpsSended()!=null);
+        Assert.assertTrue(administratorService.ratioOfChorbiesWhoHaveInvalidOrUnregisteredCreditCard()!=null);
+        Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchActivites()!=null);
+        Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchFriendShip()!=null);
+        Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchLove()!=null);
+
+        administratorService.flush();
+
+    }
+
 }
