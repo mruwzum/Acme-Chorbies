@@ -79,6 +79,7 @@ public class SearchService {
         List<Chorbi> chorbis = new ArrayList<>(chorbiService.findAll());
         Integer este = new Date(System.currentTimeMillis()).getYear();
         List<Chorbi> aux = new ArrayList<>();
+        //TODO algoritmo de busqueda medio que
         if (age==null||relationship==null||genre==null||coordinate.getCity()==null||coordinate.getCountry()==null||coordinate.getState()==null||coordinate.getProvince()==null||keyword==null){
             return chorbis;
         }else {
