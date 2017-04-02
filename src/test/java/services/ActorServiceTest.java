@@ -30,15 +30,11 @@ public class ActorServiceTest extends AbstractTest {
     @Autowired
     private ActorService actorService;
     @Autowired
-    private AdministratorService administratorService;
-    @Autowired
     private ChorbiService chorbiService;
     @Autowired
     private CreditCardService creditCardService;
     @Autowired
     private CoordinateService coordinateService;
-    @Autowired
-    private UserAccountService userAccountService;
 
     @Before
     public void setUp()  {
@@ -77,6 +73,7 @@ public class ActorServiceTest extends AbstractTest {
         chorbi.setUserAccount(userAccount);
        Actor res=  actorService.registerAsAChorbi(chorbi);
        Assert.assertNotNull(res);
+       actorService.flush();
     }
     @Test(expected = NullPointerException.class)
     public void registerAsAChorbiWithNoCity(){
@@ -103,6 +100,7 @@ public class ActorServiceTest extends AbstractTest {
         chorbi.setUserAccount(userAccount);
         Actor res=  actorService.registerAsAChorbi(chorbi);
         Assert.assertNotNull(res);
+        actorService.flush();
     }
     @Test(expected = NullPointerException.class)
     public void registerAsAChorbiWithoutPass(){
@@ -130,6 +128,7 @@ public class ActorServiceTest extends AbstractTest {
         userAccount.setUsername("generic");
         Actor res=  actorService.registerAsAChorbi(chorbi);
         Assert.assertNotNull(res);
+        actorService.flush();
     }
     @Test(expected = IllegalArgumentException.class)
     public void registerAsAChorbiUnderAge(){
@@ -159,18 +158,22 @@ public class ActorServiceTest extends AbstractTest {
         chorbi.setUserAccount(userAccount);
         Actor res=  actorService.registerAsAChorbi(chorbi);
         Assert.assertNotNull(res);
+        actorService.flush();
 
     }
+    //FINDBYPRINCIPAL POSITIVE&NEGATIVE
     @Test
     public void findByPrincipalOk(){
-        authenticate("administrator1");
+        authenticate("chorbi1");
         Assert.assertNotNull(actorService.findByPrincipal());
         authenticate(null);
+        actorService.flush();
     }
     @Test(expected = IllegalArgumentException.class)
     public void findByPrincipalNull(){
         authenticate(null);
         Assert.assertNotNull(actorService.findByPrincipal());
         authenticate(null);
+        actorService.flush();
     }
 }
