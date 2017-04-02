@@ -145,4 +145,7 @@ public class AdministratorServiceTest extends AbstractTest {
         administratorService.flush();
     }
 
+
+    //TODO DASHBOARD TESTS
+
 }

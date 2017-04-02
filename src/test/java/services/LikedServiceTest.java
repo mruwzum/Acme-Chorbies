@@ -125,16 +125,21 @@ public class LikedServiceTest extends AbstractTest {
         Boolean res = likedService.postLike(liked);
         Assert.assertTrue(res);
         unauthenticate();
+        likedService.flush();
     }
-    @Test(expected = AssertionError.class)
+    @Test(expected = IllegalArgumentException.class)
     public void postLikeNegative() {
-        authenticate("chorbi1");
+        authenticate(null);
         Liked liked = likedService.create();
         liked.setSender(chorbiService.findByPrincipal());
+        List<Chorbi> chorbies = new ArrayList<>(chorbiService.findAll());
+        Chorbi receiver = chorbies.get(0);
+        liked.setReceiver(receiver);
         liked.setText("like u");
         Boolean res = likedService.postLike(liked);
         Assert.assertTrue(res);
         unauthenticate();
+        likedService.flush();
     }
 
 }
