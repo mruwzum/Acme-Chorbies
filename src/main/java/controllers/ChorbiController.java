@@ -98,6 +98,7 @@ public class ChorbiController extends AbstractController {
 				result= createEditModelAndView2(chorbi);
 			}else{
 				try{
+
 					actorService.registerAsAChorbi(chorbi);
 					result= new ModelAndView("redirect:list.do");
 				}catch(Throwable oops){
@@ -128,8 +129,21 @@ public class ChorbiController extends AbstractController {
 		@RequestMapping(value="/edit", method=RequestMethod.POST, params="save")
 		public ModelAndView save(@Valid Chorbi chorbi,BindingResult binding){
 			ModelAndView result;
+
+			if (!binding.hasErrors()) {
+				result= createEditModelAndView2(chorbi);
+			}else{
+				try{
 					chorbiService.save(chorbi);
 					result= new ModelAndView("chorbi/success");
+				}catch(Throwable oops){
+					result= createEditModelAndView2(chorbi, "general.commit.error");
+				}
+			}
+
+
+
+
 			return result;
 		}
 

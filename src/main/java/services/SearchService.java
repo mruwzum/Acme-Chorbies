@@ -75,53 +75,66 @@ public class SearchService {
         searchRepository.flush();
     }
 
-    public List<Chorbi> finder(Integer age, Relationship relationship, Genre genre, Coordinate coordinate, String keyword){
-        List<Chorbi> chorbis = new ArrayList<>(chorbiService.findAll());
-        List<Chorbi> aux = new ArrayList<>();
-        //TODO algoritmo de busqueda medio que
-        if (age==null||relationship==null||genre==null||coordinate.getCity()==null||coordinate.getCountry()==null||coordinate.getState()==null||coordinate.getProvince()==null||keyword==null){
-            return chorbis;
-        }else {
-            for (Chorbi p : chorbis){
-                if ((p.getAge()==age||p.getGenre().equals(genre)||p.getRelationship().equals(relationship)||p.getCoordinate().getCity().equals(coordinate.getCity())||p.getCoordinate().getCountry().equals(coordinate.getCountry())||p.getCoordinate().getState().equals(coordinate.getState()) || p.getCoordinate().getProvince().equals(coordinate.getProvince())&& containsKey(chorbis,keyword))){
-                    aux.add(p);
-                }
-            }
-            return aux;
-        }
-    }
-    private Boolean containsKey(List<Chorbi> chorbis, String keyword){
-        Boolean res = false;
-        for (Chorbi p : chorbis){
-            if (p.getDescription().contains(keyword) || p.getCoordinate().getProvince().contains(keyword) || p.getCoordinate().getCity().contains(keyword)|| p.getCoordinate().getState().contains(keyword)||p.getCoordinate().getCountry().contains(keyword)){
-                res = true;
-            }
-        }
-        return res;
-    }
+//    public List<Chorbi> finder(Integer age, Relationship relationship, Genre genre, Coordinate coordinate, String keyword){
+//        List<Chorbi> chorbis = new ArrayList<>(chorbiService.findAll());
+//        List<Chorbi> aux = new ArrayList<>();
+//        if (age==null||relationship==null||genre==null||coordinate.getCity()==null||coordinate.getCountry()==null||coordinate.getState()==null||coordinate.getProvince()==null||keyword==null){
+//            return chorbis;
+//        }else {
+//            for (Chorbi p : chorbis){
+//                if ((p.getAge()==age||p.getGenre().equals(genre)||p.getRelationship().equals(relationship)||p.getCoordinate().getCity().equals(coordinate.getCity())||p.getCoordinate().getCountry().equals(coordinate.getCountry())||p.getCoordinate().getState().equals(coordinate.getState()) || p.getCoordinate().getProvince().equals(coordinate.getProvince())&& containsKey(chorbis,keyword))){
+//                    aux.add(p);
+//                }
+//            }
+//            return aux;
+//        }
+//    }
+//    private Boolean containsKey(List<Chorbi> chorbis, String keyword){
+//        Boolean res = false;
+//        for (Chorbi p : chorbis){
+//            if (p.getDescription().contains(keyword) || p.getCoordinate().getProvince().contains(keyword) || p.getCoordinate().getCity().contains(keyword)|| p.getCoordinate().getState().contains(keyword)||p.getCoordinate().getCountry().contains(keyword)){
+//                res = true;
+//            }
+//        }
+//        return res;
+//    }
 
 
     public List<Chorbi> davidFinder(Search search){
 
         List<Chorbi> res;
 
-        int overAge =  search.getAge()+5;
-        int underAge = search.getAge()-5;
+       List<Chorbi> todos = new ArrayList<>(chorbiService.findAll());
 
-        Collection<Chorbi> firstSearch = searchRepository.finderQuery2(underAge, search.getGenre(), search.getRelationship(), overAge);
+       if (!search.getCoordinate().getCity().equals("void")){
+           todos.retainAll(searchRepository.findByCity(search.getCoordinate().getCity()));
+        }
 
-        res = searchRepository.finderQuery(
-                underAge,
-                search.getGenre(),
-                search.getRelationship(),
-                search.getKeyword(),
-                search.getCoordinate().getCity(),
-                search.getCoordinate().getCountry(),
-                search.getCoordinate().getState(),
-                search.getCoordinate().getProvince(),overAge);
+       if(!(search.getAge()==null)){
+           int overAge =  search.getAge()+5;
+           int underAge = search.getAge()-5;
+           todos.retainAll(searchRepository.findByAge(underAge,overAge));
+       }
+       if (!(search.getGenre()==null)){
+           todos.retainAll(searchRepository.findByGenre(search.getGenre()));
+       }
+       if (!(search.getRelationship()==null)){
+           todos.retainAll(searchRepository.findByRelationship(search.getRelationship()));
+       }
+       if (!search.getCoordinate().getCountry().equals("")){
+           todos.retainAll(searchRepository.findByCountry(search.getCoordinate().getCountry()));
+       }
+       if (!search.getCoordinate().getProvince().equals("")){
+          todos.retainAll(searchRepository.findByProvince(search.getCoordinate().getProvince()));
+       }
+       if (!search.getCoordinate().getState().equals("")){
+           todos.retainAll(searchRepository.findByState(search.getCoordinate().getState()));
+       }
+       if (!search.getKeyword().equals("")){
+           todos.retainAll(searchRepository.findByKeyword(search.getKeyword()));
+       }
 
-
-        return res;
+        return todos;
 
     }
 

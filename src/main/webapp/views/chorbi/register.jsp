@@ -35,7 +35,7 @@
     <form:select path="relationship">
         <form:options/>
     </form:select>
-    <acme:textbox path="description" code="chorbi.description"/>
+    <acme:textarea path="description" code="chorbi.description"/>
     <acme:textbox path="picture" code="chorbi.picture"/>
     <h1>Location</h1>
     <br>

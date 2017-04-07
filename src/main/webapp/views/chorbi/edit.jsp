@@ -48,7 +48,7 @@
 	<form:select path="relationship">
 		<form:options/>
 	</form:select>
-	<acme:textbox path="description" code="chorbi.description"/>
+	<acme:textarea path="description" code="chorbi.description"/>
 	<br>
 
 	<img src="${chorbi.picture}" width="130" height="100" >

@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Date;
 
@@ -43,6 +44,7 @@ public class Chorbi extends Actor {
         this.picture = picture;
     }
 
+    @Size(max = 300, message = "Exceeds the 300 characters long")
     public String getDescription() {
         return description;
     }
@@ -93,7 +95,6 @@ public class Chorbi extends Actor {
         this.coordinate = coordinate;
     }
 
-//TODO mirar los cascade
     @OneToMany(targetEntity = Chirp.class, mappedBy = "receiver", cascade = CascadeType.ALL)
     public Collection<Chirp> getChirps() {
         return chirps;

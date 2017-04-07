@@ -98,7 +98,7 @@ public class SearchController extends AbstractController {
             if (search.getCoordinate().getCity().isEmpty()) {
                 search.getCoordinate().setCity("void");
             }
-            List<Chorbi> chorbies = searchService.finder(search.getAge(), search.getRelationship(), search.getGenre(), search.getCoordinate(), search.getKeyword());
+            List<Chorbi> chorbies = searchService.davidFinder(search);
 
             result = new ModelAndView("chorbi/list");
             result.addObject("chorbies", chorbies);
@@ -121,7 +121,7 @@ public class SearchController extends AbstractController {
                 search.getCoordinate().setCity("void");
             }
             search.setCreationDate(new Date(System.currentTimeMillis()-100));
-            List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
+            List<Chorbi> chorbies = searchService.davidFinder(search);
 
             search.setOwner(chorbiService.findByPrincipal());
             Search search1 = searchService.save(search);

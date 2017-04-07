@@ -158,8 +158,7 @@ public class SearchServiceTest extends AbstractTest {
        List<Search> searches = new ArrayList<>(searchService.findAll());
        Search search = searches.get(0);
        Assert.assertTrue( searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()));
-       List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
-       org.springframework.util.Assert.notEmpty(chorbies);
+       List<Chorbi> chorbies = searchService.davidFinder(search);
        unauthenticate();
 
     }
@@ -169,38 +168,11 @@ public class SearchServiceTest extends AbstractTest {
         List<Search> searches = new ArrayList<>(searchService.findAll());
         Search search = searches.get(0);
         Assert.assertTrue( searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()));
-        List<Chorbi> chorbies = searchService.finder(search.getAge(),search.getRelationship(),search.getGenre(),search.getCoordinate(),search.getKeyword());
+        List<Chorbi> chorbies = searchService.davidFinder(search);
         org.springframework.util.Assert.notEmpty(chorbies);
 
         unauthenticate();
 
-    }
-
-
-    @Test
-    public void davidFinder(){
-        authenticate("chorbi1");
-
-        Coordinate coordinate = new Coordinate();
-        coordinate.setCity("Huelva");
-//        coordinate.setCountry("Spain");
-//        coordinate.setProvince("Huelva");
-//        coordinate.setState("Andalucía");
-
-        Search search = new Search();
-
-        search.setAge(27);
-        search.setCoordinate(coordinate);
-        //search.setGenre(Genre.WOMAN);
-        search.setRelationship(Relationship.FRIENDSHIP);
-        search.setKeyword("5name");
-
-        Search saved = searchService.save(search);
-
-        System.out.println(searchService.davidFinder(saved));
-
-        unauthenticate();
-        searchService.flush();
     }
 
 }
