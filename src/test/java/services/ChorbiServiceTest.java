@@ -127,7 +127,6 @@ public class ChorbiServiceTest extends AbstractTest {
 
         Collection<Liked> my = chorbiService.getLikes();
         org.springframework.util.Assert.notEmpty(my);
-
         unauthenticate();
     }
 
@@ -237,5 +236,6 @@ public class ChorbiServiceTest extends AbstractTest {
         Assert.assertTrue(res.contains("***"));
         searchService.flush();
     }
+
 
 }

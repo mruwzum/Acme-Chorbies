@@ -177,4 +177,30 @@ public class SearchServiceTest extends AbstractTest {
     }
 
 
+    @Test
+    public void davidFinder(){
+        authenticate("chorbi1");
+
+        Coordinate coordinate = new Coordinate();
+        coordinate.setCity("Huelva");
+//        coordinate.setCountry("Spain");
+//        coordinate.setProvince("Huelva");
+//        coordinate.setState("Andalucía");
+
+        Search search = new Search();
+
+        search.setAge(27);
+        search.setCoordinate(coordinate);
+        //search.setGenre(Genre.WOMAN);
+        search.setRelationship(Relationship.FRIENDSHIP);
+        search.setKeyword("5name");
+
+        Search saved = searchService.save(search);
+
+        System.out.println(searchService.davidFinder(saved));
+
+        unauthenticate();
+        searchService.flush();
+    }
+
 }

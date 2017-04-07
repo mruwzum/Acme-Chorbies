@@ -89,12 +89,10 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 
 
     //The chorbies who have got more chirps
-    //TODO en el servicio solo se coge el primer elemento de la colección
     @Query("select c from Chorbi c order by c.chirps.size desc")
     Collection<Chorbi> chorbieWhoHaveMoreChirpsReceived();
 
     //The chorbies who have sent more chirps
-    //TODO en el servicio solo se coge el primer elemento de la colección
     @Query("select c from Chorbi c order by c.myChirps.size desc")
     Collection<Chorbi> chorbieWhoHaveMoreChirpsSended();
 }

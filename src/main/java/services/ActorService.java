@@ -88,7 +88,6 @@ public class ActorService {
 
 		Date date = new Date(System.currentTimeMillis()-1000);
 
-//TODO capturar excepción cuando es menor
 		Assert.isTrue(u.getAge() >= 18,"Menor de edad / Under age");
 
 		Coordinate coordinate = new Coordinate();

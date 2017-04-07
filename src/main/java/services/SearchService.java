@@ -77,7 +77,6 @@ public class SearchService {
 
     public List<Chorbi> finder(Integer age, Relationship relationship, Genre genre, Coordinate coordinate, String keyword){
         List<Chorbi> chorbis = new ArrayList<>(chorbiService.findAll());
-        Integer este = new Date(System.currentTimeMillis()).getYear();
         List<Chorbi> aux = new ArrayList<>();
         //TODO algoritmo de busqueda medio que
         if (age==null||relationship==null||genre==null||coordinate.getCity()==null||coordinate.getCountry()==null||coordinate.getState()==null||coordinate.getProvince()==null||keyword==null){
@@ -99,6 +98,31 @@ public class SearchService {
             }
         }
         return res;
+    }
+
+
+    public List<Chorbi> davidFinder(Search search){
+
+        List<Chorbi> res;
+
+        int overAge =  search.getAge()+5;
+        int underAge = search.getAge()-5;
+
+        Collection<Chorbi> firstSearch = searchRepository.finderQuery2(underAge, search.getGenre(), search.getRelationship(), overAge);
+
+        res = searchRepository.finderQuery(
+                underAge,
+                search.getGenre(),
+                search.getRelationship(),
+                search.getKeyword(),
+                search.getCoordinate().getCity(),
+                search.getCoordinate().getCountry(),
+                search.getCoordinate().getState(),
+                search.getCoordinate().getProvince(),overAge);
+
+
+        return res;
+
     }
 
     public Boolean checkCreditCard(CreditCard creditCard){

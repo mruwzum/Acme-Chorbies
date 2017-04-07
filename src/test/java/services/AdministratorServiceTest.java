@@ -146,7 +146,6 @@ public class AdministratorServiceTest extends AbstractTest {
     }
 
 
-    //TODO DASHBOARD TESTS
 
 
     @Test

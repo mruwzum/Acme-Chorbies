@@ -91,7 +91,10 @@ public class SearchController extends AbstractController {
 
         search = searchService.findOne(searchId);
         Assert.notNull(search);
+
         if (searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard())) {
+
+
             if (search.getCoordinate().getCity().isEmpty()) {
                 search.getCoordinate().setCity("void");
             }
@@ -107,6 +110,11 @@ public class SearchController extends AbstractController {
     @RequestMapping(value="/find", method=RequestMethod.POST, params="save")
     public ModelAndView save(@Valid Search search, BindingResult binding){
         ModelAndView result;
+
+        if(binding.hasErrors()){
+			result= createEditModelAndView(search);
+		}else{
+			try{
 
         if(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard())){
             if (search.getCoordinate().getCity().isEmpty()) {
@@ -125,6 +133,10 @@ public class SearchController extends AbstractController {
         }else{
             result =  new ModelAndView("credit-card/error");
         }
+            }catch(Throwable oops){
+				result= createEditModelAndView(search, "administrator.commit.error");
+			}
+		}
         return result;
     }
      
