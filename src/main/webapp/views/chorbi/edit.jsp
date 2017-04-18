@@ -85,7 +85,8 @@
 	<acme:textbox path="coordinate.province" code="coordinate.province"/>
 
 	<!---------------------------- BOTONES -------------------------->
-	<acme:submit name="save" code="general.save"/>
+	<input type="submit" name="save"
+		   value="<spring:message code="actor.save" />"/>
 
 	<input type="button" name="cancel"
 		value="<spring:message code="general.cancel" />"

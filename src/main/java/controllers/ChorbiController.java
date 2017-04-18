@@ -130,14 +130,14 @@ public class ChorbiController extends AbstractController {
 		public ModelAndView save(@Valid Chorbi chorbi,BindingResult binding){
 			ModelAndView result;
 
-			if (!binding.hasErrors()) {
-				result= createEditModelAndView2(chorbi);
+			if (binding.hasErrors()) {
+				result= createEditModelAndView(chorbi);
 			}else{
 				try{
 					chorbiService.save(chorbi);
 					result= new ModelAndView("chorbi/success");
 				}catch(Throwable oops){
-					result= createEditModelAndView2(chorbi, "general.commit.error");
+					result= createEditModelAndView(chorbi, "general.commit.error");
 				}
 			}
 
