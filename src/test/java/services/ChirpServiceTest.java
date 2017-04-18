@@ -1,6 +1,6 @@
 package services;
 
-import com.sun.xml.internal.ws.api.message.Attachment;
+
 import domain.*;
 import org.junit.After;
 import org.junit.Assert;
@@ -17,7 +17,6 @@ import utilities.AbstractTest;
 
 import java.util.*;
 
-import static org.junit.Assert.*;
 
 /**
  * Created by mruwzum on 2/4/17.
