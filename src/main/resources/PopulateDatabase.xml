@@ -532,7 +532,9 @@
 		</property>
 		<property name="eventsToGo">
 			<list>
-					<ref bean="event3"/>
+				<ref bean="event0"/>
+				<ref bean="event1"/>
+				<ref bean="event2"/>
 			</list>
 		</property>
 	</bean>
@@ -568,7 +570,7 @@
 		</property>
 		<property name="eventsToGo">
 			<list>
-				<ref bean="event3"/>
+				<ref bean="event0"/>
 			</list>
 		</property>
 	</bean>
@@ -609,7 +611,7 @@
 		</property>
 		<property name="eventsToGo">
 			<list>
-				<ref bean="event3"/>
+				<ref bean="event0"/>
 			</list>
 		</property>
 	</bean>
@@ -655,6 +657,7 @@
 		<property name="eventsToGo">
 			<list>
 				<ref bean="event2"/>
+				<ref bean="event1"/>
 			</list>
 		</property>
 	</bean>
@@ -746,7 +749,7 @@
 		</property>
 		<property name="eventsToGo">
 			<list>
-				<ref bean="event1"/>
+				<ref bean="event2"/>
 			</list>
 		</property>
 	</bean>
@@ -788,7 +791,7 @@
 		</property>
 		<property name="eventsToGo">
 			<list>
-				<ref bean="event1"/>
+				<ref bean="event2"/>
 			</list>
 		</property>
 	</bean>
@@ -871,68 +874,6 @@
 	</bean>
 
 	<!-- /Search Cache -->
-
-
-	<!-- Event -->
-<bean id="event1" class="domain.Event">
-	<property name="title" value="title"/>
-	<property name="date" value="2017/04/01"/>
-	<property name="description" value="description event 1"/>
-	<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>
-	<property name="numberOfSeats" value="300"/>
-	<property name="partakers">
-		<list>
-			<ref bean="chorbi4"/>
-			<ref bean="chorbi5"/>
-		</list>
-	</property>
-	<property name="owner" ref="manager1"/>
-</bean>
-	<bean id="event2" class="domain.Event">
-		<property name="title" value="title2"/>
-		<property name="date" value="2017/04/21"/>
-		<property name="description" value="description event 2"/>
-		<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>
-		<property name="numberOfSeats" value="600"/>
-		<property name="partakers">
-			<list>
-				<ref bean="chorbi2"/>
-				<ref bean="chorbi3"/>
-			</list>
-		</property>
-		<property name="owner" ref="manager2"/>
-	</bean>
-	<bean id="event3" class="domain.Event">
-		<property name="title" value="title3"/>
-		<property name="date" value="2017/04/27"/>
-		<property name="description" value="description event 3"/>
-		<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>
-		<property name="numberOfSeats" value="300"/>
-		<property name="partakers">
-			<list>
-				<ref bean="chorbi0"/>
-				<ref bean="chorbi0a"/>
-				<ref bean="chorbi1"/>
-			</list>
-		</property>
-		<property name="owner" ref="manager3"/>
-	</bean>
-	<bean id="event4" class="domain.Event">
-		<property name="title" value="title"/>
-		<property name="date" value="2017/05/01"/>
-		<property name="description" value="description event 4"/>
-		<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>
-		<property name="numberOfSeats" value="1000"/>
-		<property name="partakers">
-			<list>
-			</list>
-		</property>
-		<property name="owner" ref="manager4"/>
-	</bean>
-
-	<!-- /Event -->
-
-
 	<!-- Manager -->
 	<bean id="manager1" class="domain.Manager">
 		<property name="name" value="Manager1Name" />
@@ -947,6 +888,7 @@
 		<property name="createdEvents">
 			<list>
 				<ref bean="event1"/>
+				<ref bean="event0"/>
 			</list>
 		</property>
 	</bean>
@@ -962,7 +904,7 @@
 
 		<property name="createdEvents">
 			<list>
-				<ref bean="event2"/>
+				<!--<ref bean="event2"/>-->
 			</list>
 		</property>
 	</bean>
@@ -978,8 +920,8 @@
 
 		<property name="createdEvents">
 			<list>
-				<ref bean="event3"/>
-				<ref bean="event4"/>
+				<!--<ref bean="event3"/>-->
+
 			</list>
 		</property>
 	</bean>
@@ -1000,4 +942,71 @@
 	</bean>
 
 	<!-- /Manager -->
+
+	<!-- Event -->
+
+	<bean id="event0" class="domain.Event">
+		<property name="title" value="title0"/>
+		<property name="date" value="2017/04/22"/>
+		<property name="numberOfSeats" value="3"/>
+		<property name="description" value="descrition 0"/>
+		<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>
+		<property name="owner" ref="manager1"/>
+		<property name="partakers">
+			<list>
+				<ref bean="chorbi1"/>
+				<ref bean="chorbi0"/>
+				<ref bean="chorbi0a"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="event1" class="domain.Event">
+		<property name="title" value="title1"/>
+		<property name="date" value="2017/04/23"/>
+		<property name="numberOfSeats" value="10"/>
+		<property name="description" value="descrition 1"/>
+		<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>
+		<property name="owner" ref="manager2"/>
+		<property name="partakers">
+			<list>
+				<ref bean="chorbi1"/>
+				<ref bean="chorbi2"/>
+			</list>
+		</property>
+	</bean>
+	<bean id="event2" class="domain.Event">
+		<property name="title" value="title2"/>
+		<property name="date" value="2017/04/11"/>
+		<property name="numberOfSeats" value="100"/>
+		<property name="description" value="descrition 2"/>
+		<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>
+		<property name="owner" ref="manager3"/>
+		<property name="partakers">
+			<list>
+				<ref bean="chorbi1"/>
+				<ref bean="chorbi2"/>
+				<ref bean="chorbi3"/>
+				<ref bean="chorbi4"/>
+				<ref bean="chorbi5"/>
+			</list>
+		</property>
+	</bean>
+	<bean id="event3" class="domain.Event">
+		<property name="title" value="title3"/>
+		<property name="date" value="2017/04/12"/>
+		<property name="numberOfSeats" value="200"/>
+		<property name="description" value="descrition 3"/>
+		<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>
+		<property name="owner" ref="manager3"/>
+		<property name="partakers">
+			<list>
+
+			</list>
+		</property>
+	</bean>
+	<!-- /Event -->
+
+
+
 </beans>
