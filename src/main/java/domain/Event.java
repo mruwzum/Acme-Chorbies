@@ -1,11 +1,11 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 import java.util.Date;
 
 /**
@@ -21,6 +21,9 @@ public class Event extends DomainEntity {
     private String description;
     private String picture;
     private int numberOfSeats;
+
+    private Collection<Chorbi> partakers;
+    private Manager owner;
 
     @NotBlank
     public String getTitle() {
@@ -48,6 +51,7 @@ public class Event extends DomainEntity {
         this.description = description;
     }
 
+    @URL
     public String getPicture() {
         return picture;
     }
@@ -63,5 +67,23 @@ public class Event extends DomainEntity {
 
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = Chorbi.class)
+    public Collection<Chorbi> getPartakers() {
+        return partakers;
+    }
+
+    public void setPartakers(Collection<Chorbi> partakers) {
+        this.partakers = partakers;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Manager getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Manager owner) {
+        this.owner = owner;
     }
 }

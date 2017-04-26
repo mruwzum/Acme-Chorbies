@@ -4,6 +4,8 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by daviddelatorre on 19/4/17.
@@ -16,6 +18,7 @@ public class Manager extends Actor {
     private String company;
     private String vatNumber;
     private CreditCard creditCard;
+    private Collection<Event> createdEvents;
 
     @NotBlank
     public String getCompany() {
@@ -42,5 +45,14 @@ public class Manager extends Actor {
 
     public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL, targetEntity = Event.class, mappedBy = "owner")
+    public Collection<Event> getCreatedEvents() {
+        return createdEvents;
+    }
+
+    public void setCreatedEvents(Collection<Event> createdEvents) {
+        this.createdEvents = createdEvents;
     }
 }
