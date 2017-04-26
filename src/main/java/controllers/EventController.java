@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import services.ChorbiService;
 import services.EventService;
 import services.LikedService;
 
@@ -31,6 +32,8 @@ public class EventController extends AbstractController {
 
     @Autowired
     private EventService eventService;
+    @Autowired
+    private ChorbiService chorbiService;
 
     @RequestMapping( value="/list", method = RequestMethod.GET)
     public ModelAndView list() {
@@ -118,6 +121,58 @@ public class EventController extends AbstractController {
 
         return res;
 
+
+    }
+
+    @RequestMapping("/okevents")
+    public ModelAndView okEvents(){
+
+        ModelAndView res;
+        Collection<Event> events = eventService.okEvents();
+
+        res =  new ModelAndView("event/list");
+        res.addObject("events", events);
+
+        return res;
+
+
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public ModelAndView registerNewPartaker(@RequestParam int eventID){
+
+        ModelAndView res;
+        Event event = eventService.findOne(eventID);
+
+        Boolean bol = eventService.registerNewPartaker(chorbiService.findByPrincipal(), event);
+
+
+        if(bol){
+            res = new ModelAndView("chorbi/success");
+        }else{
+            res = new ModelAndView("chorbi/error");
+        }
+
+        return res;
+
+    }
+
+    @RequestMapping(value = "/unregister", method = RequestMethod.GET)
+    public ModelAndView unRegisterNewPartaker(@RequestParam int eventID){
+
+        ModelAndView res;
+        Event event = eventService.findOne(eventID);
+
+        Boolean bol = eventService.unRegisterPartaker(chorbiService.findByPrincipal(), event);
+
+
+        if(bol){
+            res = new ModelAndView("chorbi/success");
+        }else{
+            res = new ModelAndView("chorbi/error");
+        }
+
+        return res;
 
     }
 
