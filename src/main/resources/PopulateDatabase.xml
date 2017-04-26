@@ -994,7 +994,7 @@
 	</bean>
 	<bean id="event3" class="domain.Event">
 		<property name="title" value="title3"/>
-		<property name="date" value="2017/04/12"/>
+		<property name="date" value="2017/02/12"/>
 		<property name="numberOfSeats" value="200"/>
 		<property name="description" value="descrition 3"/>
 		<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>

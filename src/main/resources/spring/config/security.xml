@@ -44,6 +44,8 @@
 
 		<!--Allows everybody to register as chorbi.-->
 		<security:intercept-url pattern="/chorbi/create.do" access="permitAll"/>
+		<!--Allows everybody to view event.-->
+		<security:intercept-url pattern="/event/okevents.do" access="permitAll"/>
 		<!--Allows a non registered chorbi to finish and save his/her sign up-->
 		<security:intercept-url pattern="/chorbi/register.do" access="permitAll"/>
 

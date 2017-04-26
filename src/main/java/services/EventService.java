@@ -70,7 +70,7 @@ public class EventService {
 
     //Return the events that are going to be organised in less than one month and have seats available
     public Collection<Event> okEvents(){
-        int mes = 31*24*60*60*1000;
+        Long mes = 31*24*60*60*1000L;
         Date now = new Date(System.currentTimeMillis()-100);
         Date lastMonth = new Date(System.currentTimeMillis()-mes);
 

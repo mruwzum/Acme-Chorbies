@@ -131,7 +131,7 @@ public class EventController extends AbstractController {
         Collection<Event> events = eventService.okEvents();
 
         res =  new ModelAndView("event/list");
-        res.addObject("events", events);
+        res.addObject("event", events);
 
         return res;
 

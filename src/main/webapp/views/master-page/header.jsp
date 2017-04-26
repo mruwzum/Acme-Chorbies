@@ -75,6 +75,8 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		<li><a class="fNiv" href="chorbi/create.do"><spring:message code="master.page.register.chorbi"/></a>
+			<li><a href="event/okevents.do"><spring:message code="master.page.event.list" /></a></li>
+
 		</security:authorize>
 		
 		<security:authorize access="isAuthenticated()">
