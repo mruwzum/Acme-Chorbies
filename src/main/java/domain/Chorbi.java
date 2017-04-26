@@ -34,6 +34,7 @@ public class Chorbi extends Actor {
     private Collection<Chirp> myChirps;
     private Collection<Liked> myLikes;
     private Collection<Search> mySearches;
+    private Collection<Event> eventsToGo;
 
     @URL
     public String getPicture() {
@@ -149,5 +150,12 @@ public class Chorbi extends Actor {
         isBanned = banned;
     }
 
+    @OneToMany(cascade = CascadeType.ALL)
+    public Collection<Event> getEventsToGo() {
+        return eventsToGo;
+    }
 
+    public void setEventsToGo(Collection<Event> eventsToGo) {
+        this.eventsToGo = eventsToGo;
+    }
 }

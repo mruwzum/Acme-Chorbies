@@ -69,7 +69,7 @@ public class Event extends DomainEntity {
         this.numberOfSeats = numberOfSeats;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Chorbi.class)
+    @OneToMany(cascade = CascadeType.PERSIST, targetEntity = Chorbi.class)
     public Collection<Chorbi> getPartakers() {
         return partakers;
     }
@@ -78,7 +78,7 @@ public class Event extends DomainEntity {
         this.partakers = partakers;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     public Manager getOwner() {
         return owner;
     }

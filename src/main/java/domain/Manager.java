@@ -47,7 +47,7 @@ public class Manager extends Actor {
         this.creditCard = creditCard;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, targetEntity = Event.class, mappedBy = "owner")
+    @OneToMany(cascade = CascadeType.PERSIST, targetEntity = Event.class, mappedBy = "owner")
     public Collection<Event> getCreatedEvents() {
         return createdEvents;
     }
