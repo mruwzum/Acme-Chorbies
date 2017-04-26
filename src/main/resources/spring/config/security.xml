@@ -104,7 +104,8 @@
 
 		<!--Allows an authenticated manager to manage his events.-->
 		<security:intercept-url pattern="/event/listMy.do" access="hasRole('MANAGER')"/>
-
+		<security:intercept-url pattern="/event/delete.do" access="hasRole('MANAGER')"/>
+		<security:intercept-url pattern="/event/edit.do" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 

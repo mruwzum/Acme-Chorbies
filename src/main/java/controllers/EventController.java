@@ -102,7 +102,9 @@ public class EventController extends AbstractController {
             result= createEditModelAndView(liked);
         }else{
             try{
+                liked.setOwner(managerService.findByPrincipal());
                 eventService.save(liked);
+
                 result= new ModelAndView("chorbi/success");
             }catch(Throwable oops){
                 result= createEditModelAndView(liked, "chirp.commit.error");

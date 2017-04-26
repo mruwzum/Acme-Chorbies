@@ -35,6 +35,7 @@ public class Event extends DomainEntity {
     }
 
     @NotNull
+    @Temporal(TemporalType.DATE)
     public Date getDate() {
         return date;
     }
