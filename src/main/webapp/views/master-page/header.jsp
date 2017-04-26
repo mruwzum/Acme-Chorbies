@@ -82,6 +82,13 @@
 
 				</ul>
 			</li>
+			<li><a class="fNiv"><spring:message	code="master.page.events" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="event/eventToAssist.do"><spring:message code="master.page.my.events" /></a></li>
+
+				</ul>
+			</li>
 			<li><a href="chorbi/list.do"><spring:message code="master.page.chorbi.list" /></a></li>
 
 		</security:authorize>

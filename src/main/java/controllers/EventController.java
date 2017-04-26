@@ -66,6 +66,19 @@ public class EventController extends AbstractController {
         return result;
     }
 
+    @RequestMapping( value="/eventToAssist", method = RequestMethod.GET)
+    public ModelAndView listEventToAssits() {
+
+        ModelAndView result;
+        Collection<Event> events = chorbiService.findByPrincipal().getEventsToGo();
+
+        result = new ModelAndView("event/list");
+        result.addObject("event", events);
+        result.addObject("requestURI","event/list.do");
+
+        return result;
+    }
+
     //Create Method -----------------------------------------------------------
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)

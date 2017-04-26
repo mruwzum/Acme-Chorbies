@@ -72,7 +72,7 @@ public class EventService {
     public Collection<Event> okEvents(){
         Long mes = 31*24*60*60*1000L;
         Date now = new Date(System.currentTimeMillis()-100);
-        Date lastMonth = new Date(System.currentTimeMillis()-mes);
+        Date lastMonth = new Date(System.currentTimeMillis()+mes);
 
         Collection<Event> EventinLastMonth= new ArrayList<>(eventRespository.getEventBetwenNowAndLastMonth(now,lastMonth));
         Collection<Event> EventWithSeatsAvailable= new ArrayList<>(eventRespository.getEventBetwenWithSeatsAvailable());
@@ -81,6 +81,8 @@ public class EventService {
 
         return EventinLastMonth;
     }
+
+
 
 
     public boolean registerNewPartaker(Chorbi chorbi, Event event){

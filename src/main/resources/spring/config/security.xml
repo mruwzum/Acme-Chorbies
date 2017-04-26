@@ -65,6 +65,10 @@
 		<security:intercept-url pattern="/chorbi/likes.do" access="hasRole('CHORBI')"/>
 		<security:intercept-url pattern="/liked/delete.do" access="hasRole('CHORBI')"/>
 
+		<!--Allows chorbies to manages his or her events.-->
+		<security:intercept-url pattern="/event/eventToAssist.do" access="hasRole('CHORBI')"/>
+
+
 
 		<!--Allows an administrator to ban chorbies.-->
 		<security:intercept-url pattern="/administrator/ban.do" access="hasRole('ADMINISTRATOR')"/>

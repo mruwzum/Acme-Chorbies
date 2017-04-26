@@ -87,4 +87,12 @@ public class Event extends DomainEntity {
     public void setOwner(Manager owner) {
         this.owner = owner;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "title='" + title + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }
