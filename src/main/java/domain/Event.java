@@ -16,11 +16,11 @@ import java.util.Date;
 @Access(AccessType.PROPERTY)
 public class Event extends DomainEntity {
 
-    String title;
-    Date date;
-    String description;
-    String picture;
-    int numberOfSeats;
+    private String title;
+    private Date date;
+    private String description;
+    private String picture;
+    private int numberOfSeats;
 
     @NotBlank
     public String getTitle() {

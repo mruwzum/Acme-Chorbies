@@ -39,6 +39,11 @@
 		<value>/views/liked/messages</value>
 		<!--Search-->
 		<value>/views/search/messages</value>
+		<!--Manager-->
+		<value>/views/manager/messages</value>
+		<!--Event-->
+		<value>/views/event/messages</value>
+
 
 	</util:list>
 

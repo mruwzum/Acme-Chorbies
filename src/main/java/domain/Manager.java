@@ -13,9 +13,9 @@ import javax.validation.constraints.NotNull;
 @Access(AccessType.PROPERTY)
 public class Manager extends Actor {
 
-    String company;
-    String vatNumber;
-    CreditCard creditCard;
+    private String company;
+    private String vatNumber;
+    private CreditCard creditCard;
 
     @NotBlank
     public String getCompany() {
