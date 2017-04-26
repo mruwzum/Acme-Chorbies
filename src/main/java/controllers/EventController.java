@@ -93,14 +93,32 @@ public class EventController extends AbstractController {
     }
 
     @RequestMapping(value="/delete", method=RequestMethod.GET)
-    public ModelAndView delete(int eventId){
+    public ModelAndView delete(int eventId) {
         ModelAndView result;
 
         eventService.delete(eventService.findOne(eventId));
-        result=new ModelAndView("chorbi/success");
+        result = new ModelAndView("chorbi/success");
 
 
         return result;
+    }
+
+    @RequestMapping(value = "/view", method = RequestMethod.GET)
+    public ModelAndView view(@RequestParam int eventId){
+
+        ModelAndView res;
+        Event event = eventService.findOne(eventId);
+
+        res = new ModelAndView("event/view");
+        res.addObject("title",event.getTitle());
+        res.addObject("date", event.getDate());
+        res.addObject("picture", event.getPicture());
+        res.addObject("description", event.getDescription());
+        res.addObject("numberOfSeats", event.getNumberOfSeats());
+
+        return res;
+
+
     }
 
 

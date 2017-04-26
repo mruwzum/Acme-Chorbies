@@ -40,4 +40,10 @@
 	<spring:message code="event.description" var="description" />
 	<display:column property="description" title="${description}" sortable="true" />
 
+	<display:column>
+		<a href="event/view.do?eventId=${row.id}"> <spring:message
+				code="general.viewz" />
+		</a>
+	</display:column>
+
 </display:table>
