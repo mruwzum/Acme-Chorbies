@@ -2,6 +2,7 @@ package repositories;
 
 import domain.Manager;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -9,5 +10,8 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ManagerRepository extends JpaRepository<Manager, Integer> {
+
+    @Query("select c from Manager c where c.userAccount.id = ?1")
+    Manager findByUserAccountId(int userAccountId);
 
 }

@@ -1,5 +1,6 @@
 package services;
 
+import domain.Actor;
 import domain.CreditCard;
 import domain.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import repositories.CreditCardRepository;
 import repositories.ManagerRepository;
+import security.LoginService;
+import security.UserAccount;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
@@ -63,6 +66,27 @@ public class ManagerService {
     }
 
     // Other business methods -----------------------
+    public Manager findByPrincipal() {
+        Manager result;
+        UserAccount userAccount;
+
+        userAccount = LoginService.getPrincipal();
+        Assert.notNull(userAccount);
+        result = findByUserAccount(userAccount);
+        Assert.notNull(result);
+
+        return result;
+    }
+
+    private Manager findByUserAccount(UserAccount userAccount) {
+        Assert.notNull(userAccount);
+
+        Manager result;
+
+        result = managerRepository.findByUserAccountId(userAccount.getId());
+
+        return result;
+    }
 
 
     public void flush(){

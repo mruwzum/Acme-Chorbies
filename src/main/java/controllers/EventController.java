@@ -2,6 +2,7 @@ package controllers;
 
 import domain.Event;
 import domain.Liked;
+import domain.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -13,9 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ChorbiService;
 import services.EventService;
 import services.LikedService;
+import services.ManagerService;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * Created by daviddelatorre on 19/4/17.
@@ -34,6 +37,8 @@ public class EventController extends AbstractController {
     private EventService eventService;
     @Autowired
     private ChorbiService chorbiService;
+    @Autowired
+    private ManagerService managerService;
 
     @RequestMapping( value="/list", method = RequestMethod.GET)
     public ModelAndView list() {
@@ -43,12 +48,23 @@ public class EventController extends AbstractController {
 
         chirps = eventService.findAll();
         result = new ModelAndView("event/list");
-        result.addObject("events", chirps);
+        result.addObject("event", chirps);
         result.addObject("requestURI","event/list.do");
 
         return result;
     }
+    @RequestMapping( value="/listMy", method = RequestMethod.GET)
+    public ModelAndView listMyEvents() {
 
+        ModelAndView result;
+        Collection<Event> events = managerService.findByPrincipal().getCreatedEvents();
+
+        result = new ModelAndView("event/list");
+        result.addObject("event", events);
+        result.addObject("requestURI","event/list.do");
+
+        return result;
+    }
 
     //Create Method -----------------------------------------------------------
 

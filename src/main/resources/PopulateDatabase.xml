@@ -146,7 +146,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CHORBI" />
+					<property name="authority" value="MANAGER" />
 				</bean>
 			</list>
 		</property>
@@ -157,7 +157,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CHORBI" />
+					<property name="authority" value="MANAGER" />
 				</bean>
 			</list>
 		</property>
@@ -168,7 +168,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CHORBI" />
+					<property name="authority" value="MANAGER" />
 				</bean>
 			</list>
 		</property>
@@ -179,7 +179,7 @@
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="CHORBI" />
+					<property name="authority" value="MANAGER" />
 				</bean>
 			</list>
 		</property>

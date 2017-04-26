@@ -37,7 +37,21 @@
 
 
 		</security:authorize>
-		
+		<security:authorize access="hasRole('MANAGER')">
+
+
+
+
+			<li><a class="fNiv"><spring:message	code="master.page.manager" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="event/listMy.do"><spring:message code="master.page.manager.manageEvents" /></a></li>
+				</ul>
+			</li>
+
+
+
+		</security:authorize>
 		<security:authorize access="hasRole('CHORBI')">
 
 
