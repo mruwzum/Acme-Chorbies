@@ -70,7 +70,7 @@ public class Event extends DomainEntity {
         this.numberOfSeats = numberOfSeats;
     }
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL)
     public Collection<Chorbi> getPartakers() {
         return partakers;
     }

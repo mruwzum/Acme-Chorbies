@@ -283,7 +283,7 @@
 		<property name="holder" value="Manager3"/>
 		<property name="brand" value="MASTERCARD"/>
 		<property name="number" value="54275498043695577"/>
-		<property name="ExpirationYear" value="2020"/>
+		<property name="ExpirationYear" value="2016"/>
 		<property name="CVV" value="235"/>
 		<property name="expirationMonth" value="8"/>
 	</bean>
@@ -873,6 +873,10 @@
 		<property name="cacheValue" value="12"/>
 	</bean>
 
+	<!-- Search Cache-->
+	<bean id="feeValue1" class="domain.Fee">
+		<property name="feeValue" value="1"/>
+	</bean>
 	<!-- /Search Cache -->
 	<!-- Manager -->
 	<bean id="manager1" class="domain.Manager">

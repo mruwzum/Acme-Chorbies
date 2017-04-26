@@ -18,11 +18,11 @@ public class Fee extends DomainEntity {
 
 
     @NotNull
-    public int getCacheValue() {
+    public int getFeeValue() {
         return feeValue;
     }
 
-    public void setCacheValue(int cacheValue) {
-        this.feeValue = cacheValue;
+    public void setFeeValue(int feeValue) {
+        this.feeValue = feeValue;
     }
 }

@@ -3,6 +3,7 @@ package services;
 import domain.Chorbi;
 import domain.CreditCard;
 import domain.Event;
+import domain.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -109,8 +110,8 @@ public class EventService {
 
         return res;
 
-    }
 
+    }
 
     public void flush(){
         eventRespository.flush();

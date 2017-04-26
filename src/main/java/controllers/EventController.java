@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import services.ChorbiService;
-import services.EventService;
-import services.LikedService;
-import services.ManagerService;
+import services.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -39,6 +36,11 @@ public class EventController extends AbstractController {
     private ChorbiService chorbiService;
     @Autowired
     private ManagerService managerService;
+    @Autowired
+    private SearchService searchService;
+
+
+
 
     @RequestMapping( value="/list", method = RequestMethod.GET)
     public ModelAndView list() {
@@ -85,10 +87,14 @@ public class EventController extends AbstractController {
     public ModelAndView create() {
 
         ModelAndView result;
+        Manager us = managerService.findByPrincipal();
+       if (searchService.checkCreditCard(managerService.findByPrincipal().getCreditCard())){
+           Event chirp = eventService.create();
+           result = createEditModelAndView(chirp);
 
-        Event chirp = eventService.create();
-        result = createEditModelAndView(chirp);
-
+    } else {
+        result =  new ModelAndView("credit-card/error");
+    }
         return result;
 
     }
@@ -132,7 +138,8 @@ public class EventController extends AbstractController {
 
         eventService.delete(eventService.findOne(eventId));
         result = new ModelAndView("chorbi/success");
-
+        //TODO sale errorzaco al borrar evento ya que está asociado, mirar como borrar pero sin borrar la asociación
+        // o borrar el evento sin que borre el resto y punto.
 
         return result;
     }

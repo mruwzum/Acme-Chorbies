@@ -11,6 +11,14 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
+
+<security:authorize access="hasRole('MANAGER')">
+
+	<a href="event/create.do"> <spring:message
+			code="general.create" />
+	</a>
+
+</security:authorize>
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="event" id="row">
