@@ -32,6 +32,27 @@
 <jstl:out value="${numberOfSeats}"/>
 
 
+<jstl:if test="${reg}">
+
+    <a href="event/unregister.do?eventId=${id}"> <spring:message
+            code="event.unregister" />
+    </a>
+
+
+</jstl:if>
+
+
+<jstl:if test="${not reg}">
+
+    <a href="event/register.do?eventId=${id}"> <spring:message
+            code="event.register" />
+    </a>
+
+
+</jstl:if>
+
+
+
 
 
 <security:authorize access="hasRole('MANAGER')">

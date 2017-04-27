@@ -104,6 +104,18 @@ public class ManagerController extends AbstractController  {
         return result;
     }
 
+    @RequestMapping(value = "/changefee", method = RequestMethod.GET)
+    public ModelAndView changeFee(@RequestParam int managerId){
+
+        ModelAndView res;
+        Manager manager =  managerService.findOne(managerId);
+        res= new ModelAndView("administrator/editFee");
+        res.addObject("manager", manager);
+
+        return res;
+
+    }
+
 
     // Ancillary methods ------------------------------------------------
 
@@ -125,5 +137,8 @@ public class ManagerController extends AbstractController  {
         return result;
 
     }
+
+
+
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -147,8 +148,14 @@ public class EventController extends AbstractController {
     @RequestMapping(value = "/view", method = RequestMethod.GET)
     public ModelAndView view(@RequestParam int eventId){
 
+        Boolean registered = false;
         ModelAndView res;
         Event event = eventService.findOne(eventId);
+
+        if(event.getPartakers().contains(chorbiService.findByPrincipal())){
+            registered = true;
+        }
+
 
         res = new ModelAndView("event/view");
         res.addObject("title",event.getTitle());
@@ -156,6 +163,9 @@ public class EventController extends AbstractController {
         res.addObject("picture", event.getPicture());
         res.addObject("description", event.getDescription());
         res.addObject("numberOfSeats", event.getNumberOfSeats());
+        res.addObject("id", event.getId());
+        res.addObject("reg", registered);
+
 
         return res;
 
@@ -176,11 +186,35 @@ public class EventController extends AbstractController {
 
     }
 
+
+    @RequestMapping(value = "/allEvents")
+    public ModelAndView allEvents(){
+
+        ModelAndView res = new ModelAndView();
+
+        Collection<Event> okEvents = eventService.okEvents();
+        Collection<Event> lastEvents = eventService.pastEvents();
+        Collection<Event> restOfEvents = new ArrayList<>(eventService.findAll());
+        restOfEvents.retainAll(okEvents);
+        restOfEvents.removeAll(lastEvents);
+
+
+        Boolean all = true;
+
+        res = new ModelAndView("event/list");
+        res.addObject("event", okEvents);
+        res.addObject("lastEvents", lastEvents);
+        res.addObject("restOfEvents", restOfEvents);
+        res.addObject("all", all);
+
+        return res;
+    }
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public ModelAndView registerNewPartaker(@RequestParam int eventID){
+    public ModelAndView registerNewPartaker(@RequestParam int eventId){
 
         ModelAndView res;
-        Event event = eventService.findOne(eventID);
+        Event event = eventService.findOne(eventId);
 
         Boolean bol = eventService.registerNewPartaker(chorbiService.findByPrincipal(), event);
 
@@ -196,10 +230,10 @@ public class EventController extends AbstractController {
     }
 
     @RequestMapping(value = "/unregister", method = RequestMethod.GET)
-    public ModelAndView unRegisterNewPartaker(@RequestParam int eventID){
+    public ModelAndView unRegisterNewPartaker(@RequestParam int eventId){
 
         ModelAndView res;
-        Event event = eventService.findOne(eventID);
+        Event event = eventService.findOne(eventId);
 
         Boolean bol = eventService.unRegisterPartaker(chorbiService.findByPrincipal(), event);
 

@@ -19,7 +19,17 @@
 	</a>
 
 </security:authorize>
-<!-- Listing grid -->
+
+<spring:message code="event.near" var="name1"/>
+<h3><jstl:out value="${name1}"/></h3>
+
+<jstl:if test="${all}">
+<div class="highlighted">
+</jstl:if>
+
+
+<!-- Listing grid ok events -->
+
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 	name="event" id="row">
 
@@ -55,8 +65,80 @@
 
 	<display:column>
 		<a href="event/view.do?eventId=${row.id}"> <spring:message
-				code="general.viewz" />
+				code="event.view" />
 		</a>
 	</display:column>
 
 </display:table>
+
+<jstl:if test="${all}">
+</div>
+</jstl:if>
+
+<spring:message code="event.rest" var="name1"/>
+<h3><jstl:out value="${name1}"/></h3>
+
+<!-- Listing grid rest of events -->
+
+<jstl:if test="${all}">
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+			   name="restOfEvents" id="row">
+
+
+	<!-- Attributes -->
+
+
+
+	<spring:message code="event.title" var="title" />
+	<display:column property="title" title="${title}" sortable="true" />
+	<spring:message code="event.date" var="date" />
+	<display:column property="date" title="${date}" sortable="true" />
+	<spring:message code="event.description" var="description" />
+	<display:column property="description" title="${description}" sortable="true" />
+
+	<jstl:if test="${not all}">
+	<display:column>
+		<a href="event/view.do?eventId=${row.id}"> <spring:message
+				code="event.view" />
+		</a>
+	</display:column>
+	</jstl:if>
+
+</display:table>
+
+</jstl:if>
+
+<spring:message code="event.past" var="name1"/>
+<h3><jstl:out value="${name1}"/></h3>
+
+<!-- Listing grid past events -->
+<div class="overlay">
+
+<jstl:if test="${all}">
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+			   name="lastEvents" id="row" >
+
+
+	<!-- Attributes -->
+
+
+
+	<spring:message code="event.title" var="title" />
+	<display:column property="title" title="${title}" sortable="true" />
+	<spring:message code="event.date" var="date" />
+	<display:column property="date" title="${date}" sortable="true" />
+	<spring:message code="event.description" var="description" />
+	<display:column property="description" title="${description}" sortable="true" />
+
+	<jstl:if test="${not all}">
+	<display:column>
+		<a href="event/view.do?eventId=${row.id}"> <spring:message
+				code="event.view" />
+		</a>
+	</display:column>
+	</jstl:if>
+</display:table>
+
+</jstl:if>
+
+</div>

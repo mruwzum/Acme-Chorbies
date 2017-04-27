@@ -73,14 +73,26 @@ public class EventService {
     public Collection<Event> okEvents(){
         Long mes = 31*24*60*60*1000L;
         Date now = new Date(System.currentTimeMillis()-100);
-        Date lastMonth = new Date(System.currentTimeMillis()+mes);
+        Date nextMonth = new Date(System.currentTimeMillis()+mes);
 
-        Collection<Event> EventinLastMonth= new ArrayList<>(eventRespository.getEventBetwenNowAndLastMonth(now,lastMonth));
+
+        Collection<Event> EventinLastMonth= new ArrayList<>(eventRespository.getEventBetwenNowAndLastMonth(now,nextMonth));
         Collection<Event> EventWithSeatsAvailable= new ArrayList<>(eventRespository.getEventBetwenWithSeatsAvailable());
 
         EventinLastMonth.retainAll(EventWithSeatsAvailable);
 
         return EventinLastMonth;
+    }
+    //Return the list of past events
+    public Collection<Event> pastEvents(){
+
+        Date now = new Date(System.currentTimeMillis()-100);
+
+        Collection<Event> res =  eventRespository.lastEventInSystem(now);
+
+        return res;
+
+
     }
 
 
@@ -90,9 +102,12 @@ public class EventService {
 
         boolean res = true;
 
-        if(event.getPartakers().contains(chorbi)){
+
+
+        if(event.getPartakers().contains(chorbi) || event.getPartakers().size() == event.getNumberOfSeats() ){
             res = false;
         }
+        chorbi.getEventsToGo().add(event);
         event.getPartakers().add(chorbi);
 
         return res;
@@ -107,6 +122,7 @@ public class EventService {
             res = false;
         }
         event.getPartakers().remove(chorbi);
+        chorbi.getEventsToGo().remove(event);
 
         return res;
 

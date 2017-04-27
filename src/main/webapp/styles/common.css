@@ -29,3 +29,12 @@
 .h1 {
     font-family: "Andale Mono";
 }
+.overlay {
+    background: #e9e9e9;
+    opacity: 0.5;
+}
+.highlighted{
+    text-decoration: underline;
+    text-transform: uppercase;
+    background-color: #FFFF00;
+}

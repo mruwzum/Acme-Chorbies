@@ -46,6 +46,8 @@
 		<security:intercept-url pattern="/chorbi/create.do" access="permitAll"/>
 		<!--Allows everybody to view event.-->
 		<security:intercept-url pattern="/event/okevents.do" access="permitAll"/>
+		<security:intercept-url pattern="/event/allEvents.do" access="permitAll"/>
+
 		<!--Allows a non registered chorbi to finish and save his/her sign up-->
 		<security:intercept-url pattern="/chorbi/register.do" access="permitAll"/>
 
@@ -67,6 +69,12 @@
 
 		<!--Allows chorbies to manages his or her events.-->
 		<security:intercept-url pattern="/event/eventToAssist.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/event/view.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/event/register.do" access="hasRole('CHORBI')"/>
+		<security:intercept-url pattern="/event/unregister.do" access="hasRole('CHORBI')"/>
+
+
+
 
 
 
@@ -93,8 +101,12 @@
 		<!--Allows admins to change cache.-->
 		<security:intercept-url pattern="/administrator/changeCache.do" access="hasRole('ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/administrator/editCache.do" access="hasRole('ADMINISTRATOR')"/>
-		<security:intercept-url pattern="/administrator/changeFee.do" access="hasRole('ADMINISTRATOR')"/>
-		<security:intercept-url pattern="/administrator/editFee.do" access="hasRole('ADMINISTRATOR')"/>
+
+		<!--Allows admins to change fee.-->
+		<security:intercept-url pattern="/manager/list.do" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/manager/changefee.do" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/manager/edit.do" access="hasRole('ADMINISTRATOR')"/>
+
 
 		<!--Allows admins to view dashboard.-->
 		<security:intercept-url pattern="/administrator/dashboard.do" access="hasRole('ADMINISTRATOR')"/>

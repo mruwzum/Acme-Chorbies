@@ -2,6 +2,7 @@ package repositories;
 
 import domain.Administrator;
 import domain.Chorbi;
+import domain.Manager;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -95,4 +96,17 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     //The chorbies who have sent more chirps
     @Query("select c from Chorbi c order by c.myChirps.size desc")
     Collection<Chorbi> chorbieWhoHaveMoreChirpsSended();
+
+
+    //************************************************************************** ACME CHORBIES 2.0 **************************************************************************
+
+
+    @Query("select c from Manager c order by c.createdEvents.size asc")
+    Collection<Manager> managerOrganizedByNumberOfEvents();
+
+    @Query("select c from Chorbi c order by c.eventsToGo.size asc ")
+    Collection<Chorbi> chorbiSortedByNumberOfEventsToGo();
+
+    
+
 }

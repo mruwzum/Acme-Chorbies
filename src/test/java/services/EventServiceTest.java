@@ -32,6 +32,21 @@ public class EventServiceTest extends AbstractTest {
 
         System.out.println(eventService.okEvents());
 
+
+//        Long mes = 31*24*60*60*1000L;
+//        Date now = new Date(System.currentTimeMillis()-100);
+//        Date lastMonth = new Date(System.currentTimeMillis()-mes);
+//        Date nextMonth = new Date(System.currentTimeMillis()+mes);
+
+//        System.out.println(now);
+//        System.out.println(lastMonth);
+//        System.out.println(nextMonth);
+//
+//        System.out.println(now.getTime());
+//        System.out.println(lastMonth);
+//        System.out.println(nextMonth);
+
+
     }
 
 }

@@ -29,6 +29,18 @@
 	<spring:message code="manager.vatNumber" var="vatNumber" />
 	<display:column property="vatNumber" title="${vatNumber}" sortable="true" />
 
+	<security:authorize access="hasRole('ADMINISTRATOR')">
+	<spring:message code="manager.totalFee" var="totalFee" />
+	<display:column property="totalFee" title="${totalFee}" sortable="true" />
+	<spring:message code="manager.fee" var="fee" />
+	<display:column property="fee" title="${fee}" sortable="true" />
+
+		<display:column>
+			<a href="manager/changefee.do?managerId=${row.id}"> <spring:message
+					code="manager.changeFee" />
+			</a>
+		</display:column>
+	</security:authorize>
 
 
 

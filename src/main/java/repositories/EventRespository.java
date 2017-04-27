@@ -15,10 +15,12 @@ import java.util.Date;
 public interface EventRespository extends JpaRepository<Event, Integer> {
 
 
-    @Query("select c from Event c where ?1 <= ?2")
+    @Query("select c from Event c where c.date between ?1 and ?2")
     Collection<Event> getEventBetwenNowAndLastMonth(Date now, Date last);
 
     @Query("select c from Event c where c.numberOfSeats - c.partakers.size > 0")
     Collection<Event> getEventBetwenWithSeatsAvailable();
 
+    @Query("select c from Event c where c.date < ?1")
+    Collection<Event> lastEventInSystem(Date date);
 }

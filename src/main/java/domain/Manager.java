@@ -19,6 +19,8 @@ public class Manager extends Actor {
     private String vatNumber;
     private CreditCard creditCard;
     private Collection<Event> createdEvents;
+    private Double fee;
+    private Double totalFee;
 
     @NotBlank
     public String getCompany() {
@@ -54,5 +56,23 @@ public class Manager extends Actor {
 
     public void setCreatedEvents(Collection<Event> createdEvents) {
         this.createdEvents = createdEvents;
+    }
+
+    @NotNull
+    public Double getFee() {
+        return fee;
+    }
+
+    public void setFee(Double fee) {
+        this.fee = fee;
+    }
+
+    @NotNull
+    public Double getTotalFee() {
+        return totalFee;
+    }
+
+    public void setTotalFee(Double totalFee) {
+        this.totalFee = totalFee;
     }
 }

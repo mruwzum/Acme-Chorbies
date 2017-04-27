@@ -904,10 +904,6 @@
 		<property name="cacheValue" value="12"/>
 	</bean>
 
-	<!-- Search Cache-->
-	<bean id="feeValue1" class="domain.Fee">
-		<property name="feeValue" value="1"/>
-	</bean>
 	<!-- /Search Cache -->
 	<!-- Manager -->
 	<bean id="manager1" class="domain.Manager">
@@ -919,7 +915,8 @@
 		<property name="company" value="Bankinter"/>
 		<property name="vatNumber" value="56663452R"/>
 		<property name="creditCard" ref="creditcard11"/>
-
+		<property name="fee" value="1.0"/>
+		<property name="totalFee" value="10.0"/>
 		<property name="createdEvents">
 			<list>
 				<ref bean="event1"/>
@@ -936,7 +933,8 @@
 		<property name="company" value="Santander"/>
 		<property name="vatNumber" value="42211457P"/>
 		<property name="creditCard" ref="creditcard8"/>
-
+		<property name="fee" value="2.0"/>
+		<property name="totalFee" value="16.0"/>
 		<property name="createdEvents">
 			<list>
 				<!--<ref bean="event2"/>-->
@@ -952,7 +950,8 @@
 		<property name="company" value="Durex"/>
 		<property name="vatNumber" value="75558978U"/>
 		<property name="creditCard" ref="creditcard9"/>
-
+		<property name="fee" value="5.0"/>
+		<property name="totalFee" value="100.0"/>
 		<property name="createdEvents">
 			<list>
 				<ref bean="event3"/>
@@ -970,7 +969,8 @@
 		<property name="company" value="Control"/>
 		<property name="vatNumber" value="82225334R"/>
 		<property name="creditCard" ref="creditcard10"/>
-
+		<property name="fee" value="10.0"/>
+		<property name="totalFee" value="1000.0"/>
 		<property name="createdEvents">
 			<list>
 			</list>

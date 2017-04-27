@@ -33,8 +33,8 @@
 			</li>
 			<li><a href="chorbi/listAll.do"><spring:message code="master.page.chorbi.list" /></a></li>
 			<li><a href="administrator/changeCache.do"><spring:message code="master.page.administrator.change" /></a></li>
-			<li><a href="administrator/changeFee.do"><spring:message code="master.page.administrator.change.fee" /></a></li>
 			<li><a href="administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
+			<li><a href="manager/list.do"><spring:message code="master.page.administrator.manager.list" /></a></li>
 
 
 		</security:authorize>
@@ -86,6 +86,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.events" /></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="event/okevents.do"><spring:message code="master.page.event.list" /></a></li>
 					<li><a href="event/eventToAssist.do"><spring:message code="master.page.my.events" /></a></li>
 
 				</ul>
@@ -97,7 +98,9 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		<li><a class="fNiv" href="chorbi/create.do"><spring:message code="master.page.register.chorbi"/></a>
-			<li><a href="event/okevents.do"><spring:message code="master.page.event.list" /></a></li>
+			<li><a href="event/okevents.do"><spring:message code="master.page.event.list.ok" /></a></li>
+			<li><a href="event/allEvents.do"><spring:message code="master.page.event.list" /></a></li>
+
 
 		</security:authorize>
 		
