@@ -24,6 +24,8 @@ import services.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 @Controller
 @RequestMapping("/chorbi")
@@ -43,6 +45,8 @@ public class ChorbiController extends AbstractController {
 		private LikedService likedService;
 		@Autowired
 		private ChirpService chirpService;
+		@Autowired
+		private SearchService searchService;
 
 
 		@RequestMapping( value="/list", method = RequestMethod.GET)
@@ -75,6 +79,7 @@ public class ChorbiController extends AbstractController {
 
 		return result;
 	}
+
 
 		//Create Method -----------------------------------------------------------
 
@@ -211,12 +216,14 @@ public class ChorbiController extends AbstractController {
 
 			ModelAndView res;
 
+
 			Liked liked = likedService.create();
 			Chorbi receiver = chorbiService.findOne(chorbiId);
 			liked.setReceiver(receiver);
 			liked.setSender(chorbiService.findByPrincipal());
 			res = new ModelAndView("liked/edit");
 			res.addObject("liked", liked);
+
 
 			return res;
 
@@ -239,9 +246,14 @@ public class ChorbiController extends AbstractController {
 	@RequestMapping(value = "/likes")
 	public ModelAndView likes(){
 		ModelAndView res;
+
+		if(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard())){
 		Collection<Liked> Liked = chorbiService.getLikes();
 		res =  new ModelAndView("liked/list");
 		res.addObject("likes", Liked);
+		}else{
+			res =  new ModelAndView("credit-card/error");
+		}
 		return res;
 
 	}

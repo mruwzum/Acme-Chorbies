@@ -47,3 +47,10 @@
 		</jstl:if>
 	</security:authorize>
 </display:table>
+
+
+
+
+<spring:message code="notCharge" var="notCharge"/>
+<h3><jstl:out value="${notCharge}"/></h3>
+
