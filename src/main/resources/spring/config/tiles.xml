@@ -29,6 +29,8 @@
 		<value>/views/banner/tiles.xml</value>
 		<!--Chirp-->
 		<value>/views/chirp/tiles.xml</value>
+		<!--ChirpMultiple-->
+		<value>/views/chirpMultiple/tiles.xml</value>
 		<!--Chorbi-->
 		<value>/views/chorbi/tiles.xml</value>
 		<!--Coordinate-->

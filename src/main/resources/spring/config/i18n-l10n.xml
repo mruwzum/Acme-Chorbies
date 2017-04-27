@@ -28,7 +28,8 @@
 		<!--Banner-->
 		<value>/views/banner/messages</value>
 		<!--Chirp-->
-		<value>/views/chirp/messages</value>
+
+		<value>/views/chirpMultiple/messages</value>
 		<!--Chorbi-->
 		<value>/views/chorbi/messages</value>
 		<!--Coordinate-->

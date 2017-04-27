@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+      
+<tiles-definitions>
+	<definition name="chirpMultiple/list" extends="master.page">
+		<put-attribute name="title" value="chirp: Listado" />
+		<put-attribute name="body" value="/views/chirpMultiple/list.jsp" />
+	</definition>
+	
+	<definition name="chirpMultiple/edit" extends="master.page">
+		<put-attribute name="title" value="chirp: Editar" />
+		<put-attribute name="body" value="/views/chirpMultiple/edit.jsp" />
+	</definition>
+
+</tiles-definitions>

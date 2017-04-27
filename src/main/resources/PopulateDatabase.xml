@@ -483,6 +483,37 @@
 		<property name="sender" ref="chorbi2"/>
 		<property name="receiver" ref="chorbi4"/>
 	</bean>
+
+	<bean id="chiripM0" class="domain.ChirpMultiple">
+		<property name="subject" value="title10"/>
+		<property name="moment" value="2017/01/23 23:00:12"/>
+		<property name="message" value="text10"/>
+		<property name="attachments" value="http://www.desicomments.com/wp-content/uploads/Animated-Image-Of-Open-Love-Envelope.gif"/>
+		<property name="sender" ref="manager1"/>
+		<property name="receivers">
+			<list>
+				<ref bean="chorbi5"/>
+				<ref bean="chorbi4"/>
+			</list>
+		</property>
+
+	</bean>
+	<bean id="chirpM1" class="domain.ChirpMultiple">
+		<property name="subject" value="title10"/>
+		<property name="moment" value="2017/01/23 23:00:12"/>
+		<property name="message" value="text10"/>
+		<property name="attachments" value="http://www.desicomments.com/wp-content/uploads/Animated-Image-Of-Open-Love-Envelope.gif"/>
+		<property name="sender" ref="manager2"/>
+		<property name="receivers">
+			<list>
+				<ref bean="chorbi0"/>
+				<ref bean="chorbi1"/>
+			</list>
+		</property>
+	</bean>
+
+
+
 	<!-- /Chirp-->
 	<!-- Chorbies -->
 	<bean id="chorbi1" class="domain.Chorbi">
@@ -924,7 +955,8 @@
 
 		<property name="createdEvents">
 			<list>
-				<!--<ref bean="event3"/>-->
+				<ref bean="event3"/>
+				<ref bean="event2"/>
 
 			</list>
 		</property>
