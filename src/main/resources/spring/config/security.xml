@@ -50,6 +50,8 @@
 
 		<!--Allows a non registered chorbi to finish and save his/her sign up-->
 		<security:intercept-url pattern="/chorbi/register.do" access="permitAll"/>
+		<security:intercept-url pattern="/chorbi/error.do" access="permitAll"/>
+
 
 
 		<!--Allows an authenticated user to list all chorbies.-->
@@ -106,6 +108,9 @@
 		<security:intercept-url pattern="/manager/list.do" access="hasRole('ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/manager/changefee.do" access="hasRole('ADMINISTRATOR')"/>
 		<security:intercept-url pattern="/manager/edit.do" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/administrator/changeFeeChorbi.do" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/administrator/changeFeeManager.do" access="hasRole('ADMINISTRATOR')"/>
+		<security:intercept-url pattern="/administrator/editFee.do" access="hasRole('ADMINISTRATOR')"/>
 
 
 		<!--Allows admins to view dashboard.-->

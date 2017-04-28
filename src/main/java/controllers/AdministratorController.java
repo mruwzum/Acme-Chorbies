@@ -12,6 +12,7 @@ package controllers;
 
 import domain.Administrator;
 import domain.Chorbi;
+import domain.Fee;
 import domain.SearchCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import services.AdministratorService;
 import services.ChorbiService;
+import services.FeeService;
 import services.SearchCacheService;
 
 import javax.validation.Valid;
@@ -42,6 +44,8 @@ public class AdministratorController extends AbstractController {
 	private ChorbiService chorbiService;
 	@Autowired
 	private SearchCacheService searchCacheService;
+	@Autowired
+	private FeeService feeService;
 
 
 
@@ -135,5 +139,49 @@ public class AdministratorController extends AbstractController {
 		return res;
 	}
 
+
+	@RequestMapping("/changeFeeManager")
+	public ModelAndView changeFeeManager(){
+		ModelAndView res;
+
+		List<Fee> caches = new ArrayList<>(feeService.findAll());
+		res = new ModelAndView("administrator/editFee2");
+		res.addObject("Fee", caches.get(0));
+
+
+		return res;
+	}
+
+
+	@RequestMapping("/changeFeeChorbi")
+	public ModelAndView changeFeeChorbi(){
+		ModelAndView res;
+
+		List<Fee> caches = new ArrayList<>(feeService.findAll());
+		res = new ModelAndView("administrator/editFee2");
+		res.addObject("Fee", caches.get(1));
+
+
+		return res;
+	}
+
+
+
+
+	@RequestMapping(value = "/editFee", method=RequestMethod.POST, params="save" )
+	public ModelAndView editFee(@Valid Fee searchCache){
+		ModelAndView res;
+
+		try {
+			feeService.save(searchCache);
+			res = new ModelAndView("chorbi/success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			res =  new ModelAndView("chorbi/error");
+			res.addObject("trace",e.getStackTrace());
+		}
+
+		return res;
+	}
 
 }

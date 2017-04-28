@@ -72,6 +72,7 @@ public class LikedService {
 
         try {
             liked.setMoment(new Date(System.currentTimeMillis()-1000));
+            liked.getReceiver().setNumberOfStars(liked.getReceiver().getNumberOfStars()+liked.getNumberOfStarts());
             liked.getReceiver().getLikes().add(liked);
             liked.getSender().getMyLikes().add(liked);
             res = true;

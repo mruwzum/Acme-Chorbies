@@ -1,5 +1,7 @@
 package domain;
 
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -15,6 +17,7 @@ public class Liked extends DomainEntity {
 
     private Date moment;
     private String text;
+    private int numberOfStarts;
 
 
     private Chorbi sender;
@@ -57,6 +60,13 @@ public class Liked extends DomainEntity {
         this.receiver = receiver;
     }
 
+    @Range(min = 0, max = 3)
+    @NotNull
+    public int getNumberOfStarts() {
+        return numberOfStarts;
+    }
 
-
+    public void setNumberOfStarts(int numberOfStarts) {
+        this.numberOfStarts = numberOfStarts;
+    }
 }

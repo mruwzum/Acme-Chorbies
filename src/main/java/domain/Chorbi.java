@@ -25,6 +25,7 @@ public class Chorbi extends Actor {
     private CreditCard creditCard;
     private int age;
     private Boolean isBanned;
+    private int numberOfStars;
 
 
     private Coordinate coordinate;
@@ -157,5 +158,14 @@ public class Chorbi extends Actor {
 
     public void setEventsToGo(Collection<Event> eventsToGo) {
         this.eventsToGo = eventsToGo;
+    }
+
+
+    public int getNumberOfStars() {
+        return numberOfStars;
+    }
+
+    public void setNumberOfStars(int numberOfStars) {
+        this.numberOfStars = numberOfStars;
     }
 }

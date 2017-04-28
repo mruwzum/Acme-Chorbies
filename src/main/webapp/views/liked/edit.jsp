@@ -22,6 +22,7 @@
 
 
 	<acme:textbox path="text" code="like.text"/>
+	<acme:textbox path="numberOfStarts" code="liked.stars"/>
 	<br />
 
 

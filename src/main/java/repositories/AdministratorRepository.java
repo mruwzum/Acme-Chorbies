@@ -107,6 +107,22 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     @Query("select c from Chorbi c order by c.eventsToGo.size asc ")
     Collection<Chorbi> chorbiSortedByNumberOfEventsToGo();
 
-    
+
+    /*Collection<Manager> managerWithDues();
+
+    Collection<Chorbi> chorbiesWirtDues();*/
+
+    @Query("select avg(numberOfStars) from Chorbi")
+    Double averageNumberOfStarsPerChorbi();
+
+    @Query("select max(numberOfStars) from Chorbi")
+    int maxNumberOfStarsPerChorbi();
+
+    @Query("select min(numberOfStars) from Chorbi")
+    int minNumberOfStarsPerChorbi();
+
+    @Query("select c from Chorbi c order by avg(c.numberOfStars) asc ")
+    Collection<Chorbi> chorbiesSortedByAverageOfLikes();
+
 
 }

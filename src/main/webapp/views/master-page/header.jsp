@@ -35,6 +35,9 @@
 			<li><a href="administrator/changeCache.do"><spring:message code="master.page.administrator.change" /></a></li>
 			<li><a href="administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
 			<li><a href="manager/list.do"><spring:message code="master.page.administrator.manager.list" /></a></li>
+			<li><a href="administrator/changeFeeChorbi.do"><spring:message code="master.page.administrator.fee.chorbi" /></a></li>
+			<li><a href="administrator/changeFeeManager.do"><spring:message code="master.page.administrator.fee.manager" /></a></li>
+
 
 
 		</security:authorize>

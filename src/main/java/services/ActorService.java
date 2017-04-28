@@ -87,6 +87,7 @@ public class ActorService {
 		Assert.notNull(u.getUserAccount().getAuthorities(),"authorities null al registrar");
 
 		Date date = new Date(System.currentTimeMillis()-1000);
+		u.setNumberOfStars(0);
 
 		Assert.isTrue(u.getAge() >= 18,"Menor de edad / Under age");
 

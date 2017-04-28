@@ -24,6 +24,11 @@
 		<put-attribute name="title" value="administrator: Edit Fee"/>
 		<put-attribute name="body" value="/views/administrator/editFee.jsp"/>
 	</definition>
+	<definition name="administrator/editFee2" extends="master.page">
+		<put-attribute name="title" value="administrator: Edit Fee"/>
+		<put-attribute name="body" value="/views/administrator/editFee2.jsp"/>
+	</definition>
+
 
 	<definition name="administrator/dashboard" extends="master.page">
 		<put-attribute name="title" value="Dashboard" />

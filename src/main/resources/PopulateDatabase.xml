@@ -530,6 +530,7 @@
 		<property name="age" value="32"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="banned" value="false"/>
+		<property name="numberOfStars" value="4"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp6"/>
@@ -583,6 +584,7 @@
 		<property name="age" value="21"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="banned" value="false"/>
+		<property name="numberOfStars" value="0"/>
 		<property name="chirps">
 			<list>
 			</list>
@@ -620,6 +622,7 @@
 		<property name="age" value="25"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="banned" value="false"/>
+		<property name="numberOfStars" value="0"/>
 		<property name="chirps">
 			<list>
 			<ref bean="Chirp6"/>
@@ -660,6 +663,7 @@
 		<property name="creditCard" ref="creditcard2"/>
 		<property name="coordinate" ref="coord2"/>
 		<property name="banned" value="false"/>
+		<property name="numberOfStars" value="3"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp1"/>
@@ -706,6 +710,7 @@
 		<property name="creditCard" ref="creditcard3"/>
 		<property name="coordinate" ref="coord3"/>
 		<property name="banned" value="false"/>
+		<property name="numberOfStars" value="5"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp7"/>
@@ -755,6 +760,7 @@
 		<property name="creditCard" ref="creditcard4"/>
 		<property name="coordinate" ref="coord4"/>
 		<property name="banned" value="false"/>
+		<property name="numberOfStars" value="2"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp2"/>
@@ -798,6 +804,7 @@
 		<property name="creditCard" ref="creditcard5"/>
 		<property name="coordinate" ref="coord5"/>
 		<property name="banned" value="false"/>
+		<property name="numberOfStars" value="1"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp10"/>
@@ -834,48 +841,56 @@
 		<property name="sender" ref="chorbi2" />
 		<property name="text" value="Woow!"/>
 		<property name="moment" value="2017/03/29 00:00:00"/>
+		<property name="numberOfStarts" value="2"/>
 	</bean>
 	<bean id="like2" class="domain.Liked">
 		<property name="receiver" ref="chorbi2"/>
 		<property name="sender" ref="chorbi1" />
 		<property name="text" value="Woow tuuuuuuu ;)!"/>
 		<property name="moment" value="2017/03/28 00:00:00"/>
+		<property name="numberOfStarts" value="3"/>
 	</bean>
 	<bean id="like3" class="domain.Liked">
 		<property name="receiver" ref="chorbi3"/>
 		<property name="sender" ref="chorbi4" />
 		<property name="text" value="Woow!"/>
 		<property name="moment" value="2017/03/30 00:00:00"/>
+		<property name="numberOfStarts" value="2"/>
 	</bean>
 	<bean id="like4" class="domain.Liked">
 		<property name="receiver" ref="chorbi4"/>
 		<property name="sender" ref="chorbi3" />
 		<property name="text" value=":3"/>
 		<property name="moment" value="2017/03/31 00:00:00"/>
+		<property name="numberOfStarts" value="2"/>
 	</bean>
 	<bean id="like5" class="domain.Liked">
 		<property name="receiver" ref="chorbi5"/>
 		<property name="sender" ref="chorbi1" />
 		<property name="text" value="Woow!"/>
 		<property name="moment" value="2017/03/29 00:00:00"/>
+		<property name="numberOfStarts" value="1"/>
 	</bean>
 	<bean id="like6" class="domain.Liked">
 		<property name="receiver" ref="chorbi1"/>
 		<property name="sender" ref="chorbi5" />
 		<property name="text" value="Woow!"/>
 		<property name="moment" value="2017/03/29 00:00:00"/>
+		<property name="numberOfStarts" value="2"/>
 	</bean>
 	<bean id="like7" class="domain.Liked">
 		<property name="receiver" ref="chorbi1"/>
 		<property name="sender" ref="chorbi3" />
 		<property name="text" value="Woow!"/>
 		<property name="moment" value="2017/04/01 00:00:00"/>
+		<property name="numberOfStarts" value="0"/>
 	</bean>
 	<bean id="like8" class="domain.Liked">
 		<property name="receiver" ref="chorbi3"/>
 		<property name="sender" ref="chorbi1" />
 		<property name="text" value="Woow!"/>
 		<property name="moment" value="2017/03/31 00:00:00"/>
+		<property name="numberOfStarts" value="3"/>
 	</bean>
 	<!-- /Likes -->
 	<!-- Search -->
@@ -905,6 +920,17 @@
 	</bean>
 
 	<!-- /Search Cache -->
+
+	<!-- Fee Value-->
+	<bean id="managerFee" class="domain.Fee">
+		<property name="feeValue" value="1"/>
+	</bean>
+
+	<bean id="chorbiFee" class="domain.Fee">
+		<property name="feeValue" value="1"/>
+	</bean>
+
+	<!-- /Fee value-->
 	<!-- Manager -->
 	<bean id="manager1" class="domain.Manager">
 		<property name="name" value="Manager1Name" />
