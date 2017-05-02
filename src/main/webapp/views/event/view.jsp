@@ -31,6 +31,7 @@
 <h3><jstl:out value="${numberOfSeats1}"/></h3>
 <jstl:out value="${numberOfSeats}"/>
 
+<security:authorize access="hasRole('CHORBI')">
 
 <jstl:if test="${reg}">
 
@@ -51,6 +52,7 @@
 
 </jstl:if>
 
+</security:authorize>
 
 
 
@@ -66,6 +68,32 @@
     <spring:message code="administrator.surname" var="surname" />
     <display:column property="surname" title="${surname}" sortable="true" />
 
+
+
+
+
 </display:table>
 
+    <br>
+
+    <a href="chirp/createA.do?eventId=${id}"> <spring:message
+            code="event.chirp" />
+    </a>
+
 </security:authorize>
+
+
+<!-- Listing grid Chirps -->
+<display:table pagesize="5" class="displaytag" keepStatus="true"
+               name="chirps" id="row">
+
+
+    <!-- Attributes -->
+
+
+    <spring:message code="chirp.message" var="message" />
+    <display:column property="message" title="${message}" sortable="true" />
+    <spring:message code="chirp.subject" var="subject" />
+    <display:column property="subject" title="${subject}" sortable="true" />
+    <spring:message code="chirp.moment" var="moment" />
+</display:table>

@@ -47,6 +47,10 @@
 		<!--Allows everybody to view event.-->
 		<security:intercept-url pattern="/event/okevents.do" access="permitAll"/>
 		<security:intercept-url pattern="/event/allEvents.do" access="permitAll"/>
+		<security:intercept-url pattern="/event/view.do" access="permitAll"/>
+
+
+
 
 		<!--Allows a non registered chorbi to finish and save his/her sign up-->
 		<security:intercept-url pattern="/chorbi/register.do" access="permitAll"/>
@@ -71,7 +75,6 @@
 
 		<!--Allows chorbies to manages his or her events.-->
 		<security:intercept-url pattern="/event/eventToAssist.do" access="hasRole('CHORBI')"/>
-		<security:intercept-url pattern="/event/view.do" access="hasRole('CHORBI')"/>
 		<security:intercept-url pattern="/event/register.do" access="hasRole('CHORBI')"/>
 		<security:intercept-url pattern="/event/unregister.do" access="hasRole('CHORBI')"/>
 
@@ -134,6 +137,11 @@
 		<security:intercept-url pattern="/chirpMultiple/create.do" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/chirpMultiple/edit.do" access="hasRole('MANAGER')"/>
 		<security:intercept-url pattern="/chirpMultiple/save.do" access="hasRole('MANAGER')"/>
+
+		<security:intercept-url pattern="/chirp/createA.do" access="hasRole('MANAGER')"/>
+		<security:intercept-url pattern="/chirp/edit2.do" access="hasRole('MANAGER')"/>
+
+
 
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

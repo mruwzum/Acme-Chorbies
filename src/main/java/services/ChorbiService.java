@@ -177,4 +177,9 @@ public class ChorbiService {
         return res2;
    }
 
+
+   public Collection<Chirp> myEventsChirp(){
+
+       return null;
+   }
 }

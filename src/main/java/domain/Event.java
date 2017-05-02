@@ -23,6 +23,7 @@ public class Event extends DomainEntity {
     private int numberOfSeats;
 
     private Collection<Chorbi> partakers;
+    private Collection<Chirp> announcements;
     private Manager owner;
 
     @NotBlank
@@ -86,6 +87,16 @@ public class Event extends DomainEntity {
 
     public void setOwner(Manager owner) {
         this.owner = owner;
+    }
+
+
+    @ManyToMany
+    public Collection<Chirp> getAnnouncements() {
+        return announcements;
+    }
+
+    public void setAnnouncements(Collection<Chirp> announcements) {
+        this.announcements = announcements;
     }
 
     @Override

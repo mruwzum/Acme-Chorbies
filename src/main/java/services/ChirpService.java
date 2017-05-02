@@ -88,6 +88,24 @@ public class ChirpService {
         return res;
     }
 
+    public Boolean postChirp2(Chirp chirp){
+        Boolean res = false;
+        Assert.notNull(chirp.getSender(), "Receiver vacio");
+
+        try {
+            chirp.setMoment(new Date(System.currentTimeMillis()-100));
+           // chirp.getSender().getMyChirps().add(chirp);
+            save(chirp);
+            res = true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return res;
+    }
+
 
     public Boolean resend(Chirp chirp){
         Boolean res = false;

@@ -39,6 +39,8 @@ public class EventController extends AbstractController {
     private ManagerService managerService;
     @Autowired
     private SearchService searchService;
+    @Autowired
+    private ActorService actorService;
 
 
 
@@ -152,7 +154,7 @@ public class EventController extends AbstractController {
         ModelAndView res;
         Event event = eventService.findOne(eventId);
 
-        if(event.getPartakers().contains(chorbiService.findByPrincipal())){
+        if(event.getPartakers().contains(actorService.findByPrincipal())){
             registered = true;
         }
 
@@ -165,6 +167,7 @@ public class EventController extends AbstractController {
         res.addObject("numberOfSeats", event.getNumberOfSeats());
         res.addObject("id", event.getId());
         res.addObject("reg", registered);
+        res.addObject("chirps",event.getAnnouncements());
 
 
         return res;
@@ -247,6 +250,8 @@ public class EventController extends AbstractController {
         return res;
 
     }
+
+
 
 
     // Ancillary methods ------------------------------------------------
