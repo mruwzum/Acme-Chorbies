@@ -149,7 +149,7 @@ public class ChirpMultipleController extends AbstractController {
 					 result = new ModelAndView("chorbi/success");
 
 				 }else{
-				 	result =  new ModelAndView("chorbi/error");
+				 	result =  new ModelAndView("chirpMultiple/error");
 				 }
 
 
