@@ -8,6 +8,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.Collection;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -22,6 +23,8 @@ public abstract class Actor extends DomainEntity {
     private String email;
     private String phone;
     private UserAccount userAccount;
+    private Collection<Chirp> myChirps;
+    private Collection<Chirp> chirps;
 
 
 
@@ -67,6 +70,24 @@ public abstract class Actor extends DomainEntity {
 
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
+    }
+
+    @OneToMany(targetEntity = Chirp.class, mappedBy = "receiver", cascade = CascadeType.ALL)
+    public Collection<Chirp> getChirps() {
+        return chirps;
+    }
+
+    public void setChirps(Collection<Chirp> chirps) {
+        this.chirps = chirps;
+    }
+
+    @OneToMany(targetEntity = Chirp.class, mappedBy = "sender", cascade = CascadeType.ALL)
+    public Collection<Chirp> getMyChirps() {
+        return myChirps;
+    }
+
+    public void setMyChirps(Collection<Chirp> myChirps) {
+        this.myChirps = myChirps;
     }
 
     @Override

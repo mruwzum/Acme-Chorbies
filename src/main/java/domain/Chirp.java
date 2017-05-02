@@ -19,8 +19,8 @@ public class Chirp extends DomainEntity {
     private Date moment;
     private Collection<String> attachments;
 
-    private Chorbi sender;
-    private Chorbi receiver;
+    private Actor sender;
+    private Actor receiver;
 
 
     @NotBlank
@@ -59,20 +59,20 @@ public class Chirp extends DomainEntity {
     }
 
     @ManyToOne
-    public Chorbi getSender() {
+    public Actor getSender() {
         return sender;
     }
 
-    public void setSender(Chorbi sender) {
+    public void setSender(Actor sender) {
         this.sender = sender;
     }
 
     @ManyToOne
-    public Chorbi getReceiver() {
+    public Actor getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(Chorbi receiver) {
+    public void setReceiver(Actor receiver) {
         this.receiver = receiver;
     }
 

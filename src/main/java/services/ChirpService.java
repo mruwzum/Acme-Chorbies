@@ -118,8 +118,8 @@ public class ChirpService {
         Chirp chirpc = create();
 
         try {
-            Chorbi sender = chirp.getReceiver();
-            Chorbi receiver = chirp.getSender();
+            Actor sender = chirp.getReceiver();
+            Actor receiver = chirp.getSender();
 
             chirpc.setSender(sender);
             chirpc.setReceiver(receiver);

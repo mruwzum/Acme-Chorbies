@@ -29,10 +29,7 @@ public class Chorbi extends Actor {
 
 
     private Coordinate coordinate;
-
-    private Collection<Chirp> chirps;
     private Collection<Liked> likes;
-    private Collection<Chirp> myChirps;
     private Collection<Liked> myLikes;
     private Collection<Search> mySearches;
     private Collection<Event> eventsToGo;
@@ -97,14 +94,6 @@ public class Chorbi extends Actor {
         this.coordinate = coordinate;
     }
 
-    @OneToMany(targetEntity = Chirp.class, mappedBy = "receiver", cascade = CascadeType.ALL)
-    public Collection<Chirp> getChirps() {
-        return chirps;
-    }
-
-    public void setChirps(Collection<Chirp> chirps) {
-        this.chirps = chirps;
-    }
 
     @OneToMany(targetEntity = Liked.class, mappedBy = "receiver", cascade = CascadeType.ALL)
     public Collection<Liked> getLikes() {
@@ -113,15 +102,6 @@ public class Chorbi extends Actor {
 
     public void setLikes(Collection<Liked> likes) {
         this.likes = likes;
-    }
-
-    @OneToMany(targetEntity = Chirp.class, mappedBy = "sender", cascade = CascadeType.ALL)
-    public Collection<Chirp> getMyChirps() {
-        return myChirps;
-    }
-
-    public void setMyChirps(Collection<Chirp> myChirps) {
-        this.myChirps = myChirps;
     }
 
     @OneToMany(targetEntity = Liked.class, mappedBy = "sender",cascade = CascadeType.ALL)
