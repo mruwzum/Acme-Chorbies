@@ -1,9 +1,6 @@
 package services;
 
-import domain.Actor;
-import domain.Chirp;
-import domain.ChirpMultiple;
-import domain.Chorbi;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -11,8 +8,10 @@ import repositories.ChirpMultipleRepository;
 import repositories.ChirpRepository;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -59,9 +58,14 @@ public class ChirpMultipleService {
         return chirpMultipleRepository.save(actor);
     }
 
-    public void delete(ChirpMultiple actor) {
+    public void delete(ChirpMultiple actor, Event event) {
+
         Assert.notNull(actor);
+        Assert.notNull(event);
         Assert.isTrue(chirpMultipleRepository.exists(actor.getId()));
+        event.getAnnouncements().remove(actor);
+        List<Chorbi> chorbis =  new ArrayList<>(actor.getReceivers());
+        actor.getReceivers().removeAll(chorbis);
         chirpMultipleRepository.delete(actor);
     }
 

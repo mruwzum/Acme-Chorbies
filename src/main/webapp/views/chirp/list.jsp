@@ -65,6 +65,5 @@
 	<display:column property="moment" title="${moment}" sortable="true" />
 	<spring:message code="chirp.sender" var="sender" />
 	<display:column property="sender" title="${sender}" sortable="true" />
-	<spring:message code="chirp.receiver" var="sender" />
-	<display:column property="receiver" title="${receiver}" sortable="true" />
+
 </display:table>

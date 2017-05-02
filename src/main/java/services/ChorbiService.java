@@ -1,8 +1,6 @@
 package services;
 
-import domain.Chirp;
-import domain.Chorbi;
-import domain.Liked;
+import domain.*;
 import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -178,11 +176,14 @@ public class ChorbiService {
    }
 
 
-   public Collection<Chirp> myEventsChirp(){
+   public Collection<ChirpMultiple> myEventsChirp(){
 
-       Collection<Chirp> chirps =  chorbiRepository.myEventsChirps(findByPrincipal());
+       Collection<ChirpMultiple> chirps =  chorbiRepository.myEventsChirps(findByPrincipal());
+       for (ChirpMultiple c : chirps){
+           c.getReceivers().add(findByPrincipal());
+       }
 
-       Collection<Chirp> res =  new ArrayList<>();
+       Collection<ChirpMultiple> res =  new ArrayList<>();
        res.addAll(chirps);
        return res;
    }

@@ -140,14 +140,22 @@ public class ChirpMultipleController extends AbstractController {
 //		}
 
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public ModelAndView delete(int chirpId){
+	public ModelAndView delete(@RequestParam int chirpId, int eventId){
 		ModelAndView result;
+		ChirpMultiple chirpMultiple  = chirpMultipleService.findOne(chirpId);
 
-		chirpMultipleService.delete(chirpMultipleService.findOne(chirpId));
-		result=new ModelAndView("chorbi/success");
+				 if (eventService.checkChirMultipletoDelete(eventService.findOne(eventId),chirpMultiple)){
+					 chirpMultipleService.delete(chirpMultiple,eventService.findOne(eventId));
+					 result = new ModelAndView("chorbi/success");
+
+				 }else{
+				 	result =  new ModelAndView("chorbi/error");
+				 }
 
 
-		return result;
+
+return result;
+
 	}
 
 		// Ancillary methods ------------------------------------------------

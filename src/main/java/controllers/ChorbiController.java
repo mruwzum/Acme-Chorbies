@@ -297,7 +297,7 @@ public class ChorbiController extends AbstractController {
 		ModelAndView res;
 		Boolean pl = true;
 		Collection<Chirp> Liked = chorbiService.findByPrincipal().getChirps();
-		Collection<Chirp> chirps =  chorbiService.myEventsChirp();
+		Collection<ChirpMultiple> chirps =  chorbiService.myEventsChirp();
 		res =  new ModelAndView("chirp/list");
 		res.addObject("chirps", Liked);
 		res.addObject("pl",pl);

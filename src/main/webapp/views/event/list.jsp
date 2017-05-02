@@ -49,11 +49,6 @@
 						code="general.edit" />
 				</a>
 			</display:column>
-		<display:column>
-			<a href="chirpMultiple/create.do?eventId=${row.id}"> <spring:message
-					code="chirp.allRegistered" />
-			</a>
-		</display:column>
 	</security:authorize>
 	
 	<spring:message code="event.title" var="title" />

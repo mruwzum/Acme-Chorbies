@@ -17,7 +17,7 @@
 	<form:hidden path="version" />
 	<form:hidden path="moment" />
 	<form:hidden path="sender" />
-	<form:hidden path="receiver" />
+	<form:hidden path="receivers" />
 
 
 

@@ -496,7 +496,6 @@
 				<ref bean="chorbi4"/>
 			</list>
 		</property>
-
 	</bean>
 	<bean id="chirpM1" class="domain.ChirpMultiple">
 		<property name="subject" value="title10"/>
@@ -606,7 +605,7 @@
 			<list>
 				<ref bean="event0"/>
 				<ref bean="event1"/>
-				<ref bean="event2"/>
+
 			</list>
 		</property>
 	</bean>
@@ -875,7 +874,7 @@
 		</property>
 		<property name="eventsToGo">
 			<list>
-				<ref bean="event2"/>
+
 			</list>
 		</property>
 	</bean>
@@ -1067,6 +1066,13 @@
 				<ref bean="chorbi0a"/>
 			</list>
 		</property>
+		<property name="announcements">
+			<list>
+				<ref bean="chiripM0"/>
+
+			</list>
+
+		</property>
 	</bean>
 
 	<bean id="event1" class="domain.Event">
@@ -1092,11 +1098,9 @@
 		<property name="owner" ref="manager3"/>
 		<property name="partakers">
 			<list>
-				<ref bean="chorbi1"/>
 				<ref bean="chorbi2"/>
 				<ref bean="chorbi3"/>
 				<ref bean="chorbi4"/>
-				<ref bean="chorbi5"/>
 			</list>
 		</property>
 	</bean>

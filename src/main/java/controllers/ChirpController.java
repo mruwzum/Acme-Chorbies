@@ -11,6 +11,7 @@
 package controllers;
 
 import domain.Chirp;
+import domain.ChirpMultiple;
 import domain.Chorbi;
 import domain.Event;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import services.ActorService;
-import services.ChirpService;
-import services.ChorbiService;
-import services.EventService;
+import repositories.ChirpRepository;
+import services.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
@@ -41,11 +40,14 @@ public class ChirpController extends AbstractController {
 	}
 
 		@Autowired
-		private ChirpService chirpService;
+		private ChirpMultipleService chirpMultipleService;
+	@Autowired
+	private ChirpService chirpService;
 	@Autowired
 	private EventService eventService;
 	@Autowired
-	private ActorService actorService;
+	private ManagerService managerService;
+
 
 
 //		@RequestMapping( value="/list", method = RequestMethod.GET)
@@ -213,13 +215,14 @@ public class ChirpController extends AbstractController {
 	@RequestMapping(value = "/createA", method = RequestMethod.GET)
 	public ModelAndView createAnnoucement(@RequestParam int eventId){
 
-		Chirp c = chirpService.create();
-		c.setSender(actorService.findByPrincipal());
+		ChirpMultiple c = chirpMultipleService.create();
+		c.setSender(managerService.findByPrincipal());
 		c.setSubject("GENERIC");
 		c.setMessage("GENERIC");
 		c.setMoment(new Date(System.currentTimeMillis()-100));
-		Chirp saved = chirpService.save(c);
+		ChirpMultiple saved = chirpMultipleService.save(c);
 		eventService.findOne(eventId).getAnnouncements().add(saved);
+
 
 		ModelAndView result;
 
@@ -236,7 +239,7 @@ public class ChirpController extends AbstractController {
 	}
 
 	@RequestMapping(value="/edit2", method=RequestMethod.POST, params="save")
-	public ModelAndView save2(@Valid Chirp chirp, BindingResult binding){
+	public ModelAndView save2(@Valid ChirpMultiple chirp, BindingResult binding){
 		ModelAndView result;
 
 //			if(binding.hasErrors()){

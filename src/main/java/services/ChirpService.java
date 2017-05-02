@@ -2,6 +2,7 @@ package services;
 
 import domain.Actor;
 import domain.Chirp;
+import domain.ChirpMultiple;
 import domain.Chorbi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,10 @@ public class ChirpService {
     private ChirpRepository chirpRepository;
 
     // Supporting services -----------------------
-
+@Autowired
+private ChirpMultipleService chirpMultipleService;
+@Autowired
+private ManagerService managerService;
     // Constructor -------------------------------
     public ChirpService() {
         super();
@@ -88,14 +92,15 @@ public class ChirpService {
         return res;
     }
 
-    public Boolean postChirp2(Chirp chirp){
+    public Boolean postChirp2(ChirpMultiple chirp){
         Boolean res = false;
-        Assert.notNull(chirp.getSender(), "Receiver vacio");
+
 
         try {
             chirp.setMoment(new Date(System.currentTimeMillis()-100));
-           // chirp.getSender().getMyChirps().add(chirp);
-            save(chirp);
+            chirp.setSender(managerService.findByPrincipal());
+            // chirp.getSender().getMyChirps().add(chirp);
+            chirpMultipleService.save(chirp);
             res = true;
 
         } catch (Exception e) {

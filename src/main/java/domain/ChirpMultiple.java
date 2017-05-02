@@ -59,7 +59,7 @@ public class ChirpMultiple extends DomainEntity {
         this.attachments = attachments;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     public Manager getSender() {
         return sender;
     }
@@ -68,7 +68,7 @@ public class ChirpMultiple extends DomainEntity {
         this.sender = sender;
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     public Collection<Chorbi> getReceivers() {
         return receivers;
     }
@@ -76,4 +76,6 @@ public class ChirpMultiple extends DomainEntity {
     public void setReceivers(Collection<Chorbi> receivers) {
         this.receivers = receivers;
     }
+
+
 }

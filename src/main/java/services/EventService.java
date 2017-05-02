@@ -1,9 +1,6 @@
 package services;
 
-import domain.Chorbi;
-import domain.CreditCard;
-import domain.Event;
-import domain.Manager;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -61,11 +58,14 @@ public class EventService {
         return eventRespository.save(actor);
     }
 
-    public void delete(Event actor) {
-        Assert.notNull(actor);
-        Assert.isTrue(eventRespository.exists(actor.getId()));
+    public void delete(Event event) {
+        Assert.notNull(event);
+        Assert.isTrue(eventRespository.exists(event.getId()));
+        Collection<Chorbi> part = new ArrayList<>(event.getPartakers());
 
-        eventRespository.delete(actor);
+        event.getPartakers().removeAll(part);
+
+        eventRespository.delete(event);
     }
 
     // Other business methods -----------------------
@@ -128,6 +128,13 @@ public class EventService {
         return res;
 
 
+    }
+    public boolean checkChirMultipletoDelete(Event e, ChirpMultiple chirpMultiple){
+        boolean res = false;
+        if (chirpMultiple.getReceivers().size()==(e.getPartakers().size())){
+            res = true;
+        }
+        return res;
     }
 
     public void flush(){

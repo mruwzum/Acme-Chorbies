@@ -12,8 +12,7 @@ package sample;
 
 import javax.transaction.Transactional;
 
-import domain.Chorbi;
-import domain.Fee;
+import domain.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
-import services.ChorbiService;
-import services.FeeService;
+import services.*;
 import utilities.AbstractTest;
 
 import java.util.*;
@@ -39,6 +37,12 @@ public class SampleTest extends AbstractTest {
 private ChorbiService chorbiService;
 @Autowired
 private FeeService feeService;
+@Autowired
+private EventService eventService;
+@Autowired
+private ChirpMultipleService chirpMultipleService;
+@Autowired
+private ManagerService managerService;
 	// Tests ------------------------------------------------------------------
 
 	// The following are fictitious test cases that are intended to check that 
@@ -79,6 +83,21 @@ private FeeService feeService;
 
 	}
 
+	@Test
+	public void delteMultipleChirp(){
+
+
+		List<Event> events =  new ArrayList<>(eventService.findAll());
+
+		List<ChirpMultiple> chirpMultiples =  new ArrayList<>(events.get(0).getAnnouncements());
+		System.out.println(events.get(0).getAnnouncements());
+
+		chirpMultipleService.delete(chirpMultiples.get(0),events.get(0));
+		System.out.println(events.get(0).getAnnouncements());
+
+
+
+	}
 
 
 

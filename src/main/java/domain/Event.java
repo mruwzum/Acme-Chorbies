@@ -23,7 +23,8 @@ public class Event extends DomainEntity {
     private int numberOfSeats;
 
     private Collection<Chorbi> partakers;
-    private Collection<Chirp> announcements;
+    private Collection<ChirpMultiple> announcements;
+
     private Manager owner;
 
     @NotBlank
@@ -80,7 +81,7 @@ public class Event extends DomainEntity {
         this.partakers = partakers;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     public Manager getOwner() {
         return owner;
     }
@@ -90,12 +91,11 @@ public class Event extends DomainEntity {
     }
 
 
-    @ManyToMany
-    public Collection<Chirp> getAnnouncements() {
+    @OneToMany(cascade = CascadeType.ALL)
+    public Collection<ChirpMultiple> getAnnouncements() {
         return announcements;
     }
-
-    public void setAnnouncements(Collection<Chirp> announcements) {
+    public void setAnnouncements(Collection<ChirpMultiple> announcements) {
         this.announcements = announcements;
     }
 

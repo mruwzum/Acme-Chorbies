@@ -2,6 +2,7 @@ package repositories;
 
 import domain.Actor;
 import domain.Chirp;
+import domain.ChirpMultiple;
 import domain.Chorbi;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -21,6 +22,6 @@ public interface ChorbiRepository extends JpaRepository<Chorbi, Integer> {
 
 
     @Query("select e.announcements from Chorbi c join c.eventsToGo e where c=?1")
-    Collection<Chirp> myEventsChirps(Chorbi c);
+    Collection<ChirpMultiple> myEventsChirps(Chorbi c);
 
 }

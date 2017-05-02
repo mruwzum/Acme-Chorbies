@@ -96,4 +96,9 @@
     <spring:message code="chirp.subject" var="subject" />
     <display:column property="subject" title="${subject}" sortable="true" />
     <spring:message code="chirp.moment" var="moment" />
+    <display:column>
+        <a href="chirpMultiple/delete.do?chirpId=${row.id}&eventId=${id}"> <spring:message
+                code="chirpM.delete" />
+        </a>
+    </display:column>
 </display:table>
