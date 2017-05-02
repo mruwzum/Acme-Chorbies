@@ -307,6 +307,7 @@ public class AdministratorService{
             int diffYear = endCalendar1.get(Calendar.YEAR) - startCalendar1.get(Calendar.YEAR);
             int diffMonth = diffYear * 12 + endCalendar1.get(Calendar.MONTH) - startCalendar1.get(Calendar.MONTH);
             c.setTotalFeeToPay(fees.get(1).getFeeValue() * diffMonth);
+            chorbiService.save(c);
         }
     }
 

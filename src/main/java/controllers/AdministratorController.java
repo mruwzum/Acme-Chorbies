@@ -26,6 +26,7 @@ import services.SearchCacheService;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -183,5 +184,16 @@ public class AdministratorController extends AbstractController {
 
 		return res;
 	}
+	@RequestMapping(value = "/computeSubscription" )
+	public ModelAndView computeSubscription(){
+		ModelAndView res;
+		administratorService.computeMonthlyBill();
+		Collection<Chorbi> chorbis = chorbiService.findAll();
+		res = new ModelAndView("chorbi/list2Monthly");
 
+		res.addObject("chorbies", chorbis);
+
+
+		return res;
+	}
 }

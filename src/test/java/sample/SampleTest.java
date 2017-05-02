@@ -71,9 +71,8 @@ private FeeService feeService;
 			int diffYear = endCalendar1.get(Calendar.YEAR) - startCalendar1.get(Calendar.YEAR);
 			int diffMonth = diffYear * 12 + endCalendar1.get(Calendar.MONTH) - startCalendar1.get(Calendar.MONTH);
 			c.setTotalFeeToPay(fees.get(1).getFeeValue() * diffMonth);
-			System.out.println(c.getName());
-			System.out.println("Months :"+ diffMonth);
-			System.out.println("to pay" + c.getTotalFeeToPay());
+			System.out.println(c.getName() +", has been registered since " +registeredDate + " - which has been registered for " + diffMonth + " months.");
+			System.out.println("then, he/she has to pay " + c.getTotalFeeToPay() +"$");
 			System.out.println("--------------------");
 		}
 
