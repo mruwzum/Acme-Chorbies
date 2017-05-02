@@ -1,9 +1,6 @@
 package services;
 
-import domain.Actor;
-import domain.Chorbi;
-import domain.Coordinate;
-import domain.CreditCard;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,8 +12,10 @@ import security.UserAccount;
 import security.UserAccountService;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @Transactional
@@ -33,6 +32,8 @@ public class ActorService {
 	private CoordinateService coordinateService;
 	@Autowired
 	private CreditCardService creditCardService;
+	@Autowired
+	private FeeService feeService;
     // Supporting services -----------------------
 
     // Constructor -------------------------------
@@ -85,12 +86,12 @@ public class ActorService {
 		UserAccount userAccount = userAccountService.save(res);
 		u.setUserAccount(userAccount);
 		Assert.notNull(u.getUserAccount().getAuthorities(),"authorities null al registrar");
-
-		Date date = new Date(System.currentTimeMillis()-1000);
+		List<Fee> fees =  new ArrayList<>(feeService.findAll());
+		Date date = new Date(System.currentTimeMillis()-100);
 		u.setNumberOfStars(0);
-
+		u.setSignUpDate(date);
+		u.setTotalFeeToPay(fees.get(1).getFeeValue());
 		Assert.isTrue(u.getAge() >= 18,"Menor de edad / Under age");
-
 		Coordinate coordinate = new Coordinate();
 		coordinate.setCity(u.getCoordinate().getCity());
 		coordinate.setCountry(u.getCoordinate().getCountry());
@@ -98,8 +99,6 @@ public class ActorService {
 		coordinate.setState(u.getCoordinate().getState());
 		Coordinate savec = coordinateService.save(coordinate);
 		u.setCoordinate(savec);
-
-
 		u.setBanned(false);
 
 

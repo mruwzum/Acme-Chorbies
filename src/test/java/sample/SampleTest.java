@@ -12,13 +12,20 @@ package sample;
 
 import javax.transaction.Transactional;
 
+import domain.Chorbi;
+import domain.Fee;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.util.Assert;
 
+import services.ChorbiService;
+import services.FeeService;
 import utilities.AbstractTest;
+
+import java.util.*;
 
 @ContextConfiguration(locations = {
 	"classpath:spring/junit.xml"
@@ -28,14 +35,61 @@ import utilities.AbstractTest;
 public class SampleTest extends AbstractTest {
 
 	// System under test ------------------------------------------------------
-
+@Autowired
+private ChorbiService chorbiService;
+@Autowired
+private FeeService feeService;
 	// Tests ------------------------------------------------------------------
 
 	// The following are fictitious test cases that are intended to check that 
 	// JUnit works well in this project.  Just righ-click this class and run 
 	// it using JUnit.
 
+
+
+
+
+
+
+
+
 	@Test
+	public void ComputeSuscription(){
+		List<Chorbi> chorbis = new ArrayList<>(chorbiService.findAll());
+		List<Fee> fees = new ArrayList<>(feeService.findAll());
+		Date actual1 = new Date(System.currentTimeMillis());
+		Calendar startCalendar1 = new GregorianCalendar();
+		Calendar endCalendar1 = new GregorianCalendar();
+		endCalendar1.setTime(actual1);
+
+
+		for(Chorbi c: chorbis){
+			Date registeredDate = c.getSignUpDate();
+			startCalendar1.setTime(registeredDate);
+
+
+			int diffYear = endCalendar1.get(Calendar.YEAR) - startCalendar1.get(Calendar.YEAR);
+			int diffMonth = diffYear * 12 + endCalendar1.get(Calendar.MONTH) - startCalendar1.get(Calendar.MONTH);
+			c.setTotalFeeToPay(fees.get(1).getFeeValue() * diffMonth);
+			System.out.println(c.getName());
+			System.out.println("Months :"+ diffMonth);
+			System.out.println("to pay" + c.getTotalFeeToPay());
+			System.out.println("--------------------");
+		}
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+	/*@Test
 	public void samplePositiveTest() {
 		Assert.isTrue(true);
 	}
@@ -44,7 +98,7 @@ public class SampleTest extends AbstractTest {
 	public void sampleNegativeTest() {
 		Assert.isTrue(false);
 	}
-
+*/
 	// Ancillary methods ------------------------------------------------------
 
 }

@@ -26,6 +26,8 @@ public class Chorbi extends Actor {
     private int age;
     private Boolean isBanned;
     private int numberOfStars;
+    private Date signUpDate;
+    private int totalFeeToPay;
 
 
     private Coordinate coordinate;
@@ -147,5 +149,21 @@ public class Chorbi extends Actor {
 
     public void setNumberOfStars(int numberOfStars) {
         this.numberOfStars = numberOfStars;
+    }
+
+    public Date getSignUpDate() {
+        return signUpDate;
+    }
+
+    public void setSignUpDate(Date signUpDate) {
+        this.signUpDate = signUpDate;
+    }
+
+    public int getTotalFeeToPay() {
+        return totalFeeToPay;
+    }
+
+    public void setTotalFeeToPay(int totalFeeToPay) {
+        this.totalFeeToPay = totalFeeToPay;
     }
 }

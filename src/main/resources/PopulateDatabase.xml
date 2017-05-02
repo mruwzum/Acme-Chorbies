@@ -570,6 +570,7 @@
 		<property name="coordinate" ref="coord1"/>
 		<property name="banned" value="false"/>
 		<property name="numberOfStars" value="4"/>
+		<property name="signUpDate" value="2016/01/23 23:00:12"/>
 		<property name="chirps">
 			<list>
 				<ref bean="Chirp6"/>
@@ -620,6 +621,7 @@
 		<property name="genre" value="MAN"/>
 		<property name="relationship" value="LOVE"/>
 		<property name="creditCard" ref="creditcard6"/>
+		<property name="signUpDate" value="2016/09/23 23:00:12"/>
 		<property name="age" value="21"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="banned" value="false"/>
@@ -658,6 +660,7 @@
 		<property name="genre" value="MAN"/>
 		<property name="relationship" value="ACTIVITIES"/>
 		<!--<property name="creditCard" ref="creditcard7"/>-->
+		<property name="signUpDate" value="2017/01/23 23:00:12"/>
 		<property name="age" value="25"/>
 		<property name="coordinate" ref="coord1"/>
 		<property name="banned" value="false"/>
@@ -701,6 +704,7 @@
 		<property name="relationship" value="LOVE"/>
 		<property name="creditCard" ref="creditcard2"/>
 		<property name="coordinate" ref="coord2"/>
+		<property name="signUpDate" value="2016/11/23 23:00:12"/>
 		<property name="banned" value="false"/>
 		<property name="numberOfStars" value="3"/>
 		<property name="chirps">
@@ -747,6 +751,7 @@
 		<property name="genre" value="MAN"/>
 		<property name="relationship" value="FRIENDSHIP"/>
 		<property name="creditCard" ref="creditcard3"/>
+		<property name="signUpDate" value="2015/01/23 23:00:12"/>
 		<property name="coordinate" ref="coord3"/>
 		<property name="banned" value="false"/>
 		<property name="numberOfStars" value="5"/>
@@ -798,6 +803,7 @@
 		<property name="relationship" value="ACTIVITIES"/>
 		<property name="creditCard" ref="creditcard4"/>
 		<property name="coordinate" ref="coord4"/>
+		<property name="signUpDate" value="2016/01/12 23:00:12"/>
 		<property name="banned" value="false"/>
 		<property name="numberOfStars" value="2"/>
 		<property name="chirps">
@@ -842,6 +848,7 @@
 		<property name="relationship" value="FRIENDSHIP"/>
 		<property name="creditCard" ref="creditcard5"/>
 		<property name="coordinate" ref="coord5"/>
+		<property name="signUpDate" value="2016/09/12 13:00:12"/>
 		<property name="banned" value="false"/>
 		<property name="numberOfStars" value="1"/>
 		<property name="chirps">

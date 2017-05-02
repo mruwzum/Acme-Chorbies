@@ -2,6 +2,8 @@ package services;
 
 import domain.Administrator;
 import domain.Chorbi;
+import domain.Fee;
+import domain.SearchCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -11,9 +13,7 @@ import security.LoginService;
 import security.UserAccount;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -27,6 +27,12 @@ public class AdministratorService{
     private AdministratorRepository administratorRepository;
 
     // Supporting services -----------------------
+
+    @Autowired
+    private ChorbiService chorbiService;
+    @Autowired
+    private FeeService feeService;
+
 
     public AdministratorService() {
         super();
@@ -283,7 +289,26 @@ public class AdministratorService{
     }
 
 
+    public void computeMonthlyBill() {
 
+        List<Chorbi> chorbis = new ArrayList<>(chorbiService.findAll());
+        List<Fee> fees = new ArrayList<>(feeService.findAll());
+        Date actual1 = new Date(System.currentTimeMillis());
+        Calendar startCalendar1 = new GregorianCalendar();
+        Calendar endCalendar1 = new GregorianCalendar();
+        endCalendar1.setTime(actual1);
+
+
+        for (Chorbi c : chorbis) {
+            Date registeredDate = c.getSignUpDate();
+            startCalendar1.setTime(registeredDate);
+
+
+            int diffYear = endCalendar1.get(Calendar.YEAR) - startCalendar1.get(Calendar.YEAR);
+            int diffMonth = diffYear * 12 + endCalendar1.get(Calendar.MONTH) - startCalendar1.get(Calendar.MONTH);
+            c.setTotalFeeToPay(fees.get(1).getFeeValue() * diffMonth);
+        }
+    }
 
 
 
