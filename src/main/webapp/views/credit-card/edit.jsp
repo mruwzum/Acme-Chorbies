@@ -11,20 +11,24 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="credit-card/edit.do" modelAttribute="creditcard">
+<form:form action="creditcard/edit.do" modelAttribute="creditCard">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<form:hidden path="holder" />
 
 
+	<acme:textbox path="holder" code="creditCard.holderName"/>
 	<acme:textbox path="number" code="cc.number"/>
 	<acme:textbox path="ExpirationMonth" code="cc.ExpirationMonth"/>
 	<acme:textbox path="ExpirationYear" code="cc.ExpirationYear"/>
 	<acme:textbox path="CVV" code="cc.cvv"/>
-
+	<form:label path="brand">
+		<spring:message code="creditCard.brandName"/>:
+	</form:label>
+	<form:select path="brand" code="creditCard.brandName">
+		<form:options/>
+	</form:select>
 	<br />
-
 
 	<!---------------------------- BOTONES -------------------------->
 	<acme:submit name="save" code="general.save"/>

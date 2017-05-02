@@ -142,8 +142,7 @@ public class EventController extends AbstractController {
 
         eventService.delete(eventService.findOne(eventId));
         result = new ModelAndView("chorbi/success");
-        //TODO sale errorzaco al borrar evento ya que está asociado, mirar como borrar pero sin borrar la asociación
-        // o borrar el evento sin que borre el resto y punto.
+
 
         return result;
     }

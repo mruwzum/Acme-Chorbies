@@ -51,6 +51,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="event/listMy.do"><spring:message code="master.page.manager.manageEvents" /></a></li>
+					<li><a href="creditcard/edit.do"><spring:message code="master.page.manager.manageCreditCard" /></a></li>
 				</ul>
 			</li>
 
