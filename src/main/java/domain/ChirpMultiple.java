@@ -20,7 +20,7 @@ public class ChirpMultiple extends DomainEntity {
     private Date moment;
     private Collection<String> attachments;
 
-    private Actor sender;
+    private Manager sender;
     private Collection<Chorbi> receivers;
 
 
@@ -60,11 +60,11 @@ public class ChirpMultiple extends DomainEntity {
     }
 
     @ManyToOne
-    public Actor getSender() {
+    public Manager getSender() {
         return sender;
     }
 
-    public void setSender(Actor sender) {
+    public void setSender(Manager sender) {
         this.sender = sender;
     }
 

@@ -511,7 +511,46 @@
 			</list>
 		</property>
 	</bean>
-
+	<bean id="chirpM2" class="domain.Chirp">
+		<property name="subject" value="title10"/>
+		<property name="moment" value="2017/01/23 23:00:12"/>
+		<property name="message" value="text10"/>
+		<property name="attachments" value="http://www.desicomments.com/wp-content/uploads/Animated-Image-Of-Open-Love-Envelope.gif"/>
+		<property name="sender" ref="manager2"/>
+		<property name="receiver">
+				<ref bean="chorbi0"/>
+		</property>
+	</bean>
+	<bean id="chirpM3" class="domain.Chirp">
+		<property name="subject" value="title10"/>
+		<property name="moment" value="2017/01/23 23:00:12"/>
+		<property name="message" value="text10"/>
+		<property name="attachments" value="http://www.desicomments.com/wp-content/uploads/Animated-Image-Of-Open-Love-Envelope.gif"/>
+		<property name="sender" ref="manager1"/>
+		<property name="receiver">
+				<ref bean="chorbi1"/>
+		</property>
+	</bean>
+	<bean id="chirpM4" class="domain.Chirp">
+		<property name="subject" value="title10"/>
+		<property name="moment" value="2017/01/23 23:00:12"/>
+		<property name="message" value="text10"/>
+		<property name="attachments" value="http://www.desicomments.com/wp-content/uploads/Animated-Image-Of-Open-Love-Envelope.gif"/>
+		<property name="sender" ref="manager2"/>
+		<property name="receiver">
+				<ref bean="chorbi2"/>
+		</property>
+	</bean>
+	<bean id="chirpM5" class="domain.Chirp">
+		<property name="subject" value="title10"/>
+		<property name="moment" value="2017/01/23 23:00:12"/>
+		<property name="message" value="text10"/>
+		<property name="attachments" value="http://www.desicomments.com/wp-content/uploads/Animated-Image-Of-Open-Love-Envelope.gif"/>
+		<property name="sender" ref="manager1"/>
+		<property name="receiver">
+				<ref bean="chorbi3"/>
+		</property>
+	</bean>
 
 
 	<!-- /Chirp-->
