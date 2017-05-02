@@ -124,6 +124,7 @@ public class EventController extends AbstractController {
             result= createEditModelAndView(liked);
         }else{
             try{
+                chorbiService.sendChirpWithChanges(liked);
                 liked.setOwner(managerService.findByPrincipal());
                 eventService.save(liked);
 

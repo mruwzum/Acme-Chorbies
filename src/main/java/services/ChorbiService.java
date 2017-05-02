@@ -14,6 +14,7 @@ import security.UserAccount;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,6 +31,9 @@ public class ChorbiService {
     private ChorbiRepository chorbiRepository;
 
     // Supporting services -----------------------
+
+    @Autowired
+    private ManagerService managerService;
 
     // Constructor -------------------------------
     public ChorbiService() {
@@ -187,4 +191,19 @@ public class ChorbiService {
        res.addAll(chirps);
        return res;
    }
+
+
+    public void sendChirpWithChanges(Event event){
+
+       Collection<Chorbi> chirps =  new ArrayList<>(event.getPartakers());
+
+       Chirp chirp =  new Chirp();
+       chirp.setMessage("Changes");
+       chirp.setMoment(new Date(System.currentTimeMillis()));
+       chirp.setSender(managerService.findByPrincipal());
+
+
+
+
+    }
 }

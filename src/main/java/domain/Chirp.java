@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by daviddelatorre on 28/3/17.
@@ -18,7 +19,7 @@ public class Chirp extends DomainEntity {
     private String subject;
     private Date moment;
     private Collection<String> attachments;
-
+    private Collection<Chorbi> viewers;
     private Actor sender;
     private Actor receiver;
 
@@ -75,5 +76,7 @@ public class Chirp extends DomainEntity {
     public void setReceiver(Actor receiver) {
         this.receiver = receiver;
     }
+
+
 
 }

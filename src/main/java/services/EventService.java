@@ -64,9 +64,9 @@ public class EventService {
         Collection<Chorbi> part = new ArrayList<>(event.getPartakers());
         event.getPartakers().removeAll(part);
         Collection<ChirpMultiple> chirpM = new ArrayList<>(event.getAnnouncements());
-        for (Chorbi c : part){
-            c.getEventsToGo().remove(event);
-        }
+//        for (Chorbi c : part){
+//            c.getEventsToGo().remove(event);
+//        }
         event.getAnnouncements().removeAll(chirpM);
 
         eventRespository.delete(event);
