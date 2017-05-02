@@ -108,9 +108,7 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
     Collection<Chorbi> chorbiSortedByNumberOfEventsToGo();
 
 
-    /*Collection<Manager> managerWithDues();
 
-    Collection<Chorbi> chorbiesWirtDues();*/
 
     @Query("select avg(numberOfStars) from Chorbi")
     Double averageNumberOfStarsPerChorbi();

@@ -1,8 +1,6 @@
 package controllers;
 
-import domain.Event;
-import domain.Liked;
-import domain.Manager;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -120,19 +118,25 @@ public class EventController extends AbstractController {
     public ModelAndView save(@Valid Event liked, BindingResult binding){
         ModelAndView result;
 
-        if(binding.hasErrors()){
-            result= createEditModelAndView(liked);
-        }else{
-            try{
-                chorbiService.sendChirpWithChanges(liked);
-                liked.setOwner(managerService.findByPrincipal());
-                eventService.save(liked);
+//        if(binding.hasErrors()){
+//            result= createEditModelAndView(liked);
+//        }else{
+//            try{
+                if(eventService.findAll().contains(liked) ){
+                    chorbiService.sendChirpWithChanges(liked);
+                }else{
+                    liked.setOwner(managerService.findByPrincipal());
+                    liked.setAnnouncements(new ArrayList<ChirpMultiple>());
+                    liked.setPartakers(new ArrayList<Chorbi>());
+                    eventService.save(liked);
+
+                }
 
                 result= new ModelAndView("chorbi/success");
-            }catch(Throwable oops){
-                result= createEditModelAndView(liked, "chirp.commit.error");
-            }
-        }
+//            }catch(Throwable oops){
+//                result= createEditModelAndView(liked, "chirp.commit.error");
+//            }
+//        }
         return result;
     }
 

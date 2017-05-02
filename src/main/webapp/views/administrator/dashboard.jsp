@@ -126,6 +126,70 @@
 <br>
 <br/>
 
+<spring:message code="dashboard.q22" var="q9b"/>
+<jstl:out value="${q9b}"/>:
+<jstl:out value="${q22}"/>
+<br>
+<br/>
+
+<spring:message code="dashboard.q23" var="q9b"/>
+<jstl:out value="${q9b}"/>:
+<jstl:out value="${q23}"/>
+<br>
+<br/>
+
+<spring:message code="dashboard.q24" var="q9b"/>
+<jstl:out value="${q9b}"/>:
+<jstl:out value="${q24}"/>
+<br>
+<br/>
+
+<spring:message code="dashboard.q25" var="q9b"/>
+<jstl:out value="${q9b}"/>:
+<jstl:out value="${q25}"/>
+<br>
+<br/>
+
+<spring:message code="dashboard.q26" var="q9b"/>
+<jstl:out value="${q9b}"/>:
+<jstl:out value="${q26}"/>
+<br>
+<br/>
+
+<spring:message code="dashboard.q27" var="q9b"/>
+<jstl:out value="${q9b}"/>:
+<jstl:out value="${q27}"/>
+<br>
+<br/>
 
 
+<display:table pagesize="15" class="displaytag" keepStatus="true"
+               name="chorbies" id="row">
 
+
+    <%--<!-- Attributes -->--%>
+
+    <spring:message code="administrator.name" var="name" />
+    <display:column property="name" title="${name}" sortable="true" />
+    <spring:message code="administrator.surname" var="surname" />
+    <display:column property="surname" title="${surname}" sortable="true" />
+    <spring:message code="administrator.totalFeeToPay" var="fee" />
+    <display:column property="totalFeeToPay" title="${fee}" sortable="true" />
+
+</display:table>
+
+
+<display:table pagesize="15" class="displaytag" keepStatus="true"
+               name="managers" id="row">
+
+
+    <%--<!-- Attributes -->--%>
+
+    <spring:message code="administrator.name" var="name" />
+    <display:column property="name" title="${name}" sortable="true" />
+    <spring:message code="administrator.surname" var="surname" />
+    <display:column property="surname" title="${surname}" sortable="true" />
+    <spring:message code="administrator.totalFeeToPay" var="fee" />
+    <display:column property="totalFee" title="${fee}" sortable="true" />
+
+</display:table>

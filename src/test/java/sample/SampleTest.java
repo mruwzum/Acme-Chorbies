@@ -99,6 +99,21 @@ private ManagerService managerService;
 //
 //	}
 
+	@Test
+	public void asdads(){
+
+authenticate("manager1");
+
+Manager manager = managerService.findByPrincipal();
+List<Event> events = new ArrayList<>(manager.getCreatedEvents());
+		System.out.println(events.get(2).getPartakers());
+
+
+authenticate(null);
+
+
+	}
+
 
 
 

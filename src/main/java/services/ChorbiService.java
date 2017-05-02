@@ -12,6 +12,7 @@ import security.LoginService;
 import security.UserAccount;
 
 import javax.transaction.Transactional;
+import java.text.CollationElementIterator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -34,6 +35,8 @@ public class ChorbiService {
 
     @Autowired
     private ManagerService managerService;
+    @Autowired
+    private ChirpMultipleService chirpMultipleService;
 
     // Constructor -------------------------------
     public ChorbiService() {
@@ -195,12 +198,17 @@ public class ChorbiService {
 
     public void sendChirpWithChanges(Event event){
 
-       Collection<Chorbi> chirps =  new ArrayList<>(event.getPartakers());
+       //Collection<Chorbi> chirps =  new ArrayList<>(event.getPartakers());
 
-       Chirp chirp =  new Chirp();
-       chirp.setMessage("Changes");
+       ChirpMultiple chirp =  chirpMultipleService.create();
+       chirp.setSubject("Changes");
+       chirp.setMessage("Changes in the event" + event);
        chirp.setMoment(new Date(System.currentTimeMillis()));
        chirp.setSender(managerService.findByPrincipal());
+       chirp.setReceivers(new ArrayList<Chorbi>());
+       ChirpMultiple saved = chirpMultipleService.save(chirp);
+
+       event.getAnnouncements().add(saved);
 
 
 

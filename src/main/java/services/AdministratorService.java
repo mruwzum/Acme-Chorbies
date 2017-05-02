@@ -1,9 +1,6 @@
 package services;
 
-import domain.Administrator;
-import domain.Chorbi;
-import domain.Fee;
-import domain.SearchCache;
+import domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -153,7 +150,6 @@ public class AdministratorService{
         Assert.notNull(administrator);
         return  administratorRepository.chorbiesPerCountry();
     }
-
     public Double averageAgesOfTheChorbies(){
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -169,14 +165,11 @@ public class AdministratorService{
         Assert.notNull(administrator);
         return  administratorRepository.minAgeOfTheChorbies();
     }
-
     public Collection<Chorbi> chorbiesSortedByTheNumberOfLikes(){
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
         return  administratorRepository.chorbiesSortedByTheNumberOfLikes();
     }
-
-
     public Double averageNumberOfLikesPerChorbi(){
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -192,7 +185,6 @@ public class AdministratorService{
         Assert.notNull(administrator);
         return  administratorRepository.minNumberOfLikePerChorbi();
     }
-
     public Double averageNumberOfChirpsReceived(){
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -208,7 +200,6 @@ public class AdministratorService{
         Assert.notNull(administrator);
         return  administratorRepository.minNumberOfChirpsReceived();
     }
-
     public Double averageNumberOfChirpsSended(){
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -224,14 +215,12 @@ public class AdministratorService{
         Assert.notNull(administrator);
         return  administratorRepository.minNumberOfChirpsSended();
     }
-
     public Chorbi chorbieWhoHaveMoreChirpsReceived(){
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
         List<Chorbi> chorbis =  new ArrayList<>( administratorRepository.chorbieWhoHaveMoreChirpsReceived());
         return chorbis.get(0);
     }
-
     public Chorbi chorbieWhoHaveMoreChirpsSended(){
         Administrator administrator = findByPrincipal();
         Assert.notNull(administrator);
@@ -287,6 +276,59 @@ public class AdministratorService{
         Double res = (double) chorbis1.size()/chorbis.size();
         return res;
     }
+
+    //************************************************************************** ACME CHORBIES 2.0 **************************************************************************
+
+    public Collection<Manager> managerOrganizedByNumberOfEvents(){
+
+        Administrator administrator = findByPrincipal();
+        Assert.notNull(administrator);
+
+
+        Collection<Manager> res = administratorRepository.managerOrganizedByNumberOfEvents();
+        return res;
+    }
+
+    public Collection<Chorbi> chorbiSortedByNumberOfEventsToGo(){
+
+        Administrator administrator = findByPrincipal();
+        Assert.notNull(administrator);
+
+        Collection<Chorbi> res =  administratorRepository.chorbiSortedByNumberOfEventsToGo();
+        return res;
+    }
+
+    public Double averageNumberOfStarsPerChorbi(){
+
+        Administrator administrator = findByPrincipal();
+        Assert.notNull(administrator);
+        Double res = administratorRepository.averageNumberOfStarsPerChorbi();
+        return res;
+    }
+
+    public int maxNumberOfStarsPerChorbi(){
+        Administrator administrator = findByPrincipal();
+        Assert.notNull(administrator);
+        int res = administratorRepository.maxNumberOfStarsPerChorbi();
+        return res;
+    }
+
+    public int minNumberOfStarsPerChorbi(){
+        Administrator administrator = findByPrincipal();
+        Assert.notNull(administrator);
+        int res = administratorRepository.minNumberOfStarsPerChorbi();
+        return res;
+    }
+
+    public Collection<Chorbi> chorbiesSortedByAverageOfLikes(){
+
+        Administrator administrator = findByPrincipal();
+        Assert.notNull(administrator);
+
+        Collection<Chorbi> res =  administratorRepository.chorbiesSortedByAverageOfLikes();
+        return res;
+    }
+
 
 
     public void computeMonthlyBill() {

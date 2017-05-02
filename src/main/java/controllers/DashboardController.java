@@ -2,11 +2,14 @@ package controllers;
 
 
 import domain.Chorbi;
+import domain.Manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import services.AdministratorService;
+import services.ChorbiService;
+import services.ManagerService;
 
 import java.util.Collection;
 
@@ -17,6 +20,10 @@ public class DashboardController extends AbstractController {
 
     @Autowired
     private AdministratorService administratorService;
+    @Autowired
+    private ManagerService managerService;
+    @Autowired
+    private ChorbiService chorbiService;
 
 
     public DashboardController() {
@@ -49,6 +56,14 @@ public class DashboardController extends AbstractController {
         Collection<Chorbi> q3 = administratorService.chorbiesSortedByTheNumberOfLikes();
         Chorbi q4 = administratorService.chorbieWhoHaveMoreChirpsReceived();
         Chorbi q5 = administratorService.chorbieWhoHaveMoreChirpsSended();
+
+
+        Collection<Manager> q22 =  administratorService.managerOrganizedByNumberOfEvents();
+        Collection<Chorbi> q23 = administratorService.chorbiSortedByNumberOfEventsToGo();
+        Double q24 = administratorService.averageNumberOfStarsPerChorbi();
+        int q25 = administratorService.maxNumberOfStarsPerChorbi();
+        int q26 = administratorService.minNumberOfStarsPerChorbi();
+        Collection<Chorbi> q27 = administratorService.chorbiesSortedByAverageOfLikes();
 
 
 
@@ -84,6 +99,15 @@ public class DashboardController extends AbstractController {
         res.addObject("q19",q19);
         res.addObject("q20",q20);
         res.addObject("q21",q21);
+        res.addObject("q22",q22);
+        res.addObject("q23",q23);
+        res.addObject("q24",q24);
+        res.addObject("q25",q25);
+        res.addObject("q26",q26);
+        res.addObject("q27",q27);
+        res.addObject("chorbies", chorbiService.findAll());
+        res.addObject("managers", managerService.findAll());
+
 
 
 
