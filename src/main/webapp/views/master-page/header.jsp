@@ -96,7 +96,6 @@
 				</ul>
 			</li>
 			<li><a href="chorbi/list.do"><spring:message code="master.page.chorbi.list" /></a></li>
-			<li><a href="chorbi/listWhoLikesMe.do"><spring:message code="master.page.chorbi.chorbieswholikesme" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
