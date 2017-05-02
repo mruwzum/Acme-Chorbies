@@ -56,48 +56,48 @@ private ManagerService managerService;
 
 
 
-
-	@Test
-	public void ComputeSuscription(){
-		List<Chorbi> chorbis = new ArrayList<>(chorbiService.findAll());
-		List<Fee> fees = new ArrayList<>(feeService.findAll());
-		Date actual1 = new Date(System.currentTimeMillis());
-		Calendar startCalendar1 = new GregorianCalendar();
-		Calendar endCalendar1 = new GregorianCalendar();
-		endCalendar1.setTime(actual1);
-
-
-		for(Chorbi c: chorbis){
-			Date registeredDate = c.getSignUpDate();
-			startCalendar1.setTime(registeredDate);
-
-
-			int diffYear = endCalendar1.get(Calendar.YEAR) - startCalendar1.get(Calendar.YEAR);
-			int diffMonth = diffYear * 12 + endCalendar1.get(Calendar.MONTH) - startCalendar1.get(Calendar.MONTH);
-			c.setTotalFeeToPay(fees.get(1).getFeeValue() * diffMonth);
-			System.out.println(c.getName() +", has been registered since " +registeredDate + " - which has been registered for " + diffMonth + " months.");
-			System.out.println("then, he/she has to pay " + c.getTotalFeeToPay() +"$");
-			System.out.println("--------------------");
-		}
-
-
-	}
-
-	@Test
-	public void delteMultipleChirp(){
-
-
-		List<Event> events =  new ArrayList<>(eventService.findAll());
-
-		List<ChirpMultiple> chirpMultiples =  new ArrayList<>(events.get(0).getAnnouncements());
-		System.out.println(events.get(0).getAnnouncements());
-
-		chirpMultipleService.delete(chirpMultiples.get(0),events.get(0));
-		System.out.println(events.get(0).getAnnouncements());
-
-
-
-	}
+//
+//	@Test
+//	public void ComputeSuscription(){
+//		List<Chorbi> chorbis = new ArrayList<>(chorbiService.findAll());
+//		List<Fee> fees = new ArrayList<>(feeService.findAll());
+//		Date actual1 = new Date(System.currentTimeMillis());
+//		Calendar startCalendar1 = new GregorianCalendar();
+//		Calendar endCalendar1 = new GregorianCalendar();
+//		endCalendar1.setTime(actual1);
+//
+//
+//		for(Chorbi c: chorbis){
+//			Date registeredDate = c.getSignUpDate();
+//			startCalendar1.setTime(registeredDate);
+//
+//
+//			int diffYear = endCalendar1.get(Calendar.YEAR) - startCalendar1.get(Calendar.YEAR);
+//			int diffMonth = diffYear * 12 + endCalendar1.get(Calendar.MONTH) - startCalendar1.get(Calendar.MONTH);
+//			c.setTotalFeeToPay(fees.get(1).getFeeValue() * diffMonth);
+//			System.out.println(c.getName() +", has been registered since " +registeredDate + " - which has been registered for " + diffMonth + " months.");
+//			System.out.println("then, he/she has to pay " + c.getTotalFeeToPay() +"$");
+//			System.out.println("--------------------");
+//		}
+//
+//
+//	}
+//
+//	@Test
+//	public void delteMultipleChirp(){
+//
+//
+//		List<Event> events =  new ArrayList<>(eventService.findAll());
+//
+//		List<ChirpMultiple> chirpMultiples =  new ArrayList<>(events.get(0).getAnnouncements());
+//		System.out.println(events.get(0).getAnnouncements());
+//
+//		chirpMultipleService.delete(chirpMultiples.get(0),events.get(0));
+//		System.out.println(events.get(0).getAnnouncements());
+//
+//
+//
+//	}
 
 
 
