@@ -181,6 +181,7 @@ public class ChorbiService {
    public Collection<Chirp> myEventsChirp(){
 
        Collection<Chirp> chirps =  chorbiRepository.myEventsChirps(findByPrincipal());
+
        Collection<Chirp> res =  new ArrayList<>();
        res.addAll(chirps);
        return res;

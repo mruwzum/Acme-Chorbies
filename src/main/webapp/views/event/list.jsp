@@ -62,7 +62,8 @@
 	<display:column property="date" title="${date}" sortable="true" />
 	<spring:message code="event.description" var="description" />
 	<display:column property="description" title="${description}" sortable="true" />
-
+	<spring:message code="event.numberOfSeats" var="numberOfSeats" />
+	<display:column property="numberOfSeats" title="${numberOfSeats}" sortable="true" />
 	<display:column>
 		<a href="event/view.do?eventId=${row.id}"> <spring:message
 				code="event.view" />
@@ -95,7 +96,8 @@
 	<display:column property="date" title="${date}" sortable="true" />
 	<spring:message code="event.description" var="description" />
 	<display:column property="description" title="${description}" sortable="true" />
-
+	<spring:message code="event.numberOfSeats" var="numberOfSeats" />
+	<display:column property="numberOfSeats" title="${numberOfSeats}" sortable="true" />
 	<jstl:if test="${not all}">
 	<display:column>
 		<a href="event/view.do?eventId=${row.id}"> <spring:message
@@ -129,7 +131,8 @@
 	<display:column property="date" title="${date}" sortable="true" />
 	<spring:message code="event.description" var="description" />
 	<display:column property="description" title="${description}" sortable="true" />
-
+	<spring:message code="event.numberOfSeats" var="numberOfSeats" />
+	<display:column property="numberOfSeats" title="${numberOfSeats}" sortable="true" />
 	<jstl:if test="${not all}">
 	<display:column>
 		<a href="event/view.do?eventId=${row.id}"> <spring:message

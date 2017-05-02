@@ -64,6 +64,7 @@ public class EventService {
     public void delete(Event actor) {
         Assert.notNull(actor);
         Assert.isTrue(eventRespository.exists(actor.getId()));
+
         eventRespository.delete(actor);
     }
 
