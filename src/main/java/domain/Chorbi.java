@@ -133,7 +133,7 @@ public class Chorbi extends Actor {
         isBanned = banned;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     public Collection<Event> getEventsToGo() {
         return eventsToGo;
     }

@@ -72,7 +72,7 @@ public class Event extends DomainEntity {
         this.numberOfSeats = numberOfSeats;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     public Collection<Chorbi> getPartakers() {
         return partakers;
     }
@@ -81,7 +81,7 @@ public class Event extends DomainEntity {
         this.partakers = partakers;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     public Manager getOwner() {
         return owner;
     }
@@ -91,7 +91,7 @@ public class Event extends DomainEntity {
     }
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     public Collection<ChirpMultiple> getAnnouncements() {
         return announcements;
     }
