@@ -14,6 +14,7 @@ import services.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 
 /**
@@ -39,6 +40,8 @@ public class EventController extends AbstractController {
     private SearchService searchService;
     @Autowired
     private ActorService actorService;
+    @Autowired
+    private ChirpMultipleService chirpMultipleService;
 
 
 
@@ -126,8 +129,8 @@ public class EventController extends AbstractController {
                     chorbiService.sendChirpWithChanges(liked);
                 }else{
                     liked.setOwner(managerService.findByPrincipal());
-                    liked.setAnnouncements(new ArrayList<ChirpMultiple>());
-                    liked.setPartakers(new ArrayList<Chorbi>());
+//                    liked.setAnnouncements(new ArrayList<ChirpMultiple>());
+//                    liked.setPartakers(new ArrayList<Chorbi>());
                     eventService.save(liked);
 
                 }
