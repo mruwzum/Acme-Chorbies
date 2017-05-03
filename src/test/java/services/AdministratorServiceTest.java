@@ -143,7 +143,7 @@ public class AdministratorServiceTest extends AbstractTest {
         unauthenticate();
         administratorService.flush();
     }
-
+//DASHBOARD TESTS
 
 
 
@@ -171,7 +171,12 @@ public class AdministratorServiceTest extends AbstractTest {
         Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchActivites()!=null);
         Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchFriendShip()!=null);
         Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchLove()!=null);
-
+        /*Acme-Chorbies 2.0*/
+        Assert.assertTrue(administratorService.managerOrganizedByNumberOfEvents()!=null);
+        Assert.assertTrue(administratorService.chorbiSortedByNumberOfEventsToGo()!=null);
+        Assert.assertTrue(administratorService.averageNumberOfStarsPerChorbi()!=null);
+        Assert.assertTrue(administratorService.maxNumberOfStarsPerChorbi()!=0);
+        Assert.assertTrue(administratorService.chorbiesSortedByAverageOfLikes()!=null);
 
         unauthenticate();
         administratorService.flush();
@@ -203,11 +208,17 @@ public class AdministratorServiceTest extends AbstractTest {
         Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchActivites()!=null);
         Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchFriendShip()!=null);
         Assert.assertTrue(administratorService.ratioOfChorbiesWhoSearchLove()!=null);
-
+         /*Acme-Chorbies 2.0*/
+        Assert.assertTrue(administratorService.managerOrganizedByNumberOfEvents()!=null);
+        Assert.assertTrue(administratorService.chorbiSortedByNumberOfEventsToGo()!=null);
+        Assert.assertTrue(administratorService.averageNumberOfStarsPerChorbi()!=null);
+        Assert.assertTrue(administratorService.maxNumberOfStarsPerChorbi()!=0);
+        Assert.assertTrue(administratorService.minNumberOfStarsPerChorbi()!=0);
+        Assert.assertTrue(administratorService.chorbiesSortedByAverageOfLikes()!=null);
         administratorService.flush();
 
     }
-
+//FEE CHANGE POSITIVE AND NEGATIVE TESTS
     @Test
     public void changeFeeOK(){
         authenticate("administrator1");
@@ -232,6 +243,7 @@ public class AdministratorServiceTest extends AbstractTest {
         fee.get(1).setFeeValue(nuevo);
         unauthenticate();
     }
+    //SUBSCRIPTION COMPUTING TESTS CASES
 
     	@Test
 	    public void ComputeSuscription() {

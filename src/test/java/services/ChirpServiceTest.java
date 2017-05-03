@@ -106,7 +106,7 @@ public class ChirpServiceTest extends AbstractTest {
     @After
     public void tearDown() {
     }
-
+//POSITIVE & NEGATIVE CHIRP POSTING
     @Test
     public void postChirpPositive()  {
         authenticate("chorbi1");
@@ -137,7 +137,7 @@ public class ChirpServiceTest extends AbstractTest {
         unauthenticate();
         chirpService.flush();
     }
-
+//NEGATIVE AND POSITIVE CHIRP RESEND
     @Test
     public void resendPositive() {
         authenticate("chorbi1");
@@ -170,7 +170,7 @@ public class ChirpServiceTest extends AbstractTest {
         unauthenticate();
         chirpService.flush();
     }
-
+//POSITIVE AND NEGATIVE CHIRP REPLY
     @Test
     public void replyPositive() {
             authenticate("chorbi1");

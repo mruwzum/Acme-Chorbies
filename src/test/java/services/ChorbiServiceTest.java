@@ -238,6 +238,8 @@ public class ChorbiServiceTest extends AbstractTest {
         searchService.flush();
     }
 
+
+    // LIST OF CHORBIES THAT HAVE SENT A LIKE TO ME, POSITIVE & NEGATIVE CASES
     @Test
     public void iveLikedHimorHerOk()   {
         authenticate("chorbi1");
