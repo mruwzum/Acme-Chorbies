@@ -13,10 +13,7 @@ import security.UserAccount;
 
 import javax.transaction.Transactional;
 import java.text.CollationElementIterator;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,6 +34,8 @@ public class ChorbiService {
     private ManagerService managerService;
     @Autowired
     private ChirpMultipleService chirpMultipleService;
+    @Autowired
+    private EventService eventService;
 
     // Constructor -------------------------------
     public ChorbiService() {
@@ -197,8 +196,6 @@ public class ChorbiService {
 
 
     public void sendChirpWithChanges(Event event){
-
-
        ChirpMultiple chirp =  chirpMultipleService.create();
        chirp.setSubject("Changes");
        chirp.setMessage("Changes in the event" + event);
@@ -206,11 +203,12 @@ public class ChorbiService {
        chirp.setSender(managerService.findByPrincipal());
        ChirpMultiple saved = chirpMultipleService.save(chirp);
        Assert.notNull(saved, "NULACOOOOOO");
-       event.getAnnouncements().add(saved);
 
 
-
-
-
+       Collection<ChirpMultiple> lasDelEvent = new HashSet<>();
+       lasDelEvent.add(saved);
+       event.setAnnouncements(lasDelEvent);
+       event.setOwner(managerService.findByPrincipal());
+        eventService.save(event);
     }
 }

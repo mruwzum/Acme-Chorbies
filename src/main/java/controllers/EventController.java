@@ -129,7 +129,7 @@ public class EventController extends AbstractController {
                     chorbiService.sendChirpWithChanges(liked);
                 }else{
                     liked.setOwner(managerService.findByPrincipal());
-//                    liked.setAnnouncements(new ArrayList<ChirpMultiple>());
+                    liked.setAnnouncements(new ArrayList<ChirpMultiple>());
 //                    liked.setPartakers(new ArrayList<Chorbi>());
                     eventService.save(liked);
 
