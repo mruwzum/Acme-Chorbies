@@ -52,6 +52,10 @@
 	<display:column property="receiver" title="${receiver}" sortable="true" />
 </display:table>
 
+<br>
+
+<spring:message code="event.chirp.send" var="birth1"/>
+<h3><jstl:out value="${birth1}"/></h3>
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" keepStatus="true"
 			   name="chirpse" id="row">

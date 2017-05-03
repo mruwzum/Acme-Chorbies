@@ -1055,7 +1055,7 @@
 	<bean id="event0" class="domain.Event">
 		<property name="title" value="title0"/>
 		<property name="date" value="2017/05/22"/>
-		<property name="numberOfSeats" value="3"/>
+		<property name="numberOfSeats" value="10"/>
 		<property name="description" value="descrition 0"/>
 		<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>
 		<property name="owner" ref="manager1"/>
@@ -1117,7 +1117,18 @@
 			</list>
 		</property>
 	</bean>
+
+	<bean id="event5" class="domain.Event">
+		<property name="title" value="title5"/>
+		<property name="date" value="2017/05/12"/>
+		<property name="numberOfSeats" value="10"/>
+		<property name="description" value="descrition 5"/>
+		<property name="picture" value="https://www.star.com.au/sydney/sites/default/files/thumbnails/image/The%20Star%20-%20The%20Event%20Centre%20-%20Banquet%20setup%20view.JPG"/>
+		<property name="owner" ref="manager1"/>
+
+	</bean>
 	<!-- /Event -->
+
 
 
 

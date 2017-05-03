@@ -92,7 +92,8 @@ public class EventController extends AbstractController {
 
         ModelAndView result;
         Manager us = managerService.findByPrincipal();
-       if (searchService.checkCreditCard(managerService.findByPrincipal().getCreditCard())){
+        //TODO quitar aqui el no
+       if (!searchService.checkCreditCard(managerService.findByPrincipal().getCreditCard())){
            Event chirp = eventService.create();
            result = createEditModelAndView(chirp);
 
