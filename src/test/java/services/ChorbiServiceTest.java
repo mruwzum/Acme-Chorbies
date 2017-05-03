@@ -2,6 +2,7 @@ package services;
 
 import domain.Chirp;
 import domain.Chorbi;
+import domain.CreditCard;
 import domain.Liked;
 import org.junit.After;
 import org.junit.Assert;
@@ -237,5 +238,33 @@ public class ChorbiServiceTest extends AbstractTest {
         searchService.flush();
     }
 
+    @Test
+    public void iveLikedHimorHerOk()   {
+        authenticate("chorbi1");
+        Collection<Liked> likeds = chorbiService.getLikes();
+        searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard());
+        List<Chorbi> chorbis = new ArrayList<>();
+        for (Liked l : likeds){
+            chorbis.add(l.getSender());
+        }
+        Assert.assertNotNull(chorbis);
+
+        unauthenticate();
+    }
+    @Test(expected = IllegalArgumentException.class)
+    public void iveLikedHimorHerNotOk(){
+        authenticate("chorbi3");
+        CreditCard creditCard = chorbiService.findByPrincipal().getCreditCard();
+        creditCard.setExpirationYear(1991);
+        Collection<Liked> likeds = chorbiService.getLikes();
+        org.springframework.util.Assert.isTrue(searchService.checkCreditCard(chorbiService.findByPrincipal().getCreditCard()));
+        List<Chorbi> chorbis = new ArrayList<>();
+        for (Liked l : likeds){
+            chorbis.add(l.getSender());
+        }
+        Assert.assertNotNull(chorbis);
+
+        unauthenticate();
+    }
 
 }

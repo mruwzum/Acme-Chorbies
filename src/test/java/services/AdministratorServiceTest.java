@@ -15,10 +15,7 @@ import security.UserAccount;
 import security.UserAccountService;
 import utilities.AbstractTest;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -42,6 +39,8 @@ public class AdministratorServiceTest extends AbstractTest {
     private CoordinateService coordinateService;
     @Autowired
     private UserAccountService userAccountService;
+    @Autowired
+    private FeeService feeService;
 
     @Before
     public void setUp(){
@@ -208,5 +207,73 @@ public class AdministratorServiceTest extends AbstractTest {
         administratorService.flush();
 
     }
+
+    @Test
+    public void changeFeeOK(){
+        authenticate("administrator1");
+        List<Fee> fee = new ArrayList<>(feeService.findAll());
+        int nuevo = 12;
+        int fee0ant = fee.get(0).getFeeValue();
+        int fee1ant = fee.get(1).getFeeValue();
+        fee.get(0).setFeeValue(nuevo);
+        fee.get(1).setFeeValue(nuevo);
+        org.springframework.util.Assert.isTrue(fee.get(0).getFeeValue()!=fee0ant);
+        org.springframework.util.Assert.isTrue(fee.get(1).getFeeValue()!=fee1ant);
+        unauthenticate();
+    }
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void changeFeeNotOK(){
+        authenticate("administrator1");
+        List<Fee> fee = new ArrayList<>();
+        int nuevo = 12;
+        int fee0ant = fee.get(0).getFeeValue();
+        int fee1ant = fee.get(1).getFeeValue();
+        fee.get(0).setFeeValue(nuevo);
+        fee.get(1).setFeeValue(nuevo);
+        unauthenticate();
+    }
+
+    	@Test
+	    public void ComputeSuscription() {
+            List<Chorbi> chorbis = new ArrayList<>(chorbiService.findAll());
+            List<Fee> fees = new ArrayList<>(feeService.findAll());
+            Date actual1 = new Date(System.currentTimeMillis());
+            Calendar startCalendar1 = new GregorianCalendar();
+            Calendar endCalendar1 = new GregorianCalendar();
+            endCalendar1.setTime(actual1);
+
+
+            for (Chorbi c : chorbis) {
+                Date registeredDate = c.getSignUpDate();
+                startCalendar1.setTime(registeredDate);
+
+
+                int diffYear = endCalendar1.get(Calendar.YEAR) - startCalendar1.get(Calendar.YEAR);
+                int diffMonth = diffYear * 12 + endCalendar1.get(Calendar.MONTH) - startCalendar1.get(Calendar.MONTH);
+                c.setTotalFeeToPay(fees.get(1).getFeeValue() * diffMonth);
+//			System.out.println(c.getName() +", has been registered since " +registeredDate + " - which has been registered for " + diffMonth + " months.");
+//			System.out.println("then, he/she has to pay " + c.getTotalFeeToPay() +"$");
+//			System.out.println("--------------------");
+            }
+        }
+
+            @Test(expected = IllegalArgumentException.class)
+            public void ComputeSuscriptionNotOk(){
+                List<Chorbi> chorbis = new ArrayList<>(chorbiService.findAll());
+                List<Fee> fees = new ArrayList<>();
+                org.springframework.util.Assert.notEmpty(fees);
+                Date actual1 = new Date(System.currentTimeMillis());
+                Calendar startCalendar1 = new GregorianCalendar();
+                Calendar endCalendar1 = new GregorianCalendar();
+                endCalendar1.setTime(actual1);
+
+
+
+                    int diffYear = endCalendar1.get(Calendar.YEAR) - startCalendar1.get(Calendar.YEAR);
+                    int diffMonth = diffYear * 12 + endCalendar1.get(Calendar.MONTH) - startCalendar1.get(Calendar.MONTH);
+
+
+                }
+
 
 }
