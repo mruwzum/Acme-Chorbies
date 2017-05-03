@@ -31,7 +31,7 @@
 <!-- Listing grid ok events -->
 
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="event" id="row">
+	name="event" requestURI="event/allEvents.do" id="row">
 
 
 	<!-- Attributes -->
@@ -78,7 +78,7 @@
 
 <jstl:if test="${all}">
 <display:table pagesize="5" class="displaytag" keepStatus="true"
-			   name="restOfEvents" id="row">
+			   name="restOfEvents" requestURI="event/allEvents.do" id="row">
 
 
 	<!-- Attributes -->
@@ -112,8 +112,7 @@
 <div class="overlay">
 
 <jstl:if test="${all}">
-<display:table pagesize="5" class="displaytag" keepStatus="true"
-			   name="lastEvents" id="row" >
+<display:table pagesize="5" class="displaytag" keepStatus="true" requestURI="event/allEvents.do" name="lastEvents" id="row" >
 
 
 	<!-- Attributes -->
