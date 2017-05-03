@@ -91,7 +91,7 @@ public class Event extends DomainEntity {
     }
 
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.ALL, targetEntity = ChirpMultiple.class)
     public Collection<ChirpMultiple> getAnnouncements() {
         return announcements;
     }

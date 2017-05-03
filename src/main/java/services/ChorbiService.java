@@ -198,17 +198,16 @@ public class ChorbiService {
 
     public void sendChirpWithChanges(Event event){
 
-       //Collection<Chorbi> chirps =  new ArrayList<>(event.getPartakers());
 
        ChirpMultiple chirp =  chirpMultipleService.create();
        chirp.setSubject("Changes");
        chirp.setMessage("Changes in the event" + event);
-       chirp.setMoment(new Date(System.currentTimeMillis()));
+       chirp.setMoment(new Date(System.currentTimeMillis()-1000));
        chirp.setSender(managerService.findByPrincipal());
-       chirp.setReceivers(new ArrayList<Chorbi>());
        ChirpMultiple saved = chirpMultipleService.save(chirp);
-
+       Assert.notNull(saved, "NULACOOOOOO");
        event.getAnnouncements().add(saved);
+
 
 
 
