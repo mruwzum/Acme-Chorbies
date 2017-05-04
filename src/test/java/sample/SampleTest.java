@@ -102,36 +102,28 @@ private ManagerService managerService;
 	@Test
 	public void asdads(){
 
-authenticate("manager1");
+	authenticate("manager1");
 
-Manager manager = managerService.findByPrincipal();
-List<Event> events = new ArrayList<>(manager.getCreatedEvents());
-		System.out.println(events.get(2).getPartakers());
+	Manager manager = managerService.findByPrincipal();
+	List<Event> events = new ArrayList<>(manager.getCreatedEvents());
+	Event event = eventService.create();
+	event.setDate(new Date(System.currentTimeMillis()-100));
+	event.setDescription("");
+	event.setTitle("prueba");
+	event.setNumberOfSeats(6);
+	event.setOwner(manager);
+	event.setAnnouncements(new ArrayList<ChirpMultiple>());
+
+		chorbiService.sendChirpWithChanges(events.get(2));
+
+		System.out.println(events.get(2).getAnnouncements());
 
 
-authenticate(null);
+		authenticate(null);
 
 
 	}
 
 
-
-
-
-
-
-
-
-	/*@Test
-	public void samplePositiveTest() {
-		Assert.isTrue(true);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void sampleNegativeTest() {
-		Assert.isTrue(false);
-	}
-*/
-	// Ancillary methods ------------------------------------------------------
 
 }

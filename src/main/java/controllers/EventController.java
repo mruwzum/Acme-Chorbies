@@ -92,8 +92,7 @@ public class EventController extends AbstractController {
 
         ModelAndView result;
         Manager us = managerService.findByPrincipal();
-        //TODO quitar aqui el no
-       if (!searchService.checkCreditCard(managerService.findByPrincipal().getCreditCard())){
+       if (searchService.checkCreditCard(managerService.findByPrincipal().getCreditCard())){
            Event chirp = eventService.create();
            result = createEditModelAndView(chirp);
 
@@ -109,11 +108,13 @@ public class EventController extends AbstractController {
     @RequestMapping(value="/edit", method= RequestMethod.GET)
     public ModelAndView edit(@RequestParam int eventId){
         ModelAndView result;
-        Event chirp;
 
-        chirp= eventService.findOne(eventId);
-        Assert.notNull(chirp);
-        result= createEditModelAndView(chirp);
+        Event event = eventService.findOne(eventId);
+        result= new ModelAndView("event/edit2");
+        result.addObject("event", event);
+        result.addObject("events", event.getAnnouncements());
+        result.addObject("chorbis", event.getPartakers());
+
 
         return result;
     }
@@ -122,21 +123,42 @@ public class EventController extends AbstractController {
     public ModelAndView save(@Valid Event liked, BindingResult binding){
         ModelAndView result;
 
+        if(binding.hasErrors()){
+            result= createEditModelAndView(liked);
+        }else{
+            try{
+
+                    liked.setOwner(managerService.findByPrincipal());
+                    liked.setAnnouncements(new ArrayList<ChirpMultiple>());
+                    liked.setPartakers(new ArrayList<Chorbi>());
+                    eventService.save(liked);
+
+
+
+                result= new ModelAndView("chorbi/success");
+            }catch(Throwable oops){
+                result= createEditModelAndView(liked, "chirp.commit.error");
+            }
+        }
+        return result;
+    }
+
+    @RequestMapping(value="/edit2", method=RequestMethod.POST, params="save")
+    public ModelAndView edit(@Valid Event liked, BindingResult binding){
+        ModelAndView result;
+
 //        if(binding.hasErrors()){
 //            result= createEditModelAndView(liked);
 //        }else{
 //            try{
-                if(eventService.findAll().contains(liked) ){
-                    chorbiService.sendChirpWithChanges(liked);
-                }else{
-                    liked.setOwner(managerService.findByPrincipal());
-                    liked.setAnnouncements(new ArrayList<ChirpMultiple>());
-//                    liked.setPartakers(new ArrayList<Chorbi>());
-                    eventService.save(liked);
+            // eventService.save(liked);
 
-                }
+        chorbiService.sendChirpWithChanges(liked);
+        eventService.save(liked);
 
-                result= new ModelAndView("chorbi/success");
+
+
+        result= new ModelAndView("chorbi/success");
 //            }catch(Throwable oops){
 //                result= createEditModelAndView(liked, "chirp.commit.error");
 //            }

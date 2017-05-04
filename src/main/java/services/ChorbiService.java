@@ -204,11 +204,14 @@ public class ChorbiService {
        ChirpMultiple saved = chirpMultipleService.save(chirp);
        Assert.notNull(saved, "NULACOOOOOO");
 
+//
+//       Collection<ChirpMultiple> lasDelEvent = new HashSet<>();
+//       lasDelEvent.add(saved);
+//       event.setAnnouncements(lasDelEvent);
+//       event.setOwner(managerService.findByPrincipal());
 
-       Collection<ChirpMultiple> lasDelEvent = new HashSet<>();
-       lasDelEvent.add(saved);
-       event.setAnnouncements(lasDelEvent);
-       event.setOwner(managerService.findByPrincipal());
+        event.getAnnouncements().add(chirp);
+
         eventService.save(event);
     }
 }
