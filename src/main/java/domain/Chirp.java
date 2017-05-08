@@ -24,7 +24,7 @@ public class Chirp extends DomainEntity {
     private Actor sender;
     private Actor receiver;
 
-    @SafeHtml
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank
     public String getMessage() {
         return message;
@@ -33,7 +33,8 @@ public class Chirp extends DomainEntity {
     public void setMessage(String message) {
         this.message = message;
     }
-    @SafeHtml
+
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank
     public String getSubject() {
         return subject;

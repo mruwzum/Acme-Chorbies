@@ -1,6 +1,7 @@
 package domain;
 
 import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -34,6 +35,7 @@ public class Liked extends DomainEntity {
         this.moment = moment;
     }
 
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getText() {
         return text;
     }

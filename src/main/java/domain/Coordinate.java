@@ -1,6 +1,7 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -18,7 +19,7 @@ public class Coordinate extends DomainEntity {
     private String province;
     private String city;
 
-
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getCountry() {
         return country;
     }
@@ -26,7 +27,7 @@ public class Coordinate extends DomainEntity {
     public void setCountry(String country) {
         this.country = country;
     }
-
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getState() {
         return state;
     }
@@ -34,7 +35,7 @@ public class Coordinate extends DomainEntity {
     public void setState(String state) {
         this.state = state;
     }
-
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getProvince() {
         return province;
     }
@@ -44,6 +45,7 @@ public class Coordinate extends DomainEntity {
     }
 
     @NotBlank
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getCity() {
         return city;
     }

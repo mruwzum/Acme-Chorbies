@@ -23,7 +23,7 @@ public class Manager extends Actor {
     private Double fee;
     private Double totalFee;
 
-    @SafeHtml
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank
     public String getCompany() {
         return company;
@@ -33,7 +33,7 @@ public class Manager extends Actor {
         this.company = company;
     }
 
-    @SafeHtml
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank
     public String getVatNumber() {
         return vatNumber;

@@ -53,7 +53,7 @@ public class Search extends DomainEntity {
     public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
     }
-    @SafeHtml
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getKeyword() {
         return keyword;
     }

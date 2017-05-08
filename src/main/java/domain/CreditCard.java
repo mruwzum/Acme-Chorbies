@@ -31,7 +31,7 @@ public class CreditCard extends DomainEntity {
 
     private Brand brand;
 
-    @SafeHtml
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank
     public String getHolder() {
         return holder;
