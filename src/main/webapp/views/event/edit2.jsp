@@ -11,7 +11,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="event/edit2.do" modelAttribute="event">
+<form:form action="event/edit.do" modelAttribute="event">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />
@@ -41,34 +41,34 @@
 		   onclick="javascript: window.location.replace('/event/list.do')" />
 
 
-</form:form>
-<br>
-<display:table pagesize="5" class="displaytag" keepStatus="true"
-			   name="events" id="row">
+<%--</form:form>--%>
+<%--<br>--%>
+<%--<display:table pagesize="5" class="displaytag" keepStatus="true"--%>
+			   <%--name="events" id="row">--%>
 
 
 
-	<spring:message code="chirp.message" var="message" />
-	<display:column property="message" title="${message}" sortable="true" />
-	<spring:message code="chirp.subject" var="subject" />
-	<display:column property="subject" title="${subject}" sortable="true" />
-	<spring:message code="chirp.moment" var="moment" />
-	<display:column property="moment" title="${moment}" sortable="true" />
-	<spring:message code="chirp.sender" var="sender" />
-	<display:column property="sender" title="${sender}" sortable="true" />
-	<spring:message code="chirp.receiver" var="sender" />
-	<display:column property="receivers" title="${receivers}" sortable="true" />
-</display:table>
+	<%--<spring:message code="chirp.message" var="message" />--%>
+	<%--<display:column property="message" title="${message}" sortable="true" />--%>
+	<%--<spring:message code="chirp.subject" var="subject" />--%>
+	<%--<display:column property="subject" title="${subject}" sortable="true" />--%>
+	<%--<spring:message code="chirp.moment" var="moment" />--%>
+	<%--<display:column property="moment" title="${moment}" sortable="true" />--%>
+	<%--<spring:message code="chirp.sender" var="sender" />--%>
+	<%--<display:column property="sender" title="${sender}" sortable="true" />--%>
+	<%--<spring:message code="chirp.receiver" var="sender" />--%>
+	<%--<display:column property="receivers" title="${receivers}" sortable="true" />--%>
+<%--</display:table>--%>
 
-<br>
+<%--<br>--%>
 
-<display:table pagesize="5" class="displaytag" keepStatus="true"
-			   name="chorbis" id="row">
+<%--<display:table pagesize="5" class="displaytag" keepStatus="true"--%>
+			   <%--name="chorbis" id="row">--%>
 
-	<spring:message code="administrator.name" var="name" />
-	<display:column property="name" title="${name}" sortable="true" />
-	<spring:message code="administrator.surname" var="surname" />
-	<display:column property="surname" title="${surname}" sortable="true" />
+	<%--<spring:message code="administrator.name" var="name" />--%>
+	<%--<display:column property="name" title="${name}" sortable="true" />--%>
+	<%--<spring:message code="administrator.surname" var="surname" />--%>
+	<%--<display:column property="surname" title="${surname}" sortable="true" />--%>
 
 
 

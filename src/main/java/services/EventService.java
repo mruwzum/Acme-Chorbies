@@ -112,6 +112,7 @@ public class EventService {
         if(event.getPartakers().contains(chorbi) || event.getPartakers().size() == event.getNumberOfSeats() ){
             res = false;
         }
+        event.setNumberOfSeats(event.getNumberOfSeats()-1);
         chorbi.getEventsToGo().add(event);
         event.getPartakers().add(chorbi);
 
@@ -126,6 +127,7 @@ public class EventService {
         if(!event.getPartakers().contains(chorbi)){
             res = false;
         }
+        event.setNumberOfSeats(event.getNumberOfSeats()+1);
         event.getPartakers().remove(chorbi);
         chorbi.getEventsToGo().remove(event);
 
