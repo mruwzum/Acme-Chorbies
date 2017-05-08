@@ -1,9 +1,6 @@
 package domain;
 
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.Range;
-import org.hibernate.validator.constraints.URL;
+import org.hibernate.validator.constraints.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -45,6 +42,7 @@ public class Chorbi extends Actor {
         this.picture = picture;
     }
 
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @Size(max = 300, message = "Exceeds the 300 characters long")
     public String getDescription() {
         return description;

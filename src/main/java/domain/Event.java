@@ -2,6 +2,7 @@ package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
@@ -27,7 +28,7 @@ public class Event extends DomainEntity {
     private Collection<ChirpMultiple> announcements;
 
     private Manager owner;
-
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank
     public String getTitle() {
         return title;
@@ -46,7 +47,7 @@ public class Event extends DomainEntity {
     public void setDate(Date date) {
         this.date = date;
     }
-
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     public String getDescription() {
         return description;
     }

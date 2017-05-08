@@ -2,6 +2,11 @@ package domain;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+
+
+import org.hibernate.validator.constraints.SafeHtml;
+import org.jsoup.safety.Whitelist.*;
+
 import security.UserAccount;
 
 import javax.persistence.*;
@@ -27,7 +32,7 @@ public abstract class Actor extends DomainEntity {
     private Collection<Chirp> chirps;
 
 
-
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank
     public String getName() {
         return name;
@@ -36,6 +41,7 @@ public abstract class Actor extends DomainEntity {
     public void setName(String name) {
         this.name = name;
     }
+    @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank
     public String getSurname() {
         return surname;
@@ -44,6 +50,8 @@ public abstract class Actor extends DomainEntity {
     public void setSurname(String surname) {
         this.surname = surname;
     }
+
+
     @NotBlank
     @Email
     public String getEmail() {

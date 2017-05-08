@@ -1,6 +1,7 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,6 +23,7 @@ public class Manager extends Actor {
     private Double fee;
     private Double totalFee;
 
+    @SafeHtml
     @NotBlank
     public String getCompany() {
         return company;
@@ -31,6 +33,7 @@ public class Manager extends Actor {
         this.company = company;
     }
 
+    @SafeHtml
     @NotBlank
     public String getVatNumber() {
         return vatNumber;

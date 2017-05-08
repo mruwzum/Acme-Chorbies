@@ -1,6 +1,7 @@
 package domain;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,7 +24,7 @@ public class Chirp extends DomainEntity {
     private Actor sender;
     private Actor receiver;
 
-
+    @SafeHtml
     @NotBlank
     public String getMessage() {
         return message;
@@ -32,6 +33,7 @@ public class Chirp extends DomainEntity {
     public void setMessage(String message) {
         this.message = message;
     }
+    @SafeHtml
     @NotBlank
     public String getSubject() {
         return subject;

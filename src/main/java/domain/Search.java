@@ -1,5 +1,7 @@
 package domain;
 
+import org.hibernate.validator.constraints.SafeHtml;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -51,7 +53,7 @@ public class Search extends DomainEntity {
     public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
     }
-
+    @SafeHtml
     public String getKeyword() {
         return keyword;
     }

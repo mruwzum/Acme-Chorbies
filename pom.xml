@@ -114,6 +114,15 @@
 			<url>http://repo.maven.apache.org/maven2</url>
 		</repository>
 
+
+
+		<repository>
+			<id>osssonatype</id>
+			<name>OSS Sonatype</name>
+			<url>https://repo1.maven.org/maven2/</url>
+			<layout>default</layout>
+		</repository>
+
 	</repositories>
 	
 	<!--  Dependencies -->
@@ -314,7 +323,15 @@
 		    <artifactId>aspectjweaver</artifactId>
 		    <version>1.7.4</version>
 		</dependency>
-		
+
+
+
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+
 	</dependencies>
 
 </project> 

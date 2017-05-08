@@ -2,6 +2,7 @@ package domain;
 
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -30,6 +31,7 @@ public class CreditCard extends DomainEntity {
 
     private Brand brand;
 
+    @SafeHtml
     @NotBlank
     public String getHolder() {
         return holder;
